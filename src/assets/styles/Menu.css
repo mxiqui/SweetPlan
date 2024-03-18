@@ -1,0 +1,43 @@
+.menu{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    background-color: #cccccc95;
+}
+
+.containerMenu{
+    width: 25%;
+    height: 98.9vh;
+    background-color: #061c43;
+    padding: 0px 10px 10px 10px;
+    position: absolute;
+    right: 0;
+}
+
+.cabeceraMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabeceraMenu img{
+    width: 30px;
+}
+
+.cabeceraMenu img:hover{
+    background-color: #dddddd5d;
+}
+
+.cabeceraMenu h3{
+    font-family: baloo;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+@media screen and (max-width: 720px) {
+    .containerMenu{
+        width: 95%;
+    }
+}

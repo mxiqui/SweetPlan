@@ -1,0 +1,35 @@
+.containerRedesSociales{
+    width: 95%;
+    margin: 50px auto 35px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.containerRedSocial{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.containerRedSocial img{
+    width: 30px;
+}
+
+.containerRedSocial:hover{
+    background-color: #a5a5a5;
+    transition: 0.3s;
+}
+
+
+@media screen and (max-width:1200px) {
+    .containerRedSocial{
+        width: 20px;
+        height: 20px;
+    }
+    .containerRedSocial img{
+        width: 20px;
+    }
+}

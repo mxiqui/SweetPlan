@@ -1,0 +1,39 @@
+@font-face {
+    font-family: campton;
+    src: url(../../../public/fonts/Campton-BoldDEMO.otf);
+}
+
+@font-face {
+    font-family: baloo;
+    src: url(../../../public/fonts/BalooDa2-Bold.ttf);
+}
+
+@font-face {
+    font-family: inter-light;
+    src: url(../../../public/fonts/Inter-Light.ttf);
+}
+
+@font-face {
+    font-family: inter-bold;
+    src: url(../../../public/fonts/Inter-Bold.ttf);
+}
+
+@font-face {
+    font-family: inter-semibold;
+    src: url(../../../public/fonts/Inter-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: noto-italic;
+    src: url(../../../public/fonts/Noto/NotoSansDisplay-Italic-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+    font-family: noto-normal;
+    src: url(../../../public/fonts/Noto/static/NotoSansDisplay-Medium.ttf);
+}
+
+@font-face {
+    font-family: opensans-normal;
+    src: url(../../../public/fonts/Open_Sans/static/OpenSans-Medium.ttf);
+}

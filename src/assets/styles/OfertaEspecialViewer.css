@@ -1,0 +1,74 @@
+.containerViewer {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.76);
+    top: 0;
+    left: 0;
+    display: grid;
+    place-content: center;
+    backdrop-filter: blur(10px); /* Agrega un efecto de desenfoque al fondo */
+}
+
+.containerViewerOfertaEspecial {
+    padding: 20px;
+    width: 854px;
+    height: 520px;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 0.5s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerViewerOfertaEspecial img {
+    width: 35px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 100%;
+    margin-top: -20px;
+}
+
+
+.quitarScroll{
+    overflow: hidden;
+}
+
+
+.containerViewerData{
+    background-color: #fff;
+    border-bottom-left-radius: 10px;
+    height:200px ;
+    border-bottom-right-radius: 10px;
+}
+
+@keyframes animacion-arriba {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes animacion-arriba2 {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes animacion-abajo {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}

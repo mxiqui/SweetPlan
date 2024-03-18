@@ -1,0 +1,44 @@
+.mainInferior{
+    height: 120vh;
+    width: 100%;
+    background-color: #e7e7e7;
+}
+
+.containerContenedorMainInferior{
+    padding-top: 50px;
+    width: 1100px;
+    margin: auto;
+    
+}
+
+.containerOfertasEspeciales{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.containerContenedorMainInferior h2{
+    padding-left: 25px;
+    font-size: 33px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.containerContenedorMainInferior p{
+    color: #725c5c;
+    padding-left: 25px;
+    margin-top: -35px ;
+}
+
+
+
+@media screen and (max-width:1100px) {
+    .mainInferior{
+      width: 100%;
+      height: auto;
+    }
+
+    .containerContenedorMainInferior{
+        width: 100%;
+    }
+  }

@@ -1,0 +1,12 @@
+.containerAnuncio{
+    width: 100%;
+    background-color: black;
+    height: 200px;
+    margin-top: 50px;
+    display: none;
+}
+
+
+@media screen and (max-width:1200px) {
+
+}

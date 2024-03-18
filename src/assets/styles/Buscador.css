@@ -1,0 +1,18 @@
+.containerBuscador{
+    width: 1100px;
+    margin: auto;
+}
+
+.containerBuscador h2{
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 1100px) {
+    .containerBuscador{
+        width: 90%;
+    }
+
+    .containerBuscador h2{
+        margin-top: 20px;
+    }
+}

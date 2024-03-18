@@ -1,0 +1,32 @@
+.containerCabecera{
+    width: 1100px;
+    margin: auto;
+    height: 8vh;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.containerCabecera h1{
+    font-family: campton;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.containerCabecera h1 img{
+    width: 50px;
+}
+
+.containerCabecera img{
+    width: 40px;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .containerCabecera{
+        width: 90%;
+    }
+}
