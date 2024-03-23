@@ -1,51 +1,55 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect, useRef } from "react";
 
-//Importamos la imagen de la x
-import iconoCerrar from '../../images/cerrar.png'
-//Importamos las opciones de menu
-import OpcionMenu from './OpcionMenu'
-//importamos el css
-import '../../assets/styles/Menu.css'
-//Importar el contexto
-import { MenuContext } from '../Header/Header'
+import iconoCerrar from "../../images/cerrar.png";
+import "../../assets/styles/Menu.css";
 
+import { MenuContext } from "../Header/Header";
+import { opcionesMenu } from "../../resources/Menu";
+import OpcionMenu from "./OpcionMenu";
 
 function Menu() {
+  const { dispatch } = useContext(MenuContext);
+  const [opciones] = useState(opcionesMenu);
 
-    //Lista de las opciones del menu
-    const [opciones,setOpciones]=useState([
-        {texto:"Escapadas vacacionales", enlace:"#"},
-        {texto:"Escapadas fin de semana", enlace:"#"},
-        {texto:"Viajes Nacionales", enlace:"#"},
-        {texto:"Viajes Internacionales", enlace:"#"},
-        {texto:"Ofertas especiales", enlace:"#containerContenedorMainInferior"},
-        {texto:"Experiencias unicas", enlace:"#"},
-        {texto:"Contacto", enlace:"#"},
-        {texto:"Preguntas Frecuentes (FAQ)", enlace:"#"},
-        {texto:"Sobre Nosotros", enlace:"#"}
-    ])
+  const menuRef = useRef(null);
 
-    //importamos el dispatch para manejar la funcion
-    const {dispatch}=useContext(MenuContext)
-    const cerrarMenu=()=>{
-        dispatch({type:'CERRAR_MENU'})
-    }
+  const cerrarMenu = () => {
+    dispatch({ type: "CERRAR_MENU" });
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        cerrarMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <nav className='menu'>
-        <div className="containerMenu">
+    <nav className="menu">
+      <div ref={menuRef} className="containerMenu">
         <div className="cabeceraMenu">
-            <h3>Menu</h3>
-            <img onClick={cerrarMenu} src={iconoCerrar} alt="" />
+          <h3>Menu</h3>
+          <img onClick={cerrarMenu} src={iconoCerrar} alt="" />
         </div>
         <div className="opcionesMenu">
           {opciones.map((opcion, index) => (
-            <OpcionMenu cerrarMenu={cerrarMenu} key={index} texto={opcion.texto} enlace={opcion.enlace} />
+            <OpcionMenu
+              cerrarMenu={cerrarMenu}
+              key={index}
+              texto={opcion.texto}
+              enlace={opcion.enlace}
+            />
           ))}
         </div>
-        </div>
+      </div>
     </nav>
-  )
+  );
 }
 
-export default Menu
+export default Menu;

@@ -8,10 +8,10 @@ import {useForm} from 'react-hook-form'
 import '../../assets/styles/Formulario.css'
 
 //Iconos del formulario
-import imgUbicacion from '../../images/ubicacion.png'
-import imgDestino from '../../images/avion.png'
-import imgCalendario from '../../images/calendario.png'
-import imgPersona from '../../images/persona.png'
+import imgUbicacion from '../../images/icon/ubicacion.png'
+import imgDestino from '../../images/icon/airplan.png'
+import imgCalendario from '../../images/icon/calendario.png'
+import imgPersona from '../../images/icon/user.png'
 import imgEuro from '../../images/euro.png'
 
 //Lista de todos los aeropuertos disponibles

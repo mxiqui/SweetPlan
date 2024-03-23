@@ -20,7 +20,7 @@ function OfertaEspecial({ oferta}) {
 
 
 	const handleClick = () => {
-		dispatch({ type: 'ABRIR_VIEWER' });
+		window.location.href = `/specialOffer/${oferta.id}`;
 	};
 
 	return (

@@ -2,22 +2,18 @@ import Header from "./components/Header/Header";
 
 //Importar las fuentes
 import './assets/styles/Fuentes.css'
-import Main from "./components/Main/Main";
-import MainInferior from "./components/MainInferior/MainInferior";
-import Anuncio from "./components/Anuncios/Anuncio";
-import Suscripcion from "./components/Suscripcion/Suscripcion";
-import Footer from "./components/Footer/Footer";
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Inicio from "./components/pages/Inicio";
+
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Main/>
-      <Anuncio/>
-      <MainInferior/>
-      <Suscripcion/>
-      <Footer/>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Inicio/>} />
+          <Route path="/specialOffer/:id" element={<Inicio/>} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 

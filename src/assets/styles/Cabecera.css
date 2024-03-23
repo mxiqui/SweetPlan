@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .containerCabecera h1 img{
@@ -21,7 +21,7 @@
 }
 
 .containerCabecera img{
-    width: 40px;
+    width: 30px;
 }
 
 

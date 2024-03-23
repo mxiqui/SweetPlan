@@ -1,0 +1,40 @@
+.containerPrincipalEscapadas{
+    width: 1100px;
+    margin: auto;
+    height: 100vh;
+}
+
+.containerPrincipalEscapadas h2{
+    width: 100%;
+    text-align: center;
+}
+
+.containerPrincipalEscapadas div{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.containerPrincipalEscapadas div select{
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.containerEscapadasFinDeSemana{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+@media screen and (max-width:1100px) {
+    .containerPrincipalEscapadas{
+        width: 100%;
+    }
+    .containerPrincipalEscapadas div{
+        margin-top: 20px;
+        justify-content: center;
+    }
+}

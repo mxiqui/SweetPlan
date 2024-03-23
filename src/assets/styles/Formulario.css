@@ -56,8 +56,8 @@ form{
     display: flex;
     align-items: center;
     height: 60px;
-    padding-left: 15px;
-    gap: 15px
+    padding-left: 10px;
+    gap: 10px
 }
 
 .inputNumPersonas{
@@ -187,5 +187,22 @@ form{
     .inputIda, .inputVuelta, .inputNumPersonas, .inputPresupuesto{
         width: 44.5%;
         height: 50px;
+    }
+
+    .inputOrigen, .inputDestino, .inputIda, .inputVuelta, .inputNumPersonas, .inputPresupuesto{
+        gap: 10px;
+    }
+
+    .inputIda .containerImagen, .inputVuelta .containerImagen{
+        margin-left: 0px;
+    }
+
+
+    .containerImagen{
+        margin-left: 10px;
+    }
+
+    .containerInput input{
+        padding-left: 0px;
     }
 }

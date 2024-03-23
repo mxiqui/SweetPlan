@@ -18,7 +18,7 @@ function Cabecera() {
 
   return (
     <div className='containerCabecera'>
-        <h1>
+        <h1 translate='no'>
             {/* <img src={logo} alt="" /> */}
             SweetPlan
         </h1>

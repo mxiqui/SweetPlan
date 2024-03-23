@@ -58,7 +58,7 @@ function ContenedorMainInferior() {
         destino:'bali',
         fechas: 'febrero',
         precio: '10'
-        },
+        }
     ])
 
     return (
