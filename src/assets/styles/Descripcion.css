@@ -1,0 +1,20 @@
+.containerDescripcion{
+    width: 90%;
+    margin-top: 50px;
+}
+
+.containerDescripcion h3{
+    font-family: noto-normal;
+    color: #061c43;
+}
+
+.containerDescripcion div p{
+    font-size: 13px;
+    color: #000;
+}
+
+@media screen and (max-width:768px) {
+    .containerDescripcion{
+        padding-left: 20px;
+    }
+}

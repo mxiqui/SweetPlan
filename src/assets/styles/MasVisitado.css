@@ -10,8 +10,9 @@
     padding-bottom: 20px;
     justify-content: space-between;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Ajusta la sombra según sea necesario */
+    transition: 0.3s;
 }
-  
+
   .containerMasVisitado h4,
   .containerMasVisitado p {
     margin: 10px;

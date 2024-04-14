@@ -1,0 +1,40 @@
+.containerOfertaEspecialIndex{
+    width: 100%;
+    background-color: #F0F3F5;
+}
+
+.containerOfertaEspecialIndex main{
+    width: 1100px;
+    margin: auto;
+    padding: 10px;
+}
+
+
+.containerOfertaEspecialIndex main div h2{
+    font-family: noto-normal;
+}
+
+.containerOfertaEspecialIndex p{
+    font-size: 12px;
+    width: 90%;
+    color: rgb(110, 110, 110);
+}
+
+.alertaPrecios{
+    margin-top: 0px;
+}
+
+
+@media screen and (max-width:1100px){
+    .containerOfertaEspecialIndex main{
+        width: 100%;
+        margin: auto;
+        padding: 0;
+    }
+
+    .alertaPrecios{
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+
+}

@@ -1,5 +1,3 @@
-
-
 export const ofertasEspeciales= [
     {
         id:1,
@@ -44,3 +42,22 @@ export const ofertasEspeciales= [
         precio: '10'
     }
 ]
+
+export const ofertaEspecialprueba=[{
+    airline:"Ryanair",
+    imageAeroline:'/static/media/ryanair.47a8669196f9c1f9da69.png',
+    precio:"10.50€",
+    originAirport:"MAD",
+    originTime:"10:00",
+    destinationAirport:"PAR",
+    destinationTime:"12:15",
+    url:"https://www.ryanair.com/es/es/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2024-06-03&dateIn=2024-06-07&isConnectedFlight=false&discount=0&promoCode=&isReturn=true&originIata=MAD&destinationIata=BVA&tpAdults=1&tpTeens=0&tpChildren=0&tpInfants=0&tpStartDate=2024-06-03&tpEndDate=2024-06-07&tpDiscount=0&tpPromoCode=&tpOriginIata=MAD&tpDestinationIata=BVA"
+},{
+    airline:"Ryanair",
+    imageAeroline:'/static/media/ryanair.47a8669196f9c1f9da69.png',
+    price:"10.50€",
+    originAirport:"PAR",
+    originTime:"11:20",
+    destinationAirport:"MAD",
+    destinationTime:"13:00",
+}];

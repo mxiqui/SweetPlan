@@ -17,18 +17,34 @@ import imgEuro from '../../images/euro.png'
 //Lista de todos los aeropuertos disponibles
 import { aeropuertos } from '../../resources/Aeropuertos'
 
+//import { pantallaEsperaContext } from '../pages/Inicio'
+import { CalendarioContext } from './Header'
+import { useContext } from 'react'
+
 
 function Formulario(){
 
+    // document.getElementById("inputIda").value="Holaa";
+
+    //const { dispatchPantallaEspera2 } = useContext(pantallaEsperaContext);
+
     //Llamamos a las funciones del hook useForm
     const {register, handleSubmit} = useForm();
+    const {dispatchCalendario}=useContext(CalendarioContext)
+
 
 
     //función para manejar el evento del formulario
     const handleForm = (data) => {
+       // setTimeout(()=>{
+         //   dispatchPantallaEspera2({ type: 'ABRIR'});
+        //},2000)
         console.log("Datos del formulario:", data);
     }
 
+    const openCalendar=()=>{
+        dispatchCalendario({ type: 'ABRIR_CALENDARIO'});
+    }
 
     return (
         <form onSubmit={handleSubmit(handleForm)}>
@@ -73,26 +89,27 @@ function Formulario(){
                     </div>
                 </div>
 
+
                 {/* Contenedor Fecha de ida */}
-                <div className="inputIda" id='inputIda'>
+                <div className="inputIda" id='inputIda' onClick={openCalendar}>
                     <div className='containerImagen'>
                         <img src={imgCalendario} alt="" />
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Ida</label>
-                        <input type="date" {...register("ida",{required:true})}/>
+                        <input disabled autoComplete='false' placeholder='01/01/2024'  id='input_ida' type="text" {...register("ida",{required:true})}/>
                     </div>
                 </div>
 
 
                 {/* Contenedor Fecha de vuelta */}
-                <div className="inputVuelta" id='inputVuelta'>
+                <div className="inputVuelta" id='inputVuelta' onClick={openCalendar}>
                     <div className='containerImagen'>
                         <img src={imgCalendario} alt="" />
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Vuelta</label>
-                        <input  type="date" {...register("vuelta",{required:true})}/>
+                        <input disabled autoComplete='false' placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta' type="text" {...register("vuelta",{required:true})}/>
                     </div>
                 </div>
 

@@ -1,0 +1,67 @@
+.containerEsperaPrincipal{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../../images/maldivas.jpg);
+    background-size: cover;
+}
+
+.containerEspera{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(203, 203, 203, 0.522);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerEsperaInterior{
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    margin-top: -50px;
+}
+
+.containerAnuncioCuadrado{
+    width: 100%;
+    height: 85%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+}
+
+.containerEsperaInterior p{
+    width: 100%;
+    padding-left: 10px;
+    font-family: noto-normal;
+}
+
+.containerEsperaInterior p span{
+    font-weight: bold;
+}
+
+.anuncioCuadrado{
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .containerEsperaInterior{
+        width: 300px;
+        height: 300px;
+        margin-top: 20vh;
+        margin-left: -40px;
+    }
+
+    .containerEspera{
+        align-items: start;
+    }
+
+}

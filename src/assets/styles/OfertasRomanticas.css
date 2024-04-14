@@ -1,0 +1,15 @@
+.containerOfertasRomanticas{
+    width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+@media screen and ( max-width:1100px) {
+    .containerOfertasRomanticas{
+        width: 100%;
+    }
+    
+}

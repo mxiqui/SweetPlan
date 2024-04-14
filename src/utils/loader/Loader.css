@@ -1,0 +1,64 @@
+.triple-loader-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #061c43;
+}
+
+.loader {
+  width: 100px; /* Ancho del óvalo */
+  height: 50px; /* Alto del óvalo */
+  position: absolute;
+  margin: auto;
+}
+
+.containetTextLoader{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100px;
+  margin-top: -40px;
+}
+
+.loader::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(240, 246, 56);
+  box-shadow: 0px 5px 10px rgb(210, 255, 120);  
+  position: absolute;
+  top: 0;
+  left: 50%;
+  animation: orbit 2s linear infinite;
+}
+
+.loader.reverse::before {
+  animation-direction: reverse; /* Invertir la dirección de la animación */
+  background-color: rgb(34, 255, 0);
+  box-shadow: 0 4px 10px rgb(102, 244, 81);
+}
+
+.loader.middle::before {
+  animation-delay: 1s; /* Añadir un retraso a la animación para el efecto reactivo */
+  background-color: rgb(105, 255, 233);
+  box-shadow: 0 4px 10px rgb(183, 251, 241);
+}
+
+.text {
+  margin: auto;
+  font-size: 20px; /* Ajusta el tamaño del texto */
+  font-family: baloo;
+  color: #fff;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}

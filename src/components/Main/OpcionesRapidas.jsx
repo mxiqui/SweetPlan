@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 
-//importamos imagen de prueba
-import imagenPrueba from '../../images/avion.png'
+
 import iconoPalmera from '../../images/icon/palmera.png'
 import iconoMaletas from '../../images/icon/maletas.png'
 import iconoMundo from '../../images/icon/destino.png'
+import iconoCorazon from '../../images/icon/corazon.png'
 
 import '../../assets/styles/OpcionesRapidas.css'
 import { opcionesContext } from './Main'
@@ -17,7 +17,7 @@ function OpcionesRapidas() {
     dispatch({ type: 'ESCAPADAS' });
   }
   const ABRIR_EXPERIENCIAS=()=>{
-    dispatch({ type: 'EXPERIENCIAS_UNICAS' });
+    dispatch({ type: 'ROMANTICO' });
   }
   const ABRIR_CUALQUIER=()=>{
     dispatch({ type: 'default' });
@@ -31,8 +31,8 @@ function OpcionesRapidas() {
         </div>
 
         <div className="containerOpcionRapidaExperiencias" onClick={ABRIR_EXPERIENCIAS}>
-        <img src={iconoMaletas} alt="" />
-            <h3>Experiencias unicas</h3>
+        <img src={iconoCorazon} alt="" />
+            <h3>Románticas</h3>
         </div>
 
         <div className="containerOpcionRapidaCualquierDestino" onClick={ABRIR_CUALQUIER}>

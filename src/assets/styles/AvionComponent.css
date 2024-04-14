@@ -1,0 +1,15 @@
+.avion-container {
+    position: relative;
+    width: 40%; /* Ancho del contenedor */
+    }
+  
+  
+.avion {
+    position: absolute;
+    top: 50%; /* Centra verticalmente el avión */
+    left: 0; /* Inicialmente, posiciona el avión a la izquierda */
+    transform: translate(-50%, -50%); /* Centra horizontalmente el avión */
+    width: 50px; /* Ancho de la imagen del avión */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
+  

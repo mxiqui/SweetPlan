@@ -1,0 +1,26 @@
+.containerSeleccionarFechas{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.527);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerSeleccionarFechas2{
+    padding: 20px;
+    height: auto;
+    width: 50%;
+    background-color: #dfe0e1;
+    border-radius: 10px;
+}
+
+.containerSeleccionarFechas3 input{
+    width: 75%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+}

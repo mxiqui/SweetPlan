@@ -1,0 +1,47 @@
+.containerSeleccionarOrigen{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.423);
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: grid;
+    place-content: center;
+}
+
+.SeleccionarOrigen{
+    padding: 10px 10px 30px;
+    border-radius: 10px;
+    width: 600px;
+    background-color: rgb(0, 153, 255);
+    color: #fff;
+    text-align: center;
+}
+.containerInputsSeleccionarOrigen input[type="text"]{
+    height: 35px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 20px;
+    border: none;
+    margin: auto;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.containerInputsSeleccionarOrigen input[type="submit"]{
+    height: 35px;
+    background-color: #061c43;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-family: baloo;
+    margin: auto;
+    width: 86.5%;
+}
+
+.containerInputsSeleccionarOrigen{
+    display: grid;
+    grid-template-columns: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}

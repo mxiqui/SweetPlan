@@ -1,0 +1,10 @@
+.containerOfertaEspecialIndex{
+
+}
+
+.containerOfertaEspecialIndex .tituloOferta{
+    font-family: noto-normal;
+    font-size: 33px;
+    padding-left: 25px;
+    color: #061c43;
+}

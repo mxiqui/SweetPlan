@@ -3,6 +3,7 @@ import OpcionesRapidas from './OpcionesRapidas'
 import '../../assets/styles/Main.css'
 import CarreteMasVisitado from './CarreteMasVisitado'
 import EscapadasFinDeSemana from './Escapadas/EscapadasFinDeSemana'
+import OfertasRomanticas from './Romantico/OfertasRomanticas'
 
 export const opcionesContext= createContext()
 export const opcionesReducer= (state, action)=>{
@@ -12,21 +13,21 @@ export const opcionesReducer= (state, action)=>{
         ...state,
         default: false,
         escapadas: true,
-        experiencias: false
+        romantico: false
       };
-    case 'EXPERIENCIAS_UNICAS':
+    case 'ROMANTICO':
       return {
         ...state,
         default: false,
         escapadas: false,
-        experiencias: true
+        romantico: true
       };
     case 'default':
       return {
         ...state,
         default: true,
         escapadas: false,
-        experiencias: false
+        romantico: false
       };
     default:
       return state;
@@ -38,14 +39,13 @@ export const opcionesReducer= (state, action)=>{
 function Main() {
 
   useEffect(() => {
-    // Aquí puedes dispatch una acción para establecer `default` como `true`
     dispatch({ type: 'DEFAULT' });
   }, []);
 
   const [opcionSeleccionada, dispatch]=useReducer(opcionesReducer, {
     default:true,
     escapadas:false,
-    experiencias:false
+    romantico:false
   });
 
 
@@ -54,13 +54,9 @@ function Main() {
       <main className='mainSuperior'>
       <OpcionesRapidas/>
       <section>
-        {/* <EscapadasFinDeSemana/> */}
-        {/* <CarreteMasVisitado/> */}
-        {/* <CarreteMasVisitado/> */}
-        {/* <div className="otroContenedorDeMientras">dd</div> */}
-
         {opcionSeleccionada.escapadas && <EscapadasFinDeSemana />}
         {opcionSeleccionada.default && <CarreteMasVisitado />}
+        {opcionSeleccionada.romantico && <OfertasRomanticas />}
       </section>
     </main>
     </opcionesContext.Provider>

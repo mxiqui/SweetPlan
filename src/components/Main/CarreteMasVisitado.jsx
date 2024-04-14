@@ -2,52 +2,34 @@ import React, { useState, useEffect } from 'react';
 import MasVisitado from './MasVisitado';
 import '../../assets/styles/CarreteMasVisitado.css'
 
-import iconoPalmera from '../../images/icon/palmera.png'
-import imagenPrueba from '../../images/bali.jpg'
+
+import { MasVisitadoService } from '../../services/MasVisitadoService';
 
 function CarreteMasVisitado() {
   const [indice, setIndice] = useState(0);
 
-  // Datos de prueba
-  const datosPruebas = [
-    {
-      img: {iconoPalmera},
-      nombre: "Bali",
-      precio: "1990.95"
-    },
-    {
-        img: {iconoPalmera},
-        nombre: "New York",
-      precio: "1990.95"
-    },
-    {
-        img: {iconoPalmera},
-        nombre: "Dubai",
-      precio: "1990.95"
-    },
-    {
-        img: {iconoPalmera},
-        nombre: "Granada",
-      precio: "1990.95"
-    }
-  ];
+  let masVisitadoService= new MasVisitadoService()
+  const [datos, setDatos] = useState(masVisitadoService.findAll());
+  const [gallery, setGallery] = useState(masVisitadoService.getGalleryImage());
 
-  // Cambia el índice cada 3 segundos para simular el carrusel
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndice((prevIndice) => (prevIndice + 1) % datosPruebas.length);
+      setIndice((prevIndice) => (prevIndice + 1) % datos.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [indice]);
 
+
+
   return (
     <div className='containerCarreteMasVisitado'>
       <h2>Destinos más populares</h2>
       <MasVisitado
-        imagen={imagenPrueba}
-        nombre={datosPruebas[indice].nombre}
-        precio={datosPruebas[indice].precio}
+        imagen={gallery[indice]}
+        nombre={datos[indice].nombre}
+        precio={datos[indice].precio}
       />
     </div>
   );
