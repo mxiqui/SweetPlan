@@ -1,0 +1,107 @@
+.containerCalendario3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 340px;
+    gap: 10px;
+}
+
+.mes {
+    flex: 1;
+    height: 340px;
+}
+
+.containerCalendario3 .mes h2{
+    font-family: baloo;
+    color: #175163;
+    width: 100%;
+    text-align: center;
+}
+
+.calendario-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.calendario-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #cfdeee;
+}
+
+.empty-day {
+    height: 40px;
+    width: 40px;
+}
+
+.weekday-header {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #495057;
+}
+
+
+.weekday-header:last-child,
+.day:last-child {
+    border-right: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin: 0 10px;
+}
+
+.button-container button:hover {
+    color: #007bff;
+}
+
+.selected, .rango {
+    background-color: rgb(186, 218, 113);
+    color: #fff;
+}
+
+.iconoMesAnterior{
+    width: 25px;
+    height: 25px;
+    transform: rotate(90deg);
+}
+
+.iconoSiguienteMes{
+    width: 25px;
+    height: 25px;
+    transform: rotate(-90deg);
+}
+
+  

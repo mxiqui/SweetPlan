@@ -5,6 +5,7 @@ import imagenPrueba4 from '../images/paris.jpg'
 import { Alojamiento } from '../models/Alojamiento'
 import { Escapada } from '../models/Escapada'
 import { Vuelos } from '../models/Vuelos'
+import { server } from '../utils/Constantes'
 
 
 const datos= [
@@ -82,6 +83,14 @@ const galeria=[]
 export class EscapadaFindesemanaService{
 
     findAll(){
+        fetch('GET', `${server}/getAllOffer`)
+            .then((offers)=>{
+                console.log(offers)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+
         var escapadas=[];
 
         for(let i=0; i<datos.length; i++){
@@ -91,17 +100,75 @@ export class EscapadaFindesemanaService{
         return escapadas
     }
 
-    findByOrigen(origen){
-        var escapadas=[];
 
-        for(let i=0; i<datos.length; i++){
-            if(datos[i].origen==origen){
+    
+    findByOrigen(origen) {
+    
+        var escapadas = [];
+    
+        for (let i = 0; i < datos.length; i++) {
+            if (datos[i].origen == origen) {
                 let oferta = new Escapada(datos[i].id, datos[i].origen, datos[i].imagen, datos[i].destino, datos[i].fechas, galeria, vueloIda, vueloVuelta, alojamiento);
                 escapadas.push(oferta);
             }
         }
-        return escapadas
+        console.log(escapadas)
+        return escapadas;
     }
+
+    // async findByOrigen(origen) {
+    //     var escapadas = [];
+    
+    //     try {
+    //         const response = await fetch(`${server}/getAllOffers/escapadas`, { method: 'GET' });
+    //         const offers = await response.json();
+    
+    //         for (let i = 0; i < offers.length; i++) {
+    //             let vuelo1 = new Vuelos(offers[i].vueloIda.id, 
+    //                                      offers[i].vueloIda.aerolinea, 
+    //                                      offers[i].vueloIda.aerolinea, 
+    //                                      offers[i].vueloIda.precio, 
+    //                                      offers[i].vueloIda.aeropuertoIda, 
+    //                                      offers[i].vueloIda.aeropuertoVuelta, 
+    //                                      offers[i].vueloIda.horaSalida, 
+    //                                      offers[i].vueloIda.horaLlegada,
+    //                                      '10 Febrero',
+    //                                      'https://www.ryanair.com/es/es/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2024-06-03&dateIn=2024-06-07&isConnectedFlight=false&discount=0&promoCode=&isReturn=true&originIata=MAD&destinationIata=BVA&tpAdults=1&tpTeens=0&tpChildren=0&tpInfants=0&tpStartDate=2024-06-03&tpEndDate=2024-06-07&tpDiscount=0&tpPromoCode=&tpOriginIata=MAD&tpDestinationIata=BVA');
+                
+    //             let vuelo2 = new Vuelos(offers[i].vueloVuelta.id, 
+    //                                      offers[i].vueloVuelta.aerolinea, 
+    //                                      offers[i].vueloVuelta.aerolinea, 
+    //                                      offers[i].vueloVuelta.precio, 
+    //                                      offers[i].vueloVuelta.aeropuertoIda, 
+    //                                      offers[i].vueloVuelta.aeropuertoVuelta, 
+    //                                      offers[i].vueloVuelta.horaSalida, 
+    //                                      offers[i].vueloVuelta.horaLlegada,
+    //                                      '10 Febrero',
+    //                                      'https://www.ryanair.com/es/es/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2024-06-03&dateIn=2024-06-07&isConnectedFlight=false&discount=0&promoCode=&isReturn=true&originIata=MAD&destinationIata=BVA&tpAdults=1&tpTeens=0&tpChildren=0&tpInfants=0&tpStartDate=2024-06-03&tpEndDate=2024-06-07&tpDiscount=0&tpPromoCode=&tpOriginIata=MAD&tpDestinationIata=BVA');
+                
+    //             let offer = new Escapada(offers[i].id, 
+    //                                      offers[i].origen, 
+    //                                      offers[i].imagen, 
+    //                                      offers[i].destino, 
+    //                                      offers[i].fechas, 
+    //                                      offers[i].galeria, 
+    //                                      vuelo1, 
+    //                                      vuelo2, 
+    //                                      alojamiento);
+    
+    //             escapadas.push(offer);
+    //         }
+    
+    //         console.log(escapadas);
+    //         return escapadas;
+    //     } catch (error) {
+    //         console.error(error);
+    //         return escapadas; // O manejar el error de alguna otra manera
+    //     }
+    // }
+    
+
+
 
     findById(id){
         var escapada;

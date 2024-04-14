@@ -9,7 +9,6 @@ const Suscripcion = () => {
   };
 
   const handleSubscribe = () => {
-    // Aquí puedes agregar la lógica para manejar la suscripción, como enviar el correo electrónico a tu servidor.
     console.log(`Se ha suscrito con éxito: ${email}`);
   };
 
@@ -19,18 +18,19 @@ const Suscripcion = () => {
       <p className="description">
         Mantente informado sobre las últimas ofertas, destinos y consejos de viaje.
       </p>
-      <div className="formContainer">
+      <form className="formContainer">
         <input
           type="email"
           placeholder="Ingresa tu correo electrónico"
           value={email}
           onChange={handleInputChange}
           className="input"
+          required
         />
         <button onClick={handleSubscribe} className="subscribeButton">
           Suscribirse
         </button>
-      </div>
+      </form>
     </div>
   );
 };

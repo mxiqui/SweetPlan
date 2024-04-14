@@ -21,7 +21,7 @@ export class Escapada{
         this._vueloIda=vueloIda
         this._vueloVuelta=vueloVuelta
         this._alojamiento=alojamiento;
-        this._precio = vueloIda.getPrice()+vueloVuelta.getPrice()+alojamiento.getTotalPrice();
+        this._precio = (vueloIda.getPrice()+vueloVuelta.getPrice())*2+alojamiento.getTotalPrice();
     }
 
 

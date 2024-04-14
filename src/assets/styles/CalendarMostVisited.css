@@ -1,10 +1,11 @@
 .calendario {
-        font-family: Arial, sans-serif;
-        width: 400px;
-        height: 280px;
-        border-radius: 5px;
-        padding: 10px;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    width: 400px;
+    height: 320px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #e6eef1;
     color: #09445b;
     margin-top: 30px;
 

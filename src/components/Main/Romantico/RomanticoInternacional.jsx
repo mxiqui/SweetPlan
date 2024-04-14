@@ -30,6 +30,10 @@ function RomanticoInternacional({oferta}) {
                 <p className='romanticoInternacionalFecha'>{oferta.getFechas()}</p>
                 <p className='romanticoInternacionalPrecio'>{oferta.getPrecio()} €</p>
             </div>
+            <div className="containerRomanticoInternacionalFechaAdicional">
+                <p>Vuelos y alojamiento</p>
+                <p>Precio 2 personas</p>
+            </div>
 
         </div>
 

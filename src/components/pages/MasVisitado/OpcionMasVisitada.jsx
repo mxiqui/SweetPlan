@@ -12,7 +12,7 @@ function OpcionMasVisitada({opcion}) {
     const handleClick=(e)=>{
         setTimeout(()=>{
             dispatchDatos({ type: 'RELLENAR_DESTINO', payload:opcion.nombre});
-            dispatch({ type: 'ABRIR_ORIGEN'});
+            dispatch({ type: 'ABRIR_DETALLES'});
         }, 500)
     }
 

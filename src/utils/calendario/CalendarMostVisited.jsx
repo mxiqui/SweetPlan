@@ -23,13 +23,13 @@ const handleDateClick = (date) => {
 
     if(fechas.ida==null){
         fechas.ida=fechaSeleccionada;
-        document.getElementById("input_ida").value=fechaSeleccionada;
+        document.getElementById("inputIda").value=fechaSeleccionada;
     }else if(fechas.vuelta==null){
         fechas.vuelta=fechaSeleccionada
-        document.getElementById("input_vuelta").value=fechaSeleccionada;
+        document.getElementById("inputVuelta").value=fechaSeleccionada;
     }else if(fechas.ida!=null && fechas.vuelta!=null){
         fechas.ida=fechaSeleccionada
-        document.getElementById("input_ida").value=fechaSeleccionada;
+        document.getElementById("inputIda").value=fechaSeleccionada;
         fechas.vuelta=null
     }
 

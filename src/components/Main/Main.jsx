@@ -55,8 +55,8 @@ function Main() {
       <OpcionesRapidas/>
       <section>
         {opcionSeleccionada.escapadas && <EscapadasFinDeSemana />}
-        {opcionSeleccionada.default && <CarreteMasVisitado />}
         {opcionSeleccionada.romantico && <OfertasRomanticas />}
+        {opcionSeleccionada.default && <CarreteMasVisitado />}
       </section>
     </main>
     </opcionesContext.Provider>

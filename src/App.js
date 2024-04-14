@@ -10,6 +10,8 @@
   import MasVisitadoIndex from "./components/pages/MasVisitado/MasVisitadoIndex";
 import Loader2 from "./utils/loader/Loader2";
 import OfertaRomanticaIndex from "./components/pages/OfertasRomanticas/OfertaRomanticaIndex";
+import TermsOfService from "./components/CondicionesUso/TermsOfService";
+import TerminosDeUsoIndex from "./components/pages/TermsOfUse/TerminosDeUsoIndex";
 
 
   function App() {
@@ -17,11 +19,11 @@ import OfertaRomanticaIndex from "./components/pages/OfertasRomanticas/OfertaRom
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Inicio/>} />
-            {/* <Route path="/" element={<Loader2/>} /> */}
             <Route path="/specialOffer/:id" element={<OfertaEspecialIndex/>} />
             <Route path="/escapadaFin/:id" element={<EscapadaIndex/>} />
             <Route path="/mostVisited" element={<MasVisitadoIndex/>} />
             <Route path="/ofertaRomantica/:id" element={<OfertaRomanticaIndex/>} />
+            <Route path="/termsOfUse" element={<TerminosDeUsoIndex/>} />
           </Routes>
         </BrowserRouter>
     );
