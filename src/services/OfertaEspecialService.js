@@ -2,6 +2,7 @@ import { useState } from "react";
 import { OfertaEspecial } from "../models/OfertaEspecial";
 import { Vuelos } from "../models/Vuelos";
 import {Alojamiento} from '../models/Alojamiento'
+import {server} from '../utils/Constantes'
 
 //Imagenes de pruebas
 import imagenPrueba from '../images/bali.jpg'
@@ -10,8 +11,8 @@ import imagenPrueba3 from '../images/madrid.jpg'
 import imagenPrueba4 from '../images/paris.jpg'
 import imagenPrueba5 from '../images/maldivas.jpg'
 import imagenPrueba6 from '../images/nuevaYork.jpg'
-import imagenPrueba7 from '../images/sagrada.jpg'
-import imagenPrueba8 from '../images/maldivas2.jpg'
+import { adaptadorOfertasEspeciales } from "../utils/adapters/offersAdapter";
+
 
 const arrayImagenes=[]
 const galeria=[]
@@ -131,17 +132,29 @@ const ofertasPrueba=[
 
 export class OfertaEspecialService {
 
-    findAll(){
-        //Obtener el array de ofertas especiales desde el back
-        var ofertasEspeciales=[]
-
-        for(let i=0; i<ofertasPrueba.length;i++){
-            let ofertaEspecial= new OfertaEspecial(ofertasPrueba[i].id,ofertasPrueba[i].imagen, ofertasPrueba[i].destino, ofertasPrueba[i].fechas, ofertasPrueba[i].galeria, ofertasPrueba[i].itinerario, ofertasPrueba[i].vueloIda, ofertasPrueba[i].vueloVuelta, ofertasPrueba[i].alojamiento);
-            ofertasEspeciales.push(ofertaEspecial)
+    async findAll() {
+        try {
+            const response = await fetch(`${server}/getAllOffers/ofertaEspecial`);
+            if (!response.ok) {
+                throw new Error('Hubo un problema al realizar la solicitud.');
+            }
+            const data = await response.json();
+            const ofertasEspeciales = await adaptadorOfertasEspeciales(data);
+            console.log(ofertasEspeciales.length);
+            return ofertasEspeciales;
+        } catch (error) {
+            console.error('Error:', error);
+            return null;
         }
-
-        return ofertasEspeciales;
+        // for(let i=0; i<ofertasPrueba.length;i++){
+        //     let ofertaEspecial= new OfertaEspecial(ofertasPrueba[i].id,ofertasPrueba[i].imagen, ofertasPrueba[i].destino, ofertasPrueba[i].fechas, ofertasPrueba[i].galeria, ofertasPrueba[i].itinerario, ofertasPrueba[i].vueloIda, ofertasPrueba[i].vueloVuelta, ofertasPrueba[i].alojamiento);
+        //     ofertasEspeciales.push(ofertaEspecial)
+        // }
     }
+
+
+        
+    
 
 
 

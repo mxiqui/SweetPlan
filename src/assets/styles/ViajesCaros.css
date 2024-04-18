@@ -1,0 +1,8 @@
+.containerViajesCaros{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+}

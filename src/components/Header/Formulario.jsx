@@ -97,7 +97,7 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Ida</label>
-                        <input  autoComplete='false' placeholder='01/01/2024'  id='input_ida' type="text" {...register("ida",{required:true})}/>
+                        <input  autoComplete='false' placeholder='01/01/2024'  id='input_ida_buscador' type="text" {...register("ida",{required:true})}/>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Vuelta</label>
-                        <input  autoComplete='false' placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta' type="text" {...register("vuelta",{required:true})}/>
+                        <input  autoComplete='false' placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta_buscador' type="text" {...register("vuelta",{required:true})}/>
                     </div>
                 </div>
 

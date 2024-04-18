@@ -7,6 +7,7 @@ import '../../assets/styles/Header.css'
 import Menu from '../Menu/Menu'
 import Calendar from '../../utils/calendario/Calendar'
 import { ScrollContext } from '../pages/Inicio'
+import CalendarioDoble from '../../utils/calendario/CalendarioDoble'
 export const MenuContext= createContext();
 export const CalendarioContext= createContext();
 
@@ -59,7 +60,7 @@ function Header() {
             <CalendarioContext.Provider value={{abrirCalendario, dispatchCalendario}}>
                 <Cabecera/>
                 <Buscador/>
-                {abrirCalendario && <Calendar/>}
+                {abrirCalendario && <CalendarioDoble/>}
                 {abrirMenu && <Menu />}
             </CalendarioContext.Provider>
         </MenuContext.Provider>  

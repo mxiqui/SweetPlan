@@ -70,12 +70,12 @@ function Detalles() {
 
       const data = await response.json();
       console.log(data); // Aquí puedes manejar la respuesta del servidor
+      sessionStorage.setItem('plan', JSON.stringify(data));
 
       dispatchPantalla({ type: 'CERRAR' }); // Ocultar pantalla de espera
-      setSubmitting(false);
+      window.location.href = "/viajePlanificado";
     } catch (error) {
       console.error('Error:', error);
-      // Aquí puedes manejar errores de solicitud
     }
   };
 

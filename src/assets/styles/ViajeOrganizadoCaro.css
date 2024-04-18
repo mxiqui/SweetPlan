@@ -1,0 +1,83 @@
+.containerViajeOrganizadoCaro{
+    width: 350px;
+    height: 320px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.containerViajeOrganizadoCaro:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.containerViajeOrganizadoCaro .top{
+    display: flex;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0px 10px 5px 10px ;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-template-columns: 100%;
+    height: 80%;
+    color: #fff;
+    background-size: cover;
+}
+
+.containerViajeOrganizadoCaro .top .vuelo{
+    padding: 0px 5px 3px 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerViajeOrganizadoCaro .top .vuelo .vueloIda, .containerViajeOrganizadoCaro .top .vuelo .vueloVuelta{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerViajeOrganizadoCaro .top .vuelo .vueloIda h4, .containerViajeOrganizadoCaro .top .vuelo .vueloVuelta h4{
+    font-family: noto-normal;
+    font-weight: 300;
+    margin-top: -10px;
+    text-align: center;
+    margin-bottom: 0;
+    color: #ccc;
+}
+
+.containerViajeOrganizadoCaro .top .vuelo .vueloIda h3, .containerViajeOrganizadoCaro .top .vuelo .vueloVuelta h3{
+    margin-bottom: 5px;
+    font-family: noto-normal;
+    font-weight: 300;
+}
+
+.containerViajeOrganizadoCaroFecha{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px 0px 10px ;
+    font-family: campton;
+    margin-bottom: -35px;
+}
+
+.nameAlojamiento{
+    width: 60%;
+}
+
+
+.containerViajeOrganizadoCaroFecha, .precioAlojamiento{
+    width: auto;
+    text-align: center;
+    font-family: noto-normal;
+    font-size: 14px;
+}
+
+.nameAlojamiento span{
+    color: #949494;
+}
+
+

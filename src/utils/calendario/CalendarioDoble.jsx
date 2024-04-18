@@ -5,10 +5,16 @@ import imgIcono from '../../images/icon/flecha.png'
 
 import 'moment/locale/es';
 
+
 const CalendarioDoble = () => {
 const [mesActual, setMesActual] = useState(moment());
 const [ida, setIda] = useState(null);
 const [vuelta, setVuelta] = useState(null);
+
+
+
+
+
 
 const irAlMesSiguiente = () => {
     setMesActual(mesActual.clone().add(1, 'month'));
@@ -17,6 +23,11 @@ const irAlMesSiguiente = () => {
 const irAlMesAnterior = () => {
     setMesActual(mesActual.clone().subtract(1, 'month'));
 };
+
+
+
+
+
 
 const generarDiasDelMes = (mes) => {
     const diasEnElMes = mes.daysInMonth();
@@ -46,21 +57,30 @@ const generarDiasDelMes = (mes) => {
     return dias;
 };
 
+
+
+
+
 const handleDiaClick = (fecha) => {
+    // Usar format para convertir la fecha seleccionada al formato deseado
+    const formattedDate = fecha.format('YYYY-MM-DD');
     if (!ida || fecha.isBefore(ida, 'day') || vuelta) {
         setIda(fecha);
         setVuelta(null);
-    } else if (!vuelta || fecha.isAfter(vuelta, 'day')) {
+        document.getElementById("input_ida_buscador").value = formattedDate;
+    } else if (!vuelta || fecha.isAfter(ida, 'day')) {
         setVuelta(fecha);
+        document.getElementById("input_vuelta_buscador").value = formattedDate;
     } else {
         setIda(fecha);
         setVuelta(null);
+        document.getElementById("input_ida_buscador").value = formattedDate;
     }
 };
 
 return (
-    <div className="calendario3">
-        <div className="containerCalendario3">
+    <div className="containerCalendarioDoble">
+        <div className="calendarioDoble">
             <img className='iconoMesAnterior' onClick={irAlMesAnterior} src={imgIcono} alt="" />
 
             <div className="mes">

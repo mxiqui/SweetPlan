@@ -1,0 +1,40 @@
+.three-way-switch {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 30px;
+    border: 1px solid #152c6b;
+}
+  
+.option {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.opcionAlto{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.opcionBajo{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+  
+.option:hover {
+    background-color: #e0e0e0;
+}
+
+
+.active {
+    background-color: #007bff; /* Color de fondo cuando la opción está activa */
+    color: #fff; /* Color de texto cuando la opción está activa */
+    font-weight: bold;
+}
+
+  

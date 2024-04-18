@@ -1,23 +1,29 @@
-import React, {useState } from 'react'
-import OfertaEspecial from './OfertaEspecial'
-
-
-//Imagenes de pruebas
-import imagenPrueba from '../../images/bali.jpg'
-import imagenPrueba2 from '../../images/dubai.jpg'
-import imagenPrueba3 from '../../images/madrid.jpg'
-import imagenPrueba4 from '../../images/paris.jpg'
-import imagenPrueba5 from '../../images/maldivas.jpg'
-import imagenPrueba6 from '../../images/nuevaYork.jpg'
-import imagenPrueba7 from '../../images/sagrada.jpg'
-import imagenPrueba8 from '../../images/maldivas2.jpg'
-import {OfertaEspecialService} from '../../services/OfertaEspecialService'
-
+import React, { useState, useEffect } from 'react';
+import OfertaEspecial from './OfertaEspecial';
+import { OfertaEspecialService } from '../../services/OfertaEspecialService';
 
 function ContenedorMainInferior() {
+    const ofertaEspecialService = new OfertaEspecialService();
+    const [ofertas, setOfertas] = useState([]);
 
-    let ofertaEspecialService= new OfertaEspecialService();
-    const [ofertas, setOfertas]=useState(ofertaEspecialService.findAll())
+    useEffect(() => {
+        const obtenerOfertas = async () => {
+            try {
+                const ofertasObtenidas = await ofertaEspecialService.findAll();
+                setOfertas(ofertasObtenidas);
+            } catch (error) {
+                console.error('Error al obtener las ofertas:', error);
+            }
+        };
+
+        obtenerOfertas();
+    }, []); // Ejecutar solo en el montaje inicial
+
+    console.log(ofertas);
+
+    if (!ofertas || !ofertas.length) {
+        return <div>Cargando ofertas...</div>;
+    }
 
     return (
         <div className='containerContenedorMainInferior' id='containerContenedorMainInferior'>
@@ -33,6 +39,6 @@ function ContenedorMainInferior() {
             </div>
         </div>
     );
-    }
+}
 
-    export default ContenedorMainInferior
+export default ContenedorMainInferior;
