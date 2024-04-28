@@ -17,34 +17,62 @@ import imgEuro from '../../images/euro.png'
 //Lista de todos los aeropuertos disponibles
 import { aeropuertos } from '../../resources/Aeropuertos'
 
-//import { pantallaEsperaContext } from '../pages/Inicio'
 import { CalendarioContext } from './Header'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import Espera from '../../utils/PantallaEspera/Espera'
+import { server } from '../../utils/Constantes'
 
 
 function Formulario(){
 
-    // document.getElementById("inputIda").value="Holaa";
 
-    //const { dispatchPantallaEspera2 } = useContext(pantallaEsperaContext);
 
     //Llamamos a las funciones del hook useForm
     const {register, handleSubmit} = useForm();
     const {dispatchCalendario}=useContext(CalendarioContext)
+    const [abrirEspera, setAbrirEspera]=useState(false)
 
 
 
     //función para manejar el evento del formulario
-    const handleForm = (data) => {
-       // setTimeout(()=>{
-         //   dispatchPantallaEspera2({ type: 'ABRIR'});
-        //},2000)
+    const handleForm = async(data) => {
+        setAbrirEspera(true)
         console.log("Datos del formulario:", data);
+
+        const response = await fetch(`${server}/findPlan`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                origen:data.origen.split('(')[0].trim(),
+                destino: data.destino.split('(')[0].trim(),
+                fecha_ida: data.ida,
+                fecha_vuelta: data.vuelta,
+                personas:data.personas
+            })
+        });
+    
+        if (!response.ok) {
+            throw new Error('Error al enviar datos');
+        }
+
+        const data2 = await response.json();
+        sessionStorage.setItem('plan', JSON.stringify(data2));
+        window.location.href = "/viajePlanificado";
     }
 
     const openCalendar=()=>{
         dispatchCalendario({ type: 'ABRIR_CALENDARIO'});
     }
+
+
+
+
+
+
+
+
 
     return (
         <form onSubmit={handleSubmit(handleForm)}>
@@ -140,6 +168,7 @@ function Formulario(){
 
                 {/* Boton envio formulario */}
                 <button className='buttonForm'>Planear</button>
+                {abrirEspera && <Espera/>}
             </form>
             
     )

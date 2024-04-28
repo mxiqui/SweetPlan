@@ -2,27 +2,26 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-}
-.precioDescripcion{
-    color: #061c43;
-    font-size: 26px;
-    font-family: noto-italic;
-    margin-bottom: -20px;
 }
 
-.vuelosDescripcion{
-    text-align: center;
-    margin-bottom: 50px;
+.precioDescripcion{
+    color: #6d6d6d;
+    font-size: 18px;
+    font-family: opensans-normal;
 }
+
+.precioDescripcion span{
+    font-family: noto-italic;
+}
+
 
 .esloganDescripcion{
     width: 100%;
-    color: #F88888;
-    font-size: 30px;
-    text-align: center;
-    font-family: campton;
-    margin: 50px 0px -30px;
+    color: #202020;
+    font-size: 26px;
+    text-align: left;
+    font-family: opensans-normal;
+    margin: 0px 0px -25px;
 }
 
 

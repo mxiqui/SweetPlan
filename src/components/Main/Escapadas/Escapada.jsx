@@ -12,10 +12,15 @@ function Escapada({oferta}) {
         <div className='containerEscapada' onClick={handleClick}>
             <img src={oferta.getImagen()} alt={oferta.getDestino()} />
                 <div className='overlayEscapada'>
-                    <p className='destinoEscapada'>{oferta.getDestino()}</p>
-                    <p className='precioEscapada'>{oferta.getPrecio()} € <span>/ 2 personas</span></p>
-                    <p className='fechaEscapada'>{oferta.getFechas()}</p>
+                    <div className="containerDestinoEscapada">
+                        <p className='destinoEscapada'>{oferta.getDestino()}</p>
+                        <p className='fechaEscapada'>{oferta.getFechas()}</p>
+                    </div>
+                    <div className="containerPrecioEscapada">
+                        <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio()} € </span></p>
+                    </div>
                     {/* <p className='descripcionEscapada'>{oferta.descripcion}</p> */}
+                    <button>Visitar</button>
                 </div>
         </div>
     )

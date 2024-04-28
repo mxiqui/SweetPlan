@@ -36,9 +36,9 @@ function PlanVuelos({ida, vuelta}) {
                         <h5>{ida.getDestinationAirport()}</h5>
                     </div>
                 </div>
-                <div className='containerFechaPlaceAndTime'>
+                {/* <div className='containerFechaPlaceAndTime'>
                     <p>{ida.getFecha()}</p>
-                </div>
+                </div> */}
             </div>
 
             <div className='cAirplanes tarjetaItinerario'>
@@ -58,9 +58,9 @@ function PlanVuelos({ida, vuelta}) {
                         <h5>{vuelta.getDestinationAirport()}</h5>
                     </div>
                 </div>
-                <div className='containerFechaPlaceAndTime'>
+                {/* <div className='containerFechaPlaceAndTime'>
                     <p>{vuelta.getFecha()}</p>
-                </div>
+                </div> */}
             </div>
         </div>
     </div>

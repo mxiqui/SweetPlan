@@ -9,7 +9,7 @@
     font-family: inter-light;
 }
 
-.containerPrincipalEscapadas div{
+.containerPrincipalEscapadas .seleccionadorDestino{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -26,6 +26,7 @@
 .containerEscapadasFinDeSemana{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 30px;
 }
 
@@ -33,8 +34,8 @@
     .containerPrincipalEscapadas{
         width: 100%;
     }
-    .containerPrincipalEscapadas div{
-        margin-top: 20px;
+    .containerPrincipalEscapadas .containerEscapadasFinDeSemana{
+        /* margin-top: 20px; */
         justify-content: center;
     }
 }

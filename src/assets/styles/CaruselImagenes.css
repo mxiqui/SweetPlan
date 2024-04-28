@@ -8,44 +8,44 @@
     margin-bottom: 35px;
 }
 
-.imagen {
+.containerCarusel .imagen {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px; /* Tamaño del texto de ejemplo */
 }
 
-.imagen img{
+.containerCarusel .imagen img{
     width: 100%;
     height: 100%;
     object-fit: cover; /* Escalar la imagen para que cubra el contenedor */
 }
 
-.portada {
+.containerCarusel .portada {
     grid-column: span 4; /* La imagen grande ocupa tres columnas */
     height: 600px; /* Altura de la imagen grande */
 }
 
-.grande {
+.containerCarusel .grande {
     grid-column: span 4; /* La imagen grande ocupa tres columnas */
     height: 300px; /* Altura de la imagen grande */
 }
 
-.pequena {
+.containerCarusel .pequena {
     grid-column: span 2; /* Cada imagen pequeña ocupa una columna */
     height: 300px; /* Altura de las imágenes pequeñas */
 }
 
 /* Estilos adicionales para mejorar la apariencia */
-.imagen {
+.containerCarusel .imagen {
     border: 1px solid #999;
 }
 
-.imagen.grande {
+.containerCarusel .imagen.grande {
     background-color: #aaa; /* Color de fondo diferente para las imágenes grandes */
 }
 
-.imagen.pequena {
+.containerCarusel .imagen.pequena {
     background-color: #ccc; /* Color de fondo diferente para las imágenes pequeñas */
 }
 
@@ -56,11 +56,11 @@
         margin-top: 50px;
     }
 
-    .portada{
+    .containerCarusel .portada{
         height: 250px;
     }
 
-    .imagen.grande, .imagen.pequena{
+    .containerCarusel .imagen.grande, .containerCarusel .imagen.pequena{
         height:120px ;
     }
 }

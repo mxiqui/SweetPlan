@@ -13,6 +13,7 @@ import OfertaRomanticaIndex from "./components/pages/OfertasRomanticas/OfertaRom
 import TermsOfService from "./components/CondicionesUso/TermsOfService";
 import TerminosDeUsoIndex from "./components/pages/TermsOfUse/TerminosDeUsoIndex";
 import ViajePlanificadoIndex from "./components/pages/ViajePlanificado/ViajePlanificadoIndex";
+import PruebasIndex from "./components/pages/Pruebas/PruebasIndex";
 
 
   function App() {
@@ -26,6 +27,7 @@ import ViajePlanificadoIndex from "./components/pages/ViajePlanificado/ViajePlan
             <Route path="/ofertaRomantica/:id" element={<OfertaRomanticaIndex/>} />
             <Route path="/termsOfUse" element={<TerminosDeUsoIndex/>} />
             <Route path="/viajePlanificado" element={<ViajePlanificadoIndex/>} />
+            <Route path="/pruebas" element={<PruebasIndex/>} />
           </Routes>
         </BrowserRouter>
     );

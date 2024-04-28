@@ -1,0 +1,36 @@
+.containerCarrusel2 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr); 
+    gap: 10px;
+    height: 450px;
+    margin-top: 25px;
+}
+.item {
+    padding: 20px;
+    text-align: center;
+}
+.item:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    grid-column: span 4;
+    grid-row: span 4;
+}
+
+.item:nth-child(2), .item:nth-child(3), .item:nth-child(4), .item:nth-child(5) {
+    grid-column: span 2;
+    grid-row: span 2; 
+}
+
+.item:nth-child(3){
+    border-top-right-radius: 10px;
+}
+
+.item:nth-child(5){
+    border-bottom-right-radius: 10px;
+}
+
+.containerCarrusel2 .item{
+    background-size: cover;
+  background-position: center;
+}

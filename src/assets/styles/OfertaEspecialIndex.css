@@ -9,12 +9,24 @@
     padding: 10px;
 }
 
+.containerOfertaEspecialIndex main .contenedorFlex{
+    display: flex;
+    gap: 40px;
+}
+
+.containerOfertaEspecialIndex main  .contenedorFlex .containerFormularioOfertas{
+    width: 30%;
+}
+.containerOfertaEspecialIndex main .contenedorFlex .containerDatosOfertas{
+    width: 65%;
+}
+
 
 .containerOfertaEspecialIndex main div h2{
     font-family: noto-normal;
 }
 
-.containerOfertaEspecialIndex p{
+.containerOfertaEspecialIndex .alertaPrecios{
     font-size: 12px;
     width: 90%;
     color: rgb(110, 110, 110);

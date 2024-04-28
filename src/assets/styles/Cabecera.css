@@ -12,12 +12,12 @@
     font-family: campton;
     display: flex;
     align-items: center;
-    gap: 15px;
     font-size: 20px;
 }
 
 .containerCabecera h1 img{
-    width: 50px;
+    width: 110px;
+    margin-left: -10px;
 }
 
 .containerCabecera img{
@@ -28,5 +28,9 @@
 @media screen and (max-width: 1100px) {
     .containerCabecera{
         width: 90%;
+    }
+
+    .containerCabecera h1 {
+        margin-left: -20px;
     }
 }

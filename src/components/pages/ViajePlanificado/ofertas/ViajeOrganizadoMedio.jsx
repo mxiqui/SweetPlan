@@ -40,7 +40,7 @@ function ViajeOrganizadoMedio({alojamiento, vuelo}) {
                         <br/>
                         <span>Precio vuelos y alojamiento</span>
                     </p>                    
-                    <p className='precioAlojamiento'><b>{(alojamiento.precio_total + vuelo[0].precio + vuelo[1].precio).toFixed(2)}€</b> <br/> precio N personas</p>
+                    <p className='precioAlojamiento'><b>{(alojamiento.precio_total + vuelo[0].precio).toFixed(2)}€</b> <br/> precio N personas</p>
                 </div>
 
                 <div className="containerViajeOrganizadoCaroAdicional">

@@ -9,9 +9,18 @@ function EscapadasFinDeSemana() {
     const [origen, setOrigen] = useState("Madrid");
 
     useEffect(() => {
-        const escapadaService = new EscapadaFindesemanaService();
-        const nuevasOfertas = escapadaService.findByOrigen(origen);
-        setOfertas(nuevasOfertas);
+        const obtenerOfertas = async () => {
+            try {
+                const escapadaService = new EscapadaFindesemanaService();
+                const nuevasOfertas = await escapadaService.findByOrigen(origen);
+                setOfertas(nuevasOfertas);
+            } catch (error) {
+                console.error('Error al obtener las ofertas:', error);
+            }
+        }
+
+        obtenerOfertas()
+        
     }, [origen]);
 
     const handleChange = (e) => {
@@ -21,7 +30,7 @@ function EscapadasFinDeSemana() {
     return (
         <div className='containerPrincipalEscapadas'>
             <h2 className='tituloOferta'>Escapadas Fin de semana</h2>
-            <div>
+            <div className='seleccionadorDestino'>
                 <select onChange={handleChange} value={origen}>
                     <option value="Madrid">Madrid</option>
                     <option value="Malaga">Málaga</option>

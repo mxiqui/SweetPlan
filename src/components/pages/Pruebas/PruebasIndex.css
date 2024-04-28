@@ -1,0 +1,21 @@
+.contenedorPruebas {
+    background-color: aqua;
+    width: 700px;
+    height: 500px;
+}
+
+.listaAeropuertos {
+    height: calc(100% - 40px);
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.listaAeropuertos li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}

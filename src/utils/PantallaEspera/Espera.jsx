@@ -8,7 +8,7 @@ function Espera({destino}) {
         <div className="containerEspera">
             <div className="containerEsperaInterior">
                 <p>Mientras planificamos tu viaje, dejanos mostrarte un pequeño anuncio.</p>
-                <AvionComponent/>
+                {/* <AvionComponent/> */}
           
                 <div className='containerAnuncioCuadrado'>
                     <div className="anuncioCuadrado"></div>

@@ -1,6 +1,7 @@
 .containerOpcionesMasVisitados{
-    width: 100%;
+    width: 1100px;
     display: flex;
+    margin: auto;
     justify-content: space-between;
 }
 

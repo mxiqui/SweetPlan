@@ -1,5 +1,9 @@
 header{
-    background: #061c43;
+    /* background-image: url(https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg);
+    background-size: 100% 100%; */
+    /* background: #061c43; */
+    background-image: url(https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg);
+    background-size: cover;
     color: #fff;
     height: 30vh;
 }

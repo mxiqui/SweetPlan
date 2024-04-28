@@ -1,17 +1,27 @@
 .containerDescripcion{
     width: 90%;
-    margin-top: 50px;
 }
 
 .containerDescripcion h3{
-    font-family: noto-normal;
-    color: #061c43;
+    font-family: baloo;
+    font-size: 24px;
+    color: #000000;
 }
 
-.containerDescripcion div p{
-    font-size: 13px;
+.containerDescripcion div h6{
+    font-size: 15px;
+    font-family: opensans-normal;
     color: #000;
+    font-weight: normal;
+    margin-top: -30px;
 }
+
+.containerDescripcion div h6 span{
+    color: rgb(46, 124, 124);
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 @media screen and (max-width:768px) {
     .containerDescripcion{

@@ -11,7 +11,7 @@ import imagenPrueba3 from '../images/madrid.jpg'
 import imagenPrueba4 from '../images/paris.jpg'
 import imagenPrueba5 from '../images/maldivas.jpg'
 import imagenPrueba6 from '../images/nuevaYork.jpg'
-import { adaptadorOfertasEspeciales } from "../utils/adapters/offersAdapter";
+import { adaptadorOfertaEspecial, adaptadorOfertasEspeciales } from "../utils/adapters/offersAdapter";
 
 
 const arrayImagenes=[]
@@ -158,11 +158,25 @@ export class OfertaEspecialService {
 
 
 
-    findById(id){
+    async findById(id){
+
+        try {
+            const response = await fetch(`${server}/getOfferById/${id}`);
+            if (!response.ok) {
+                throw new Error('Hubo un problema al realizar la solicitud.');
+            }
+            const data = await response.json();
+            const oferta = await adaptadorOfertaEspecial(data);
+            return oferta;
+            
+        } catch (error) {
+            console.error('Error:', error);
+            return null;
+        }
         //Llamada a bbdd para obtener los datos de la oferta especial mas que llamar a la bbdd, llamara al back
         //Los datos que obtendremos los usaremos para crear una clase ofertaEspecial
-        let ofertaEspecial= new OfertaEspecial();
-        return ofertaEspecial;
+        // let ofertaEspecial= new OfertaEspecial();
+        // return ofertaEspecial;
     }
 
 

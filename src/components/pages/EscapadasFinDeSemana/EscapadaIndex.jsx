@@ -1,46 +1,77 @@
-import React, { useState } from 'react'
-import Header from '../../Header/Header'
-import '../../../assets/styles/EscapadaIndex.css'
-import CaruselImagenes from '../../../utils/components/CaruselImagenes'
-import Descripcion from '../../../utils/components/Descripcion'
-import Itinerario from '../OfertasEspeciales/Itinerario'
-import TituloOferta from '../../../utils/components/TituloOferta'
-
-import imagenPrueba from '../../../images/bali.jpg'
-import imagenPrueba2 from '../../../images/dubai.jpg'
-import imagenPrueba3 from '../../../images/madrid.jpg'
-import { EscapadaFindesemanaService } from '../../../services/EscapadaFindesemanaService'
+import React, { useEffect, useState } from 'react';
+import Header from '../../Header/Header';
+import '../../../assets/styles/EscapadaIndex.css';
+import CaruselImagenes from '../../../utils/components/CaruselImagenes';
+import Descripcion from '../../../utils/components/Descripcion';
+import Itinerario from '../OfertasEspeciales/Itinerario';
+import TituloOferta from '../../../utils/components/TituloOferta';
+import Footer from '../../Footer/Footer';
+import { EscapadaFindesemanaService } from '../../../services/EscapadaFindesemanaService';
 import { useParams } from "react-router-dom";
-import Footer from '../../Footer/Footer'
-
+import CaruselImagenes2 from '../../../utils/components/CarruselImagenes2';
+import TarjetaTipo from '../../../utils/Tarjetas/Tipo/TarjetaTipo';
+import FormularioOferta from '../../../utils/formularios/FormularioOferta';
+import Anuncio from '../../Anuncios/Anuncio';
 
 function EscapadaIndex() {
-
     const params = useParams();
-	const id = params.id;
-    console.log(params.length)
+    const id = params.id;
 
-	const escapadaService = new EscapadaFindesemanaService();
-	var escapada = escapadaService.findById(id);
+    const escapadaService = new EscapadaFindesemanaService();
+    const [escapada, setEscapada] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const [arrayImagenes, setArrayImagenes]= useState(imagenPrueba, imagenPrueba2, imagenPrueba3, imagenPrueba, imagenPrueba2, imagenPrueba3, imagenPrueba, imagenPrueba2, imagenPrueba3)
+    useEffect(() => {
+        const fetchEscapada = async () => {
+            setIsLoading(true);
+            try {
+                const escapadaData = await escapadaService.findById(id);
+                setEscapada(escapadaData);
+            } catch (error) {
+                console.error("Error al obtener la escapada:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchEscapada();
+    }, [id]);
+
+
 
     return (
-		<div className="containerOfertaEspecialIndex">
-			<Header/>
-			<main>
-				<div>
-					<h1 className='tituloOferta'>Escapadas Fin de Semana</h1>
-					<TituloOferta oferta={escapada} texto={"fin de semana fantástico en "}/>
-				</div>
-				<Itinerario data={escapada}/>
-				<p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
-				<Descripcion/>
-				<CaruselImagenes imagenes={arrayImagenes}/>
-			</main>
-			<Footer/>
-		</div>
-	);
+        <div className="containerOfertaEspecialIndex">
+            <Header />
+            <main>
+                <CaruselImagenes2 />
+                {isLoading ? (
+                    <div>Cargando...</div>
+                ) : (
+                    <div className="contenedorFlex">
+                        <div className="containerDatosOfertas">
+                            <TarjetaTipo tipo={"escapada"} />
+                            {escapada && (
+                                <>
+                                    <TituloOferta oferta={escapada} texto={"viaje fantastico a"} />
+                                    <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${escapada._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
+                                    <Itinerario data={escapada} />
+                                    <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
+                                </>
+                            )}
+                        </div>
+                        <div className="containerFormularioOfertas">
+                            {escapada && <FormularioOferta oferta={escapada} />}
+                        </div>
+                    </div>
+                )}
+                <Anuncio tipo={"horizontal"} />
+                <Anuncio tipo={"horizontal"} />
+                <Anuncio tipo={"cuadrado"} />
+                <Anuncio tipo={"cuadrado"} />
+                <Anuncio tipo={"cuadrado"} />
+            </main>
+            <Footer />
+        </div>
+    );
 }
 
-export default EscapadaIndex
+export default EscapadaIndex;

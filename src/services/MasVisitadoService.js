@@ -39,12 +39,6 @@ import imagenPrueba8 from '../images/maldivas2.jpg'
         img: {imagenPrueba5},
         nombre: "Granada",
       precio: "1990.95"
-    },
-    {
-      id:5,
-        img: {imagenPrueba5},
-        nombre: "Granada",
-      precio: "1990.95"
     }
 ];
 

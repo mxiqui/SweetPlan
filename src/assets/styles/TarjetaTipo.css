@@ -1,0 +1,30 @@
+.containerTarjetaTipo{
+    width: 100%;
+}
+
+.containerTarjetaTipo h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    padding: 2px 5px 2px 0px;
+    color: #000;
+    border-radius: 10px;
+    height: 25px;
+    width: 150px;
+}
+
+.containerTarjetaTipo .textoOfertaEspecial{
+    background: #ecdf29;
+    font-size: 14px;
+    font-family: opensans-normal;
+    padding-left: 5px;
+}
+
+.containerTarjetaTipo .textoEscapada{
+    background: #d44a40;
+    color: #fff;
+    font-size: 14px;
+    font-family: opensans-normal;
+    padding-left: 5px;
+}

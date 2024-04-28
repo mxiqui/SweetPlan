@@ -63,8 +63,9 @@ function Inicio() {
         <ScrollContext.Provider value={{ $scroll, dispatchScroll }}>
           <Header />
           <Main />
-          <Anuncio />
+          <Anuncio tipo={"horizontal"}/>
           <MainInferior />
+          <Anuncio tipo={"horizontal"}/>
           <Suscripcion />
           <Footer />
         </ScrollContext.Provider>

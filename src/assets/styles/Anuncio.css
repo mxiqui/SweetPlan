@@ -1,9 +1,15 @@
 .containerAnuncio{
-    width: 100%;
-    background-color: black;
-    height: 200px;
     margin-top: 50px;
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerAnuncio .anuncioHorizontal{
+    background-color: aqua;
+    height: 100px;
+    width: 80%;
+    margin: auto;
 }
 
 

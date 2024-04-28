@@ -17,19 +17,34 @@ function ResultadosViaje() {
     setSelectedOption(newPosition);
   };
 
-  return (
-    <div className='containerResultadosViaje'>
-            <ThreeWaySwitch onChange={handleSwitchChange} />
+  if(viaje.booking!=null){
+    return (
+      <div className='containerResultadosViaje'>
+              <ThreeWaySwitch onChange={handleSwitchChange} />
+  
+          <div className="containerResultadosViajeDiv">
+  
+            {selectedOption == "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={viaje.vuelos}/>}
+            {selectedOption == "medio" && <ViajesMedios alojamientos={viaje.airbnb} vuelos={viaje.vuelos} alojamientos2={viaje.booking}/>}
+            {selectedOption == "bajo" && <ViajesBaratos alojamientos={viaje.airbnb} vuelos={viaje.vuelos}/>}
+  
+          </div>
+      </div>
+    )
+  }else{
+    return (
+      <div className='containerResultadosViaje'>
+  
+          <div className="containerResultadosViajeDiv">
+  
+          <ViajesBaratos alojamientos={viaje.airbnb} vuelos={viaje.vuelos}/>
+          {viaje.vuelos=="No hay vuelos disponibles" ? <p>No hay vuelos Disponibles </p> : <p>No hay vuelos Disponibles </p>}
+          </div>
+      </div>
+    )
+  }
 
-        <div className="containerResultadosViajeDiv">
-
-          {selectedOption == "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={viaje.vuelos}/>}
-          {selectedOption == "medio" && <ViajesMedios alojamientos={viaje.airbnb} vuelos={viaje.vuelos} alojamientos2={viaje.booking}/>}
-          {selectedOption == "bajo" && <ViajesBaratos alojamientos={viaje.airbnb} vuelos={viaje.vuelos}/>}
-
-        </div>
-    </div>
-  )
+  
 }
 
 export default ResultadosViaje

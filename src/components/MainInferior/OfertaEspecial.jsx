@@ -1,6 +1,5 @@
 	import React, { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 	import '../../assets/styles/OfertaEspecial.css';
-	import OfertaEspecialViewer from './OfertaEspecialViewer';
 
 	export const OfertaEspecialContext= createContext()
 
@@ -34,7 +33,6 @@ function OfertaEspecial({ oferta}) {
 				<div className='fecha'>{oferta.getFechas()}</div>
 			</div>
 			</div>
-			{/* {abrirViewer && <OfertaEspecialViewer ofertaEspecial={oferta} />}  */}
 		</OfertaEspecialContext.Provider>
 
 	);

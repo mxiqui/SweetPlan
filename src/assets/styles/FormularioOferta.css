@@ -1,0 +1,74 @@
+.formularioOfertaEspecial{
+    width: 90%;
+    border-radius: 15px;
+    margin: auto;
+    padding: 20px;
+    background-color: #c6dced89;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    font-family: opensans-normal;
+    display: grid;
+}
+
+.containerFormularioBody{
+    
+}
+
+
+
+.containerFormularioCabecera{
+    width: 100%;
+}
+
+.containerFormularioCabecera div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerFormularioCabecera div .fechaForm{
+    color: #a5a3a3;
+    font-size: 14px;
+}
+
+.formularioOfertaEspecial span {
+    color: #2caac7;
+    font-weight: bold;
+    /* text-shadow: 0 0 5px #77cee0, 0 0 10px #6ed2e1, 0 0 15px #7ac6d5, 0 0 20px #a8cfe3; */
+}
+  
+  
+
+.containerFormularioCabeceraImagen{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.containerFormularioCabecera img{
+    width: 30px;
+}
+
+.containerFormularioCabecera button {
+    width: 100%;
+    height: 35px;
+    border: none;
+    background-color: rgb(44, 202, 199);
+    color: #fff;
+}
+
+.containerFormularioBody button{
+    width: 100%;
+    height: 35px;
+    border: none;
+    background-color: rgb(175, 210, 210);
+    color: #fff;
+}
+
+.containerFormularioCabeceraSalida{
+    margin-top: 5px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    color: #a5a3a3;
+}

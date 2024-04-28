@@ -22,7 +22,16 @@ function ContenedorMainInferior() {
     console.log(ofertas);
 
     if (!ofertas || !ofertas.length) {
-        return <div>Cargando ofertas...</div>;
+
+        return (
+            <div className='containerContenedorMainInferior' id='containerContenedorMainInferior'>
+                <h2>OFERTAS ESPECIALES</h2>
+                <p className='containerContenedorMainInferior-p'>¡Visita destinos a precios increíbles!</p>
+                <div className='containerOfertasEspeciales'>
+                    <div>Cargando ofertas...</div>
+                </div>
+            </div>
+        );
     }
 
     return (
