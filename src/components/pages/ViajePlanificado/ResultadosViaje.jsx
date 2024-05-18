@@ -20,8 +20,11 @@ function ResultadosViaje() {
   if(viaje.booking!=null){
     return (
       <div className='containerResultadosViaje'>
+              <p>Seleccione el presupuesto</p>
               <ThreeWaySwitch onChange={handleSwitchChange} />
   
+              <p >Estas son los planes que te recomendamos</p>
+
           <div className="containerResultadosViajeDiv">
   
             {selectedOption == "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={viaje.vuelos}/>}

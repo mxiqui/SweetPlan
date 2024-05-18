@@ -140,16 +140,11 @@ export class OfertaEspecialService {
             }
             const data = await response.json();
             const ofertasEspeciales = await adaptadorOfertasEspeciales(data);
-            console.log(ofertasEspeciales.length);
             return ofertasEspeciales;
         } catch (error) {
             console.error('Error:', error);
             return null;
         }
-        // for(let i=0; i<ofertasPrueba.length;i++){
-        //     let ofertaEspecial= new OfertaEspecial(ofertasPrueba[i].id,ofertasPrueba[i].imagen, ofertasPrueba[i].destino, ofertasPrueba[i].fechas, ofertasPrueba[i].galeria, ofertasPrueba[i].itinerario, ofertasPrueba[i].vueloIda, ofertasPrueba[i].vueloVuelta, ofertasPrueba[i].alojamiento);
-        //     ofertasEspeciales.push(ofertaEspecial)
-        // }
     }
 
 

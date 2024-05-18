@@ -1,0 +1,33 @@
+.containerAeropuertoSing{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 50px;
+    border-bottom: #000000;
+    margin-bottom: -20px;
+}
+
+.containerAeropuertoSing img{
+    width: 25px;
+}
+
+.containerAeropuertoSingNames{
+    width: 45%;
+    text-align: left;
+}
+
+.containerAeropuertoSingNames p:nth-child(1){
+    margin-bottom: -15px;
+    font-weight: bold;
+}
+
+.containerAeropuertoSingNames p:nth-child(2){
+    color: #999999;
+    font-size: 14px;
+}
+
+.containerAeropuertoSingIATA{
+    width: 45%;
+    text-align: right;
+}

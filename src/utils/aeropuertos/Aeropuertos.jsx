@@ -38,7 +38,7 @@ function Aeropuertos() {
                 readOnly={!showOptions} // Deshabilitar la edición directa cuando se muestran las opciones
             />
             {showOptions && (
-                <ul>
+                <ul className='contenedorAeropuertosDisponibles'>
                     {filteredAirports.map((airport) => (
                         <li key={airport.iata} onClick={() => handleSelectAirport(airport)}>
                             {airport.name} - {airport.location}

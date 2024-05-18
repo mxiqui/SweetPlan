@@ -9,6 +9,7 @@ function ViajeOrganizadoBarato({alojamiento, vuelo}) {
     const handleClick = () => {
         sessionStorage.setItem('vuelo', JSON.stringify(vuelo));
         sessionStorage.setItem('alojamiento', JSON.stringify(alojamiento));
+        window.location.href = "../ofertaPlanificada";
     };
 
     return (

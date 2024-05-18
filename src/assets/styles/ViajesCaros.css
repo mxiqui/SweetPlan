@@ -6,3 +6,11 @@
     gap: 50px;
     align-items: center;
 }
+
+@media screen and (max-width:1100px) {
+    .containerViajesCaros{
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+    }
+}

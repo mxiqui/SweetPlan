@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import imgAvion from '../../../../images/icon/avion2.png'
 import '../../../../assets/styles/ViajeOrganizadoCaro.css'
 
@@ -9,6 +9,10 @@ function ViajeOrganizadoMedio({alojamiento, vuelo}) {
         sessionStorage.setItem('vuelo', JSON.stringify(vuelo));
         sessionStorage.setItem('alojamiento', JSON.stringify(alojamiento));
     };
+
+    useEffect(()=>{
+        console.log(alojamiento.galeria)
+    },[])
 
     return (
         <div className='containerViajeOrganizadoCaro' onClick={handleClick}>

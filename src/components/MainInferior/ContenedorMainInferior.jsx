@@ -19,7 +19,6 @@ function ContenedorMainInferior() {
         obtenerOfertas();
     }, []); // Ejecutar solo en el montaje inicial
 
-    console.log(ofertas);
 
     if (!ofertas || !ofertas.length) {
 

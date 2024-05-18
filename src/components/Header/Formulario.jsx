@@ -18,9 +18,32 @@ import imgEuro from '../../images/euro.png'
 import { aeropuertos } from '../../resources/Aeropuertos'
 
 import { CalendarioContext } from './Header'
-import { useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import Espera from '../../utils/PantallaEspera/Espera'
 import { server } from '../../utils/Constantes'
+import InputCalendarios from '../pages/Pruebas/PruebasIndex'
+
+export const datosRutaContext= createContext()
+export const datosRutaReducer = (state, action) => {
+    switch (action.type) {
+        case 'GUARDAR_IDA':
+            return {
+                ...state,
+                ida: action.payload,
+                vuelta: null,
+              };
+
+        case 'GUARDAR_VUELTA':
+            return {
+                ...state,
+                vuelta: action.payload,
+              };
+
+        default:
+            return state;
+    }
+};
+
 
 
 function Formulario(){
@@ -31,6 +54,14 @@ function Formulario(){
     const {register, handleSubmit} = useForm();
     const {dispatchCalendario}=useContext(CalendarioContext)
     const [abrirEspera, setAbrirEspera]=useState(false)
+    
+    const [rutaSeleccionada, dispatchRuta]=useReducer(datosRutaReducer, {
+        ida:null,
+        vuelta:null
+      });
+
+
+    
 
 
 
@@ -45,8 +76,8 @@ function Formulario(){
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                origen:data.origen.split('(')[0].trim(),
-                destino: data.destino.split('(')[0].trim(),
+                origen:rutaSeleccionada.ida,
+                destino: rutaSeleccionada.vuelta,
                 fecha_ida: data.ida,
                 fecha_vuelta: data.vuelta,
                 personas:data.personas
@@ -69,12 +100,8 @@ function Formulario(){
 
 
 
-
-
-
-
-
     return (
+        <datosRutaContext.Provider value={{rutaSeleccionada, dispatchRuta}}>
         <form onSubmit={handleSubmit(handleForm)}>
 
             {/* Contenedor input Desde */}
@@ -85,17 +112,8 @@ function Formulario(){
 
                 <div className='containerInput'>
                     <label htmlFor="De">Desde</label>
-                    <input
-                        type="text"
-                        placeholder='Ingrese tu ubicación'
-                        {...register("origen", { required: true })}
-                        list="opcionesOrigen" // Vincula este input a la lista de opciones
-                    />
-                    <datalist id="opcionesOrigen">
-                        {aeropuertos.map((aeropuerto, index) => (
-                        <option key={index} value={aeropuerto} />
-                        ))}
-                    </datalist>
+                    <InputCalendarios type={"ida"}/>
+                    
                 </div>
             </div>
 
@@ -106,14 +124,15 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Hacia</label>
-                        <input type="text" placeholder='A donde quieres ir' {...register("destino",{required:true})}
+                        <InputCalendarios type={"vuelta"}/>
+                        {/* <input type="text" placeholder='A donde quieres ir' {...register("destino",{required:true})}
                         list="opcionesOrigen" // Vincula este input a la lista de opciones
                         />
                         <datalist id="opcionesOrigen">
                             {aeropuertos.map((aeropuerto, index) => (
                             <option key={index} value={aeropuerto} />
                             ))}
-                        </datalist>
+                        </datalist> */}
                     </div>
                 </div>
 
@@ -170,6 +189,7 @@ function Formulario(){
                 <button className='buttonForm'>Planear</button>
                 {abrirEspera && <Espera/>}
             </form>
+            </datosRutaContext.Provider>
             
     )
 }

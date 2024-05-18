@@ -12,6 +12,15 @@
 }
 
 
-.containerViajePlanificadoIndex1{
-    background-color: #F0F3F5;
+
+
+
+@media screen and (max-width:1100px) {
+    .containerResultadosViaje{
+        width: 100%;
+    }
+
+    .containerResultadosViaje{
+        margin-bottom: 0px;
+    }
 }

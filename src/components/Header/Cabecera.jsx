@@ -16,11 +16,15 @@ function Cabecera() {
         dispatch({type:'ABRIR_MENU'})
     }
 
+    const init=()=>{
+      window.location.href="/"
+    }
+
   return (
     <div className='containerCabecera'>
-        <h1 translate='no'>
-            <img src={logo} alt="" />
-        </h1>
+        <h2 translate='no'>
+            <img onClick={init} src={logo} alt="" />
+        </h2>
         <img onClick={abrirMenu} src={iconoMenu} alt="" />
     </div>
   )
