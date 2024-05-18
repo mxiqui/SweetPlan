@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import moment from 'moment';
 import '../../assets/styles/CalendarioDoble.css';
 import imgIcono from '../../images/icon/flecha.png'
@@ -80,6 +80,24 @@ const CalendarioDoble = () => {
             document.getElementById("input_ida_buscador").value = formattedDate;
         }
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Verificar si el clic ocurrió fuera del calendario
+            if (!document.querySelector('.containerCalendarioDoble').contains(event.target)) {
+                // Cerrar el calendario
+                dispatchCalendario({ type: 'CERRAR_CALENDARIO' });
+            }
+        };
+
+        // Agregar event listener al documento para manejar clics fuera del calendario
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Limpiar el event listener cuando el componente se desmonta
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [dispatchCalendario]);
 
     return (
         <div className="containerCalendarioDoble">

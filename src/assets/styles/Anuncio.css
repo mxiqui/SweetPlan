@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .containerAnuncio .anuncioHorizontal{
@@ -10,6 +11,15 @@
     height: 100px;
     width: 80%;
     margin: auto;
+}
+
+.anuncioVertical{
+    width: 12%;
+    position: absolute;
+    height: 70vh;
+    background-color: aqua;
+    right: 50px;
+    top: 50vh;
 }
 
 

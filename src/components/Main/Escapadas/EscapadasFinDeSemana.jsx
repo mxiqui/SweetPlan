@@ -3,24 +3,27 @@ import '../../../assets/styles/EscapadasFinDeSemana.css';
 import Escapada from './Escapada';
 import { EscapadaFindesemanaService } from '../../../services/EscapadaFindesemanaService';
 
-
 function EscapadasFinDeSemana() {
     const [ofertas, setOfertas] = useState([]);
     const [origen, setOrigen] = useState("Madrid");
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
                 const escapadaService = new EscapadaFindesemanaService();
                 const nuevasOfertas = await escapadaService.findByOrigen(origen);
-                setOfertas(nuevasOfertas);
+                if (nuevasOfertas !== undefined) {
+                    setOfertas(nuevasOfertas);
+                }
+                setCargando(false);
             } catch (error) {
                 console.error('Error al obtener las ofertas:', error);
+                setCargando(false);
             }
-        }
-
-        obtenerOfertas()
-        
+        };
+    
+        obtenerOfertas();
     }, [origen]);
 
     const handleChange = (e) => {
@@ -38,12 +41,17 @@ function EscapadasFinDeSemana() {
                 </select>
             </div>
             <div className="containerEscapadasFinDeSemana">
-                {ofertas.map((oferta) => (
+                {/* Mostrar "Cargando ofertas" si aún se están cargando las ofertas */}
+                {cargando && <p>Cargando ofertas...</p>}
+                {/* Mostrar las ofertas si no están vacías */}
+                {!cargando && ofertas.length > 0 && ofertas.map((oferta) => (
                     <Escapada
                         key={oferta.getId()}
                         oferta={oferta}
                     />
                 ))}
+                {/* Mostrar un mensaje si no hay ofertas disponibles */}
+                {!cargando && ofertas.length === 0 && <p>No hay ofertas disponibles.</p>}
             </div>
         </div>
     );

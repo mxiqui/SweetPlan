@@ -9,9 +9,9 @@ form{
     width: 18%;
     display: flex;
     align-items: center;
-    border-top-left-radius: 50px;
+    border-top-left-radius: 20px;
     height: 60px;
-    border-bottom-left-radius: 50px;
+    border-bottom-left-radius: 20px;
     padding-left: 10px;
     gap: 10px
 }
@@ -98,8 +98,8 @@ form{
 .buttonForm{
     width: 20%;
         height: 60px;
-        border-radius: 50px;
-        border-top-right-radius: 50px;
+        border-radius: 20px;
+        border-top-right-radius: 20px;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
         background-color: #0099ff;

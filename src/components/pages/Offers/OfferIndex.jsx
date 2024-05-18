@@ -26,11 +26,10 @@ function OfferIndex() {
     var alojamiento = JSON.parse(valor2);
     var otrosDatos=JSON.parse(plan)
 
-    const vueloIda= new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, null,null )
-    const vueloVuelta= new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, null,null )
+    const vueloIda= new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, otrosDatos.datos.fecha_ida,null )
+    const vueloVuelta= new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, otrosDatos.datos.fecha_vuelta,null )
     const alojamientoo= new Alojamiento(alojamiento.nombre, 5, alojamiento.puntuacion, alojamiento.direccion, alojamiento.precio, null, alojamiento.precio_total, alojamiento.url)
     const oferta= new OfertaEspecial(null, alojamiento.galeria[0], otrosDatos.datos.destino, otrosDatos.datos.fecha_ida+otrosDatos.datos.fecha_vuelta, alojamiento.galeria, null, vueloIda, vueloVuelta, alojamientoo);
-
 
 
     return (

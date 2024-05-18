@@ -28,6 +28,7 @@ const Footer = () => {
           <li onClick={handleClick}>Terminos de uso</li>
           <li>Política de seguridad</li>
         </ul>
+        <h1>SweetPlan</h1>
         <p className='derechosReservados'>&copy; 2024 SweetPlan. Todos los derechos reservados.</p>
       </div>
     </footer>

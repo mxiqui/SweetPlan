@@ -16,8 +16,6 @@ export const CalendarioContext= createContext();
 
 function Header() {
 
-    // const {dispatchScroll}=useContext(ScrollContext)
-
     const menuReducer = (state, action) => {
         switch (action.type) {
             case 'ABRIR_MENU':

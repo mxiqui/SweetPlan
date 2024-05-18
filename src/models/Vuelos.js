@@ -20,46 +20,7 @@ export class Vuelos{
         this._destinationTime=destinationTime;
         this._fecha=fecha;
         this._url=url;
-        switch (imageAirline) {
-            case 'Ryanair':
-                this._imageAirline='/static/media/ryanair.47a8669196f9c1f9da69.png'
-            break;
-
-            case 'iberia':
-                
-            break;
-
-            case 'aireurope':
-                
-            break;
-
-            case 'vueling':
-                
-            break;
-
-            case 'ryanair':
-                
-            break;
-
-            case 'ryanair':
-                
-            break;
-
-            case 'ryanair':
-                
-            break;
-
-            case 'ryanair':
-                
-            break;
-
-            case 'ryanair':
-                
-            break;
-        
-            default:
-                break;
-        }
+        this._imageAirline=imageAirline;
     }
 
 

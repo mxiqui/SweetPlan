@@ -1,0 +1,34 @@
+
+
+.containerDetallesAlojamientoDetalle{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.containerDetallesAlojamientoDetalle div{
+    width: 45%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+}
+
+.containerDetallesAlojamientoDetalle div img{
+    width: 30px;
+}
+
+
+@media screen and (max-width:768px) {
+    .containerDetallesAlojamientoDetalle{
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .containerDetallesAlojamiento{
+        background-color: #fff;
+        border-radius: 20px;  
+        padding: 5px;  
+    }
+    
+}

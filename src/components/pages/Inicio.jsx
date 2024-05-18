@@ -9,6 +9,8 @@ import Espera from '../../utils/PantallaEspera/Espera';
 import Loader2 from '../../utils/loader/Loader2';
 import Romantico from '../Main/Romantico/RomanticoNacional';
 import OfertasRomanticas from '../Main/Romantico/OfertasRomanticas';
+import Cookies from 'js-cookie';
+
 
 export const pantallaEsperaContext = createContext();
 export const ScrollContext = createContext();
@@ -39,6 +41,7 @@ function Inicio() {
   const [abrirPantallaEspera, dispatchPantallaEspera2] = useReducer(abrirPantallaEsperaReducer, true);
   const [$scroll, dispatchScroll] = useReducer(ScrollReducer, true);
   const [todosComponentesMontados, setTodosComponentesMontados] = useState(false);
+  const [suscrito, setSuscrito]=useState(false)
 
   useEffect(() => {
     const tiempoEspera = setTimeout(() => {
@@ -56,22 +59,41 @@ function Inicio() {
     }
   }, [$scroll]);
 
-  return (
+
+  useEffect(()=>{
+    const suscrito = Cookies.get('Suscrito');
+    if(suscrito===undefined){
+      Cookies.set('Suscrito', 'N', { expires: 90 });
+    }else{
+      if(suscrito=='S'){
+        setSuscrito(true)
+      }
+    }
+    
+  })
+
+  try {
+    return (
+      <div>
+        {!todosComponentesMontados && <Loader2 />}
+        {todosComponentesMontados && (
+          <ScrollContext.Provider value={{ $scroll, dispatchScroll }}>
+            <Header />
+            <Main />
+            <Anuncio tipo={"horizontal"}/>
+            <MainInferior />
+            <Anuncio tipo={"horizontal"}/>
+            {!suscrito && <Suscripcion />}
+            <Footer />
+          </ScrollContext.Provider>
+        )}
+      </div>
+    );
+  } catch (error) {
     <div>
-      {!todosComponentesMontados && <Loader2 />}
-      {todosComponentesMontados && (
-        <ScrollContext.Provider value={{ $scroll, dispatchScroll }}>
-          <Header />
-          <Main />
-          <Anuncio tipo={"horizontal"}/>
-          <MainInferior />
-          <Anuncio tipo={"horizontal"}/>
-          <Suscripcion />
-          <Footer />
-        </ScrollContext.Provider>
-      )}
+      Error
     </div>
-  );
+  }
 }
 
 export default Inicio;

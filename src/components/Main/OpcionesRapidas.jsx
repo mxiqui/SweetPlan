@@ -27,12 +27,16 @@ function OpcionesRapidas() {
     <div className='containerOpcionesRapidas'>
         <div className="containerOpcionRapidaEscapadas" onClick={ABRIR_ESCAPADAS}>
             <img src={iconoPalmera} alt="" />
-            <h3>Escapadas Fin de Semana</h3>
+            <h3>Escapadas</h3>
         </div>
 
         <div className="containerOpcionRapidaExperiencias" onClick={ABRIR_EXPERIENCIAS}>
         <img src={iconoCorazon} alt="" />
             <h3>Románticas</h3>
+        </div>
+
+        <div className="containerOpcionRapidaChollos" onClick={ABRIR_ESCAPADAS}>
+            <h3>Chollos</h3>
         </div>
 
         <div className="containerOpcionRapidaCualquierDestino" onClick={ABRIR_CUALQUIER}>

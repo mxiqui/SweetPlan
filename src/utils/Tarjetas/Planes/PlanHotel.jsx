@@ -3,6 +3,7 @@ import '../../../assets/styles/PlanHotel.css';
 
 function PlanHotel({ alojamiento }) {
     const [puntuacion, setPuntuacion] = useState();
+    console.log(alojamiento)
 
     useEffect(() => {
         const puntuation = alojamiento.getPuntuation();

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../../assets/styles/Suscripcion.css';
+import { server } from '../../utils/Constantes';
+import Cookies from 'js-cookie';
+
 
 const Suscripcion = () => {
   const [email, setEmail] = useState('');
@@ -7,10 +10,29 @@ const Suscripcion = () => {
   const handleInputChange = (e) => {
     setEmail(e.target.value);
   };
+  
 
-  const handleSubscribe = () => {
-    console.log(`Se ha suscrito con éxito: ${email}`);
+  const handleSubscribe = async () => {
+    try {
+      const response = await fetch(`${server}/saveEmail`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+  
+      if (response.ok) {
+        console.log(`Se ha suscrito con éxito: ${email}`);
+        Cookies.set('Suscrito', 'S', { expires: 90 });
+      } else {
+        console.error('Error al suscribirse:', response.status);
+      }
+    } catch (error) {
+      console.error('Error al suscribirse:', error);
+    }
   };
+  
 
   return (
     <div className="container">

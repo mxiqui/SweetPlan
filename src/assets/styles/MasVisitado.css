@@ -13,6 +13,10 @@
     transition: 0.3s;
 }
 
+.containerMasVisitado:hover, .containerCarreteMasVisitado:hover{
+  cursor: pointer;
+}
+
   .containerMasVisitado h4,
   .containerMasVisitado p {
     margin: 10px;

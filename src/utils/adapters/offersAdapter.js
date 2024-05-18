@@ -1,6 +1,7 @@
 import { Alojamiento } from "../../models/Alojamiento";
 import { Escapada } from "../../models/Escapada";
 import { OfertaEspecial } from "../../models/OfertaEspecial";
+import { OfertaRomantica } from "../../models/OfertaRomantica";
 import { Vuelos } from "../../models/Vuelos";
 
 export function extraerFecha(cadena) {
@@ -39,6 +40,7 @@ export const adaptadorOfertasEspeciales=async (data)=>{
         )
 
         var alojamiento= new Alojamiento(
+            oferta.Alojamiento.id,
             oferta.Alojamiento.nombre,
             oferta.Alojamiento.estrellas,
             oferta.Alojamiento.puntuacion,
@@ -54,7 +56,7 @@ export const adaptadorOfertasEspeciales=async (data)=>{
             oferta.imagen,
             oferta.destino,
             `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
-            [],
+            oferta.galeria.split(";"),
             null,
             vueloIda,
             vueloVuelta,
@@ -95,6 +97,7 @@ export const adaptadorOfertaEspecial=async (oferta)=>{
     )
 
     var alojamiento= new Alojamiento(
+        oferta.Alojamiento.id,
         oferta.Alojamiento.nombre,
         oferta.Alojamiento.estrellas,
         oferta.Alojamiento.puntuacion,
@@ -110,7 +113,7 @@ export const adaptadorOfertaEspecial=async (oferta)=>{
         oferta.imagen,
         oferta.destino,
         `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
-        [],
+        oferta.galeria.split(";"),
         null,
         vueloIda,
         vueloVuelta,
@@ -149,6 +152,7 @@ export const adaptadorEscapadas=async (data)=>{
         )
     
         var alojamiento= new Alojamiento(
+            oferta.Alojamiento.id,
             oferta.Alojamiento.nombre,
             oferta.Alojamiento.estrellas,
             oferta.Alojamiento.puntuacion,
@@ -165,7 +169,7 @@ export const adaptadorEscapadas=async (data)=>{
             oferta.imagen,
             oferta.destino,
             `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
-            [],
+            oferta.galeria.split(";"),
             vueloIda,
             vueloVuelta,
             alojamiento
@@ -203,6 +207,7 @@ export const adaptadorEscapada=async (oferta)=>{
         )
     
         var alojamiento= new Alojamiento(
+            oferta.Alojamiento.id,
             oferta.Alojamiento.nombre,
             oferta.Alojamiento.estrellas,
             oferta.Alojamiento.puntuacion,
@@ -219,10 +224,68 @@ export const adaptadorEscapada=async (oferta)=>{
             oferta.imagen,
             oferta.destino,
             `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
-            [],
+            oferta.galeria.split(";"),
             vueloIda,
             vueloVuelta,
             alojamiento
         )
     return escapada;
+}
+
+
+export const adaptadorRomantico=async (data)=>{
+    var romanticos=[]
+    data.forEach(oferta=>{
+        var vueloIda= new Vuelos(oferta.vueloIda.id, 
+            oferta.vueloIda.aerolinea,
+            oferta.vueloIda.aerolinea,
+            oferta.vueloIda.precio,
+            oferta.vueloIda.aeropuertoIda,
+            oferta.vueloIda.aeropuertoVuelta,
+            oferta.vueloIda.horaSalida,
+            oferta.vueloIda.horaLlegada,
+            `${extraerFecha(oferta.fechaInicio)}`,
+            oferta.vueloIda.url
+        )
+    
+        var vueloVuelta= new Vuelos(oferta.vueloVuelta.id, 
+            oferta.vueloVuelta.aerolinea,
+            oferta.vueloVuelta.aerolinea,
+            oferta.vueloVuelta.precio,
+            oferta.vueloVuelta.aeropuertoIda,
+            oferta.vueloVuelta.aeropuertoVuelta,
+            oferta.vueloVuelta.horaSalida,
+            oferta.vueloVuelta.horaLlegada,
+            `${extraerFecha(oferta.fechaFin)}`,
+            oferta.vueloVuelta.url
+        )
+    
+        var alojamiento= new Alojamiento(
+            oferta.Alojamiento.id,
+            oferta.Alojamiento.nombre,
+            oferta.Alojamiento.estrellas,
+            oferta.Alojamiento.puntuacion,
+            oferta.Alojamiento.direccion,
+            oferta.Alojamiento.precio,
+            oferta.Alojamiento.noches,
+            oferta.Alojamiento.fecha,
+            oferta.Alojamiento.url
+        )
+
+        var romantico= new OfertaRomantica(
+            oferta.id,
+            oferta.origen,
+            oferta.imagen,
+            oferta.destino,
+            `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
+            oferta.galeria.split(";"),
+            vueloIda,
+            vueloVuelta,
+            alojamiento
+        )
+
+        romanticos.push(romantico)
+    })
+
+    return romanticos;
 }

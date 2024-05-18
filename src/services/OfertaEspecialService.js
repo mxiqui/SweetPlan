@@ -168,10 +168,6 @@ export class OfertaEspecialService {
             console.error('Error:', error);
             return null;
         }
-        //Llamada a bbdd para obtener los datos de la oferta especial mas que llamar a la bbdd, llamara al back
-        //Los datos que obtendremos los usaremos para crear una clase ofertaEspecial
-        // let ofertaEspecial= new OfertaEspecial();
-        // return ofertaEspecial;
     }
 
 

@@ -26,8 +26,19 @@
 
 
 @media screen and (max-width:768px) {
+    .containerTituloOferta{
+        width: 100%;
+    }
     .esloganDescripcion{
         width: 90%;
         padding: 20px;
+        margin-bottom: -40px;
+        text-align: center;
     }
+
+    .containerDescripcionPrecio{
+        text-align: left;
+        font-size: 13px;
+    }
+
 }

@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.containerViajesCaros :hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width:1100px) {
     .containerViajesCaros{
         flex-wrap: wrap;

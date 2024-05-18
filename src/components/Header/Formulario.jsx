@@ -58,39 +58,40 @@ function Formulario(){
     const [rutaSeleccionada, dispatchRuta]=useReducer(datosRutaReducer, {
         ida:null,
         vuelta:null
-      });
-
-
-    
-
-
+    });
 
     //función para manejar el evento del formulario
     const handleForm = async(data) => {
-        setAbrirEspera(true)
-        console.log("Datos del formulario:", data);
+        try {
+            setAbrirEspera(true)
+            document.getElementById("body").style.overflow = "hidden";
 
-        const response = await fetch(`${server}/findPlan`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                origen:rutaSeleccionada.ida,
-                destino: rutaSeleccionada.vuelta,
-                fecha_ida: data.ida,
-                fecha_vuelta: data.vuelta,
-                personas:data.personas
-            })
-        });
-    
-        if (!response.ok) {
-            throw new Error('Error al enviar datos');
+            console.log("Datos del formulario:", data);
+
+            const response = await fetch(`${server}/findPlan`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    origen:rutaSeleccionada.ida,
+                    destino: rutaSeleccionada.vuelta,
+                    fecha_ida: data.ida,
+                    fecha_vuelta: data.vuelta,
+                    personas:data.personas
+                })
+            });
+        
+            if (!response.ok) {
+                throw new Error('Error al enviar datos');
+            }
+
+            const data2 = await response.json();
+            sessionStorage.setItem('plan', JSON.stringify(data2));
+            window.location.href = "/viajePlanificado";
+        } catch (error) {
+            
         }
-
-        const data2 = await response.json();
-        sessionStorage.setItem('plan', JSON.stringify(data2));
-        window.location.href = "/viajePlanificado";
     }
 
     const openCalendar=()=>{

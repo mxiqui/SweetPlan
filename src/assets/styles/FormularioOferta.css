@@ -72,3 +72,24 @@
     text-align: center;
     color: #a5a3a3;
 }
+
+
+@media screen and (max-width:768px) {
+    .formularioOfertaEspecial{
+        background-color: #b2d8e1;
+        height: 50px;
+        grid-template-columns: 100%;
+        margin-left: -10px;
+        border-radius: 0;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .containerFormularioCabecera{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+    .containerFormularioBody{
+        display: none;
+    }
+}

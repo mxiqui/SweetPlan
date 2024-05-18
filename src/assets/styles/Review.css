@@ -1,0 +1,55 @@
+.containerReview{
+    width: 45%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.containerReviewTop{
+    width: 100%;
+    display: grid;
+    align-items: center;
+    gap: 15px;
+    grid-template-columns: 10% 90%;
+}
+
+.containerReviewCenter{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    gap:10px;
+    margin-top: -15px;
+    width: 100%;
+}
+
+.imagenReview{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.containerReviewNameAndPlace{
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: left;
+    align-items: center;
+}
+
+.localizacionReview{
+    margin-top: -15px;
+    color: #5c5c5c;
+    font-size: 14px;
+}
+
+.fechaReview{
+    color: #5c5c5c;
+    font-size: 14px;
+}
+
+@media screen and (max-width:768px) {
+    .containerReview{
+        width: 100%;
+    }
+}

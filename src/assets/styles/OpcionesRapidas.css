@@ -6,12 +6,12 @@
     justify-content: space-between;
 }
 
-.containerOpcionRapidaEscapadas, .containerOpcionRapidaExperiencias, .containerOpcionRapidaCualquierDestino{
+.containerOpcionRapidaEscapadas, .containerOpcionRapidaExperiencias, .containerOpcionRapidaCualquierDestino, .containerOpcionRapidaChollos{
     padding: 5px 15px 5px 15px;
     border-radius: 50px;
     border: 1px solid #061c43;
     background: #061c43;
-    width: 30%;
+    width: 22%;
     height: 45px;
     display: flex;
     justify-content: center;
@@ -23,13 +23,13 @@
     align-items: center;
 }
 
-.containerOpcionRapidaEscapadas img, .containerOpcionRapidaExperiencias img, .containerOpcionRapidaCualquierDestino img{
+.containerOpcionRapidaEscapadas img, .containerOpcionRapidaExperiencias img, .containerOpcionRapidaCualquierDestino img, .containerOpcionRapidaChollos img{
     width: 35px;
     height: 35px;
 }
 
 
-.containerOpcionRapidaEscapadas:hover, .containerOpcionRapidaExperiencias:hover, .containerOpcionRapidaCualquierDestino:hover{
+.containerOpcionRapidaEscapadas:hover, .containerOpcionRapidaExperiencias:hover, .containerOpcionRapidaCualquierDestino:hover, .containerOpcionRapidaChollos:hover{
     background-color: #fff;
     color: #061c43;
     border: 1px solid #ccc;

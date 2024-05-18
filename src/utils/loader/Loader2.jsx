@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './Loader.css';
-import logo from '../../images/logo.png'
+import logo from '../../images/icon/logo2SinFondo.png'
 
 const Loader2 = () => {
   return (
@@ -12,7 +12,6 @@ const Loader2 = () => {
       <div className="loader middle"></div>
       <div className="containetTextLoader">
         <img src={logo} alt="" />
-        <div className="text">sweetplan</div>
       </div>
     </div>
   );

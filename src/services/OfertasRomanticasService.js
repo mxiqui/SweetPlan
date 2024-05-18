@@ -5,6 +5,8 @@ import imagenPrueba4 from '../images/paris.jpg'
 import { Alojamiento } from '../models/Alojamiento'
 import { Vuelos } from '../models/Vuelos'
 import { OfertaRomantica } from '../models/OfertaRomantica'
+import {adaptadorEscapadas, adaptadorRomantico} from '../utils/adapters/offersAdapter'
+import {server} from '../utils/Constantes'
 
 const datos= [
     {
@@ -80,27 +82,75 @@ const galeria=[]
 
 export class OfertaRomanticaService{
 
-    findAll(){
-        var ofertas=[];
+    ofertas;
 
-        for(let i=0; i<datos.length; i++){
-            let oferta = new OfertaRomantica(datos[i].id, datos[i].origen, datos[i].imagen, datos[i].destino, datos[i].fechas, galeria, vueloIda, vueloVuelta, alojamiento);
-            ofertas.push(oferta);
-        }
-        return ofertas
-    }
+    async findAll(){
 
-    findByOrigen(origen){
-        var ofertas=[];
+        try {
+            if(this.ofertas==null){
+                const response = await fetch(`${server}/getAllOffers/romantico`, { method: 'GET' });
+                const offers = await response.json();
 
-        for(let i=0; i<datos.length; i++){
-            if(datos[i].origen==origen){
-                let oferta = new OfertaRomantica(datos[i].id, datos[i].origen, datos[i].imagen, datos[i].destino, datos[i].fechas, galeria, vueloIda, vueloVuelta, alojamiento);
-                ofertas.push(oferta);
+                this.ofertas= await adaptadorRomantico(offers);
             }
+            var offers = [];
+
+            this.ofertas.forEach(oferta=>{
+                    offers.push(oferta);
+            })
+
+            console.log(offers)
+            return offers;
+        } catch (error) {
+            return null;
         }
-        return ofertas
+        // var ofertas=[];
+
+        // for(let i=0; i<datos.length; i++){
+        //     let oferta = new OfertaRomantica(datos[i].id, datos[i].origen, datos[i].imagen, datos[i].destino, datos[i].fechas, galeria, vueloIda, vueloVuelta, alojamiento);
+        //     ofertas.push(oferta);
+        // }
+        // return ofertas
     }
+
+
+
+
+    async findByOrigen(origen){
+
+        try {
+            if(this. ofertas==null){
+                const response = await fetch(`${server}/getAllOffers/romantico`, { method: 'GET' });
+                const offers = await response.json();
+                this.ofertas= await adaptadorRomantico(offers);
+            }
+            var offers = [];
+
+            this.ofertas.forEach(oferta=>{
+                if(oferta.getOrigen()==origen){
+                    offers.push(oferta);
+                }
+            })
+
+            console.log(offers)
+
+            return offers;
+        } catch (error) {
+            
+        }
+        // var ofertas=[];
+
+        // for(let i=0; i<datos.length; i++){
+        //     if(datos[i].origen==origen){
+        //         let oferta = new OfertaRomantica(datos[i].id, datos[i].origen, datos[i].imagen, datos[i].destino, datos[i].fechas, galeria, vueloIda, vueloVuelta, alojamiento);
+        //         ofertas.push(oferta);
+        //     }
+        // }
+        // return ofertas
+    }
+
+
+
 
     findById(id){
         var oferta;

@@ -12,6 +12,7 @@ import CaruselImagenes2 from '../../../utils/components/CarruselImagenes2';
 import TarjetaTipo from '../../../utils/Tarjetas/Tipo/TarjetaTipo';
 import FormularioOferta from '../../../utils/formularios/FormularioOferta';
 import Anuncio from '../../Anuncios/Anuncio';
+import CaruselImagenes3 from '../../../utils/components/CaruselImagenes3';
 
 function EscapadaIndex() {
     const params = useParams();
@@ -37,16 +38,18 @@ function EscapadaIndex() {
     }, [id]);
 
 
-
     return (
         <div className="containerOfertaEspecialIndex">
             <Header />
-            <main>
-                <CaruselImagenes2 />
-                {isLoading ? (
+            {isLoading ? (
                     <div>Cargando...</div>
                 ) : (
+            <main>
+            <CaruselImagenes3 images={escapada.getGaleria()} />
+
+                
                     <div className="contenedorFlex">
+
                         <div className="containerDatosOfertas">
                             <TarjetaTipo tipo={"escapada"} />
                             {escapada && (
@@ -62,13 +65,14 @@ function EscapadaIndex() {
                             {escapada && <FormularioOferta oferta={escapada} />}
                         </div>
                     </div>
-                )}
+                
                 <Anuncio tipo={"horizontal"} />
                 <Anuncio tipo={"horizontal"} />
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />
             </main>
+            )}
             <Footer />
         </div>
     );

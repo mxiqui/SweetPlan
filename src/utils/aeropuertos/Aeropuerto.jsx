@@ -1,10 +1,17 @@
-import React from 'react'
-import '../../assets/styles/Aeropuerto.css'
+import React from 'react';
+import '../../assets/styles/Aeropuerto.css';
 
-function Aeropuerto({ciudad, pais, iata}) {
+function Aeropuerto({ ciudad, pais, iata }) {
+  let imagen;
+  try {
+    imagen = require(`../../assets/flags/${pais}.png`);
+  } catch (error) {
+    imagen = require('../../assets/flags/default.png');
+  }
+
   return (
     <div className='containerAeropuertoSing'>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg" alt="" />
+        <img src={imagen} alt="" />
         <div className="containerAeropuertoSingNames">
             <p>{ciudad}</p>
             <p>{pais}</p>
@@ -13,7 +20,7 @@ function Aeropuerto({ciudad, pais, iata}) {
             <p>{iata}</p>
         </div>
     </div>
-  )
+  );
 }
 
-export default Aeropuerto
+export default Aeropuerto;

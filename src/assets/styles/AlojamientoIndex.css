@@ -1,0 +1,40 @@
+.contenedorAuxiliar{
+    margin-bottom: -20px;
+}
+.contenedorAuxiliar img{
+    width: 20px;
+    height: 20px;
+}
+
+.contenedorAuxiliar p{
+    padding: 10px;
+}
+
+.contenedorAuxiliar{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorAuxiliar2{
+    display: flex;
+    align-items: start;
+}
+
+.contenedorAuxiliar2 p{
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.iconoEstrella{
+    width: 20px;
+}
+
+.containerDetallesAlojamiento{
+    width: 75%;
+}
+
+@media screen and (max-width:768px) {
+    .containerDetallesAlojamiento{
+        width: 100%;
+    }
+}

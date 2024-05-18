@@ -487,6 +487,8 @@ export const aeropuertos = [
     "Barbados (Barbados), BGI",
     "Chaguaramas (Trinidad y Tobago), POS",
     "Paria (Trinidad y Tobago), SFG",
+    "Paris (Francia), CDG",
+    "Paris (Francia), ORY",
     "Scarborough (Trinidad y Tobago), TAB",
     "Sevilla (España), SVQ",
     "Valencia (España), VLC",

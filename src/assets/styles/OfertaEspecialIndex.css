@@ -38,8 +38,15 @@
 
 
 @media screen and (max-width:1100px){
-    .containerOfertaEspecialIndex main{
+    .containerOfertaEspecialIndex main .contenedorFlex{
+        flex-wrap: wrap;
         width: 100%;
+    }
+    .containerOfertaEspecialIndex main .contenedorFlex .containerDatosOfertas, .containerOfertaEspecialIndex main  .contenedorFlex .containerFormularioOfertas{
+        width: 100%;
+    }
+    .containerOfertaEspecialIndex main{
+        width: 95%;
         margin: auto;
         padding: 0;
     }

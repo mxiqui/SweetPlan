@@ -22,6 +22,10 @@
   margin-top: -40px;
 }
 
+.containetTextLoader img{
+  width: 175px;
+}
+
 .loader::before {
   content: '';
   width: 10px;

@@ -6,8 +6,10 @@ import imagen2 from '../../images/bali/bali1.jpg'
 import imagen3 from '../../images/bali/bali2.jpg'
 import imagen4 from '../../images/bali/bali2.jpg'
 import imagen5 from '../../images/bali/bali2.jpg'
+import CarruselImagenesMovil from './CarruselImagenesMovil';
 
 function CaruselImagenes3({images}) {
+    console.log(images.length)
 
     const [imagenes, setImagenes]= useState([])
     images.forEach((imagen)=>{
@@ -17,11 +19,14 @@ function CaruselImagenes3({images}) {
     })
 
     return (
-        <div className="containerCarrusel2">
-            {imagenes.map((img, index) => (
-                <div key={index} className="item" style={{ backgroundImage: `url(${img})` }}></div>
-            ))}
-        </div>
+        <>
+            <div className="containerCarrusel2">
+                {imagenes.map((img, index) => (
+                    <div key={index} className="item" style={{ backgroundImage: `url(${img})` }}></div>
+                ))}
+            </div>
+            <CarruselImagenesMovil images={images}/>
+        </>
       );
 }
 

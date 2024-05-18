@@ -10,8 +10,6 @@ function MasVisitado({ imagen, nombre, precio }) {
 
   return (
     <div className='containerMasVisitado' style={{backgroundImage: `url(${imagen})`}} onClick={openMostVisited}>
-      <h4>Visita {nombre}</h4>
-      <p>Desde {precio}€</p>
     </div>
   );
 }
