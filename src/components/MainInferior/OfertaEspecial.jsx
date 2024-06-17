@@ -29,7 +29,7 @@ function OfertaEspecial({ oferta}) {
 			<img src={oferta.getImagen()} alt={oferta.getDestino()} />
 			<div className='overlay'>
 				<div className='destino'>{oferta.getDestino()}</div>
-				<div className='precio'>{oferta.getPrecio()} €</div>
+				<div className='precio'>{oferta.getPrecio().toFixed(2)} €</div>
 				<div className='fecha'>{oferta.getFechas()}</div>
 			</div>
 			</div>

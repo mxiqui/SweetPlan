@@ -50,7 +50,7 @@ function RomanticoInternacional({oferta}) {
                     <p className='fechaEscapada'>{oferta.getFechas()}</p>
                 </div>
                 <div className="containerPrecioEscapada">
-                    <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio()} € </span></p>
+                    <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio().toFixed(2)/2} € </span></p>
                 </div>
                 {/* <p className='descripcionEscapada'>{oferta.descripcion}</p> */}
                 <button onClick={handleClick}>Visitar</button>

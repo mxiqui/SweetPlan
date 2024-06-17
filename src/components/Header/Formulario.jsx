@@ -103,7 +103,7 @@ function Formulario(){
 
     return (
         <datosRutaContext.Provider value={{rutaSeleccionada, dispatchRuta}}>
-        <form onSubmit={handleSubmit(handleForm)}>
+        <form className='formularioBus' onSubmit={handleSubmit(handleForm)}>
 
             {/* Contenedor input Desde */}
             <div className="inputOrigen" id='inputOrigen'>

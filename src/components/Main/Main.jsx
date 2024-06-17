@@ -43,8 +43,8 @@ function Main() {
   }, []);
 
   const [opcionSeleccionada, dispatch]=useReducer(opcionesReducer, {
-    default:true,
-    escapadas:false,
+    default:false,
+    escapadas:true,
     romantico:false
   });
 

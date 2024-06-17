@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import imgAvion from '../../../../images/icon/avion2.png'
 import '../../../../assets/styles/ViajeOrganizadoCaro.css'
+import { useNavigate } from 'react-router-dom';
 
 function ViajeOrganizadoBarato({alojamiento, vuelo, datos}) {
 
+    console.log(vuelo)
+
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        sessionStorage.setItem('vuelo', JSON.stringify(vuelo));
-        sessionStorage.setItem('alojamiento', JSON.stringify(alojamiento));
-        window.location.href = "../ofertaPlanificada";
+        navigate('/ofertaPlanificada', {
+        state: {
+            vuelo,
+            alojamiento,
+            datos
+        }
+        });
     };
 
 

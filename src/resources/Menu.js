@@ -5,7 +5,7 @@ export const opcionesMenu=[ { texto: "Viajes más populares", enlace: "/mostVisi
 { texto: "Ofertas especiales", enlace: "/#containerContenedorMainInferior" },
 { texto: "Experiencias romanticas", enlace: "/#containerContenedorMainInferior" },
 { texto: "Experiencias unicas", enlace: "#" },
-{ texto: "Contacto", enlace: "#" },
+{ texto: "Contacto", enlace: "/contacto" },
 { texto: "Preguntas Frecuentes (FAQ)", enlace: "#" },
 { texto: "Sobre Nosotros", enlace: "#" },
 { texto: "Ajustes", enlace: "#" }]

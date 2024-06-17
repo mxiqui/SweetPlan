@@ -26,7 +26,8 @@ function SliderOffers() {
         offers.push({
             title:oferta._destino,
             description: oferta._precio,
-            imageUrl: oferta._imagen
+            imageUrl: oferta._imagen,
+            id:oferta._id
         })
     })
 

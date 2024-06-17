@@ -10,6 +10,7 @@ import Loader2 from '../../utils/loader/Loader2';
 import Romantico from '../Main/Romantico/RomanticoNacional';
 import OfertasRomanticas from '../Main/Romantico/OfertasRomanticas';
 import Cookies from 'js-cookie';
+import SliderOffers from '../../utils/components/Slider';
 
 
 export const pantallaEsperaContext = createContext();
@@ -84,6 +85,9 @@ function Inicio() {
             <MainInferior />
             <Anuncio tipo={"horizontal"}/>
             {!suscrito && <Suscripcion />}
+            <div className='contenedorAuxiliar1100px'>
+              <SliderOffers/>
+            </div>
             <Footer />
           </ScrollContext.Provider>
         )}

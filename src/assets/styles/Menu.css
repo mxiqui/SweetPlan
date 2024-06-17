@@ -27,14 +27,12 @@
   width: 30px;
 }
 
-.cabeceraMenu img:hover {
-  background-color: #dddddd5d;
-}
 
 .cabeceraMenu h3 {
   font-family: baloo;
   color: #fff;
   font-size: 18px;
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 720px) {

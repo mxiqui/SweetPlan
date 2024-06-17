@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react'
 import imgAvion from '../../../../images/icon/avion2.png'
 import '../../../../assets/styles/ViajeOrganizadoCaro.css'
+import { useNavigate } from 'react-router-dom';
 
 function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
 
 
+    const navigate = useNavigate();
+
     const handleClick = () => {
-        sessionStorage.setItem('vuelo', JSON.stringify(vuelo));
-        sessionStorage.setItem('alojamiento', JSON.stringify(alojamiento));
+        navigate('/ofertaPlanificada', {
+        state: {
+            vuelo,
+            alojamiento,
+            datos
+        }
+        });
     };
 
 

@@ -54,7 +54,7 @@ function PlanVuelos({ida, vuelta}) {
         
                     <div className='cAirplanes tarjetaItinerario'>
                         <div className='containerAirlines'>
-                            <img className='imageAirline' src={ida.getImageAirline()} alt="" />
+                            <img className='imageAirline' src={vuelta.getImageAirline()} alt="" />
                             <h5>{vuelta.getAirline()}</h5>
                         </div>
         

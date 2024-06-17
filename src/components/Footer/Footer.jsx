@@ -10,6 +10,10 @@ const Footer = () => {
       case 'Terminos de uso':
           window.location.href = `/termsOfUse`;
         break;
+
+      case 'Contacto':
+        window.location.href = `/contacto`;
+      break;
     
       default:
         break;
@@ -21,7 +25,7 @@ const Footer = () => {
       <div className="footerContent">
         <ul>
           <li>Info</li>
-          <li>Contacto</li>
+          <li onClick={handleClick}>Contacto</li>
           <li>FaQs</li>
         </ul>
         <ul>

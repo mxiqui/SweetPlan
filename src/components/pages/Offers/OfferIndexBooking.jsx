@@ -19,7 +19,7 @@ import SliderOffers from "../../../utils/components/Slider";
 
 
 
-function OfferIndex() {
+function OfferIndexBooking() {
 
 
     const location = useLocation();
@@ -28,7 +28,7 @@ function OfferIndex() {
 
     const vueloIda= new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, datos.fecha_ida,null )
     const vueloVuelta= new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, datos.fecha_vuelta,null )
-    let puntuacion = alojamiento.puntuacion;
+    let puntuacion = alojamiento.rating;
 
     if (puntuacion < 5) {
         puntuacion *= 2;
@@ -36,15 +36,15 @@ function OfferIndex() {
     
     const alojamientoo = new Alojamiento(
         alojamiento.id, 
-        alojamiento.nombre, 
+        alojamiento.name, 
         puntuacion, 
         puntuacion, 
-        alojamiento.direccion, 
+        alojamiento.address, 
         alojamiento.precio, 
         calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
         datos.fecha_ida + datos.fecha_vuelta, 
-        alojamiento.url, 
-        alojamiento.galeria
+        alojamiento.link, 
+        alojamiento.imagen
     );    
 
     console.log(alojamiento)
@@ -94,4 +94,4 @@ function OfferIndex() {
     
 }
 
-export default OfferIndex;
+export default OfferIndexBooking;

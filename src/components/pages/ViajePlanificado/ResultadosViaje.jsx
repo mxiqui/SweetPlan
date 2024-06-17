@@ -18,6 +18,8 @@ function ResultadosViajeConVuelos() {
     setSelectedOption(newPosition);
   };
 
+  console.log(viaje.vuelos)
+
   if(viaje.booking== null){
     return (
       <div className='containerResultadosViaje'>

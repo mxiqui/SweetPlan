@@ -1,11 +1,12 @@
 .containerEsperaPrincipal{
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-image: url(../../images/maldivas.jpg);
     background-size: cover;
+    z-index: 20;
 }
 
 .containerEspera{

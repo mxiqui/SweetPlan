@@ -30,6 +30,8 @@ function EscapadasFinDeSemana() {
         setOrigen(e.target.value);
     };
 
+    console.log(ofertas)
+
     return (
         <div className='containerPrincipalEscapadas'>
             <h2 className='tituloOferta'>Escapadas Fin de semana</h2>

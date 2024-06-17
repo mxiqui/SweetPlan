@@ -6,10 +6,12 @@ import Slider from 'react-slick';
 
 // Componente de oferta individual
 const OfferCard = ({ offer }) => (
-    <div style={{ margin: 10}}>
+    <div style={{ margin: 10}} onClick={()=>{
+      window.location.href=`/specialOffer/${offer.id}`
+    }}>
         <img src={offer.imageUrl} alt={offer.title} style={{ width: '175px', height: '150px', borderRadius: '15px' }} />
         <h3 style={{color: '#000', marginBottom:'-15px', paddingLeft:'5px', marginTop:'0px'}}>{offer.title}</h3>
-        <p style={{paddingLeft:'5px'}}>{offer.description}</p>
+        <p style={{paddingLeft:'5px'}}>{offer.description.toFixed(2)} €</p>
     </div>
 );
 
@@ -53,6 +55,7 @@ const OffersSlider = ({ offers }) => {
     ]
   };
 
+  console.log(offers)
   return (
     <div className="containerSliderSlick" style={{ margin: '0 auto', padding: '40px', maxWidth: '100%' }}>
       <Slider {...settings}>

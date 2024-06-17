@@ -5,6 +5,8 @@ import ViajeOrganizadoBarato from '../ofertas/ViajeOrganizadoBarato'
 
 function ViajesBaratos({alojamientos, vuelos, datos}) {
 
+    console.log(vuelos)
+
     if(vuelos!=null && vuelos!='No hay vuelos disponibles'){
         return (
             <div className='containerViajesCaros'>

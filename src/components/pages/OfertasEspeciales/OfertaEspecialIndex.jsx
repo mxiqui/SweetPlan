@@ -80,7 +80,7 @@ function OfertaEspecialIndex() {
                                 <>
                                     <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${ofertaEspecial._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
                                     {isMobile && <Anuncio tipo={"horizontal"}/>}
-                                    <Itinerario data={ofertaEspecial} />
+                                    <Itinerario data={ofertaEspecial}  almacenado={false}/>
                                     <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                                 </>
                             )}

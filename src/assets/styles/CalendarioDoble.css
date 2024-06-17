@@ -118,6 +118,55 @@
     height: 25px;
     transform: rotate(-90deg);
 }
+  
+  .calendarioDoble {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .react-datepicker {
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .react-datepicker__header {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    color: #333;
+  }
+  
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .react-datepicker__day--keyboard-selected {
+    background-color: #4a90e2;
+  }
+  
+  .react-datepicker__day:hover {
+    background-color: #d0e9ff;
+  }
+  
+  .react-datepicker__month {
+    margin: 16px;
+  }
+  
+  .react-datepicker__current-month {
+    font-weight: bold;
+  }
+  
+  .react-datepicker__day--outside-month {
+    color: #ccc;
+  }
+  
 
 
 @media screen and (max-width:768px) {

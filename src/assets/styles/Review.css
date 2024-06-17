@@ -1,10 +1,11 @@
 .containerReview{
     width: 45%;
-    padding: 10px;
+    padding: 0px 10px;
     display: flex;
     flex-wrap: wrap;
     background: #fff;
     border-radius: 15px;
+    border: 1px solid #ccc;
 }
 
 .containerReviewTop{
@@ -46,6 +47,10 @@
 .fechaReview{
     color: #5c5c5c;
     font-size: 14px;
+}
+
+.containerReviewBottom{
+    margin-top: -20px;
 }
 
 @media screen and (max-width:768px) {

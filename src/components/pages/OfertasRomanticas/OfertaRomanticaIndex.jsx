@@ -66,28 +66,37 @@ function OfertaRomanticaIndex() {
         <div className="containerOfertaEspecialIndex">
             <Header />
             <main>
-                <CaruselImagenes3 images={ofertaEspecial ? ofertaEspecial.getGaleria() : []} />
+                
                 {error && <div>Ha ocurrido un fallo: {error}</div>} {/* Renderizar mensaje de error */}
                 {isLoading ? (
                     <div>Cargando...</div>
                 ) : (
-                    <div className="contenedorFlex">
-                        <div className="containerDatosOfertas">
-                            <TarjetaTipo tipo={"ofertaEspecial"} />
-                            {ofertaEspecial && (
-                                <>
-                                    <TituloOferta oferta={ofertaEspecial} texto={"viaje fantastico a"} />
-                                    <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${ofertaEspecial._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
-                                    {isMobile && <Anuncio tipo={"horizontal"} />}
-                                    <Itinerario data={ofertaEspecial} />
-                                    <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
-                                </>
-                            )}
-                        </div>
-                        <div className="containerFormularioOfertas">
-                            {ofertaEspecial && <FormularioOferta oferta={ofertaEspecial} />}
-                        </div>
+                    <>
+                    <TarjetaTipo tipo={"romantico"} />
+                    <div className='containerTituloOferta'>
+                        <h3 className='esloganDescripcion'>❤️ Disfruta de un viaje fantastico a {ofertaEspecial.getDestino()} con tu pareja ❤️</h3>
+                            <div className='containerDescripcionPrecio'>
+                                <h5 className='precioDescripcion'>¡Desde <span>{(ofertaEspecial.getPrecio()/2).toFixed(2)}€ p.p!</span> con vuelos y alojamiento incluidos</h5>
+                            </div>
                     </div>
+                    <CaruselImagenes3 images={ofertaEspecial ? ofertaEspecial.getGaleria() : []} />
+                    <div className="contenedorFlex">
+                            <div className="containerDatosOfertas">
+                                {ofertaEspecial && (
+                                    <>
+                                        <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${ofertaEspecial._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
+                                        {isMobile && <Anuncio tipo={"horizontal"} />}
+                                        <Itinerario data={ofertaEspecial} almacenado={false} />
+                                        <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
+                                    </>
+                                )}
+                            </div>
+                            <div className="containerFormularioOfertas">
+                                {ofertaEspecial && <FormularioOferta oferta={ofertaEspecial} />}
+                            </div>
+                        </div>
+                    </>
+                    
                 )}
                 <Anuncio tipo={"horizontal"} />
                 <SliderOffers/>

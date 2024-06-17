@@ -7,6 +7,8 @@ function Escapada({oferta}) {
     const handleClick = () => {
             window.location.href = `/escapadaFin/${oferta.getId()}`;
     };
+
+    console.log(oferta)
     
     return (
         <div className='containerEscapada' onClick={handleClick}>
@@ -17,7 +19,7 @@ function Escapada({oferta}) {
                         <p className='fechaEscapada'>{oferta.getFechas()}</p>
                     </div>
                     <div className="containerPrecioEscapada">
-                        <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio()} € </span></p>
+                        <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio().toFixed(2)} € </span></p>
                     </div>
                     {/* <p className='descripcionEscapada'>{oferta.descripcion}</p> */}
                     <button>Visitar</button>

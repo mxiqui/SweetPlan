@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 
 
-import iconoPalmera from '../../images/icon/palmera.png'
-import iconoMaletas from '../../images/icon/maletas.png'
-import iconoMundo from '../../images/icon/destino.png'
-import iconoCorazon from '../../images/icon/corazon.png'
+import iconoPalmera from '../../images/icon/palmeraBlanca.png'
+import iconoCorazon from '../../images/icon/corazonBlanco.svg'
+import iconoTierra from '../../images/icon/tierra.svg'
 
 import '../../assets/styles/OpcionesRapidas.css'
 import { opcionesContext } from './Main'
@@ -21,6 +20,7 @@ function OpcionesRapidas() {
   }
   const ABRIR_CUALQUIER=()=>{
     dispatch({ type: 'default' });
+    window.location.href="/mostVisited"
   }
 
   return (
@@ -36,11 +36,12 @@ function OpcionesRapidas() {
         </div>
 
         <div className="containerOpcionRapidaChollos" onClick={ABRIR_ESCAPADAS}>
+          <img src={iconoTierra} alt="" />
             <h3>Chollos</h3>
         </div>
 
         <div className="containerOpcionRapidaCualquierDestino" onClick={ABRIR_CUALQUIER}>
-            <img src={iconoMundo} alt="" />
+            <img src={iconoTierra} alt="" />
             <h3>Más populares</h3>
         </div>
     </div>

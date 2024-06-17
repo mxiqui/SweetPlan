@@ -105,7 +105,8 @@ export const adaptadorOfertaEspecial=async (oferta)=>{
         oferta.Alojamiento.precio,
         oferta.Alojamiento.noches,
         oferta.Alojamiento.fecha,
-        oferta.Alojamiento.url
+        oferta.Alojamiento.url,
+        oferta.Alojamiento.galeria
     )
 
     var offer= new OfertaEspecial(
