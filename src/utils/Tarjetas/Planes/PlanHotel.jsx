@@ -16,8 +16,13 @@ function PlanHotel({ alojamiento }) {
         }
     }, [alojamiento]); // Dependencia alojamiento para actualizar cuando cambie
 
+    
+    const open = () =>{
+        window.location.href=`/alojamiento/${alojamiento.getId()}`
+    }
+
     return (
-        <div className='containerPlanHotel tarjetaItinerario'>
+        <div className='containerPlanHotel tarjetaItinerario' onClick={open}>
             <div className="containerPlanHotelImagen"></div>
             <div className="containerPlanHotelDatos">
                 <div className='nombre'>

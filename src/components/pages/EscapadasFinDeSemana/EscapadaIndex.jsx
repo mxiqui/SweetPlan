@@ -13,6 +13,7 @@ import TarjetaTipo from '../../../utils/Tarjetas/Tipo/TarjetaTipo';
 import FormularioOferta from '../../../utils/formularios/FormularioOferta';
 import Anuncio from '../../Anuncios/Anuncio';
 import CaruselImagenes3 from '../../../utils/components/CaruselImagenes3';
+import SliderOffers from '../../../utils/components/Slider';
 
 function EscapadaIndex() {
     const params = useParams();
@@ -67,6 +68,7 @@ function EscapadaIndex() {
                     </div>
                 
                 <Anuncio tipo={"horizontal"} />
+                <SliderOffers/>
                 <Anuncio tipo={"horizontal"} />
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />

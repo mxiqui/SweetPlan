@@ -85,7 +85,7 @@ export class EscapadaFindesemanaService{
 
     ofertas;
 
-    findAll(){
+    async findAll(){
         fetch('GET', `${server}/getAllOffer`)
             .then((offers)=>{
                 console.log(offers)

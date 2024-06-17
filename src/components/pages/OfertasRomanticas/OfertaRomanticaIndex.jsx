@@ -16,6 +16,7 @@ import CaruselImagenes3 from '../../../utils/components/CaruselImagenes3';
 import TarjetaTipo from '../../../utils/Tarjetas/Tipo/TarjetaTipo';
 import FormularioOferta from '../../../utils/formularios/FormularioOferta';
 import { OfertaEspecialService } from '../../../services/OfertaEspecialService';
+import SliderOffers from '../../../utils/components/Slider';
 
 function OfertaRomanticaIndex() {
     const params = useParams();
@@ -89,6 +90,7 @@ function OfertaRomanticaIndex() {
                     </div>
                 )}
                 <Anuncio tipo={"horizontal"} />
+                <SliderOffers/>
                 <Anuncio tipo={"horizontal"} />
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />

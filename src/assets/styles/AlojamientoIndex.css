@@ -33,6 +33,21 @@
     width: 75%;
 }
 
+.containerCabeceraAlojamiento{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnAlojamiento{
+    padding: 2px 10px;
+    height: 40px;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+
 @media screen and (max-width:768px) {
     .containerDetallesAlojamiento{
         width: 100%;

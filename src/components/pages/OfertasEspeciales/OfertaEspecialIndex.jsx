@@ -16,6 +16,8 @@ import TarjetaTipo from "../../../utils/Tarjetas/Tipo/TarjetaTipo";
 import Anuncio from "../../Anuncios/Anuncio";
 import FormularioOferta from "../../../utils/formularios/FormularioOferta";
 import CaruselImagenes3 from "../../../utils/components/CaruselImagenes3";
+import Slider from "react-slick";
+import SliderOffers from "../../../utils/components/Slider";
 
 function OfertaEspecialIndex() {
     const params = useParams();
@@ -67,14 +69,15 @@ function OfertaEspecialIndex() {
                     <div>Cargando...</div>
                 ) : (
             <main>
+                <TarjetaTipo tipo={"ofertaEspecial"} />
+                <TituloOferta oferta={ofertaEspecial} texto={"viaje fantastico a"} />
+
                 <CaruselImagenes3 images={ofertaEspecial.getGaleria()} />
                 
                     <div className="contenedorFlex">
                         <div className="containerDatosOfertas">
-                            <TarjetaTipo tipo={"ofertaEspecial"} />
                             {ofertaEspecial && (
                                 <>
-                                    <TituloOferta oferta={ofertaEspecial} texto={"viaje fantastico a"} />
                                     <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${ofertaEspecial._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
                                     {isMobile && <Anuncio tipo={"horizontal"}/>}
                                     <Itinerario data={ofertaEspecial} />
@@ -89,6 +92,7 @@ function OfertaEspecialIndex() {
                 
                 <Anuncio tipo={"horizontal"} />
                 <Anuncio tipo={"horizontal"} />
+                <SliderOffers/>
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />
                 <Anuncio tipo={"cuadrado"} />

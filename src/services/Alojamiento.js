@@ -16,3 +16,20 @@ export const  getAlojamientoById = async(id)=>{
         return null;
     }
 }
+
+
+export const getReviewsBooking = async(id)=>{
+    try {
+        const response = await fetch(`${server}/getReviewsBooking/${id}`);
+        if (!response.ok) {
+            throw new Error('Hubo un problema al realizar la solicitud.');
+        }
+        const data = await response.json();
+        console.log(data)
+        return data;
+        
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}

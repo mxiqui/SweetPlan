@@ -16,6 +16,7 @@ import ViajePlanificadoIndex from "./components/pages/ViajePlanificado/ViajePlan
 import PruebasIndex from "./components/pages/Pruebas/PruebasIndex";
 import OfferIndex from "./components/pages/Offers/OfferIndex";
 import AlojamientoIndex from "./components/pages/Alojamiento/AlojamientoIndex";
+import Prueba2 from "./components/pages/Pruebas/Prueba2";
 
 
   function App() {
@@ -30,6 +31,7 @@ import AlojamientoIndex from "./components/pages/Alojamiento/AlojamientoIndex";
             <Route path="/termsOfUse" element={<TerminosDeUsoIndex/>} />
             <Route path="/viajePlanificado" element={<ViajePlanificadoIndex/>} />
             <Route path="/pruebas" element={<PruebasIndex/>} />
+            <Route path="/prueba2" element={<Prueba2/>} />
             <Route path="/ofertaPlanificada" element={<OfferIndex/>} />
             <Route path="/alojamiento/:id" element={<AlojamientoIndex/>} />
           </Routes>

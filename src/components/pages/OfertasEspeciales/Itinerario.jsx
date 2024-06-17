@@ -5,10 +5,11 @@ import PlanHotel from '../../../utils/Tarjetas/Planes/PlanHotel'
 
 function Itinerario({data}) {
 
+
     return (
         <div className='containerItinerario'>
             <PlanVuelos ida={data.getVueloIda()} vuelta={data.getVueloVuelta()}/>
-            <PlanHotel alojamiento={data.getAlojamiento()}/>
+            <PlanHotel  alojamiento={data.getAlojamiento()}/>
         </div>
     )
 }

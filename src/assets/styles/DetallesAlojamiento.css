@@ -1,9 +1,14 @@
-
-
+.containerDetallesAlojamiento{
+    
+}
 .containerDetallesAlojamientoDetalle{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 20px;  
+    padding: 10px;
+    
 }
 
 .containerDetallesAlojamientoDetalle div{
@@ -28,7 +33,6 @@
     .containerDetallesAlojamiento{
         background-color: #fff;
         border-radius: 20px;  
-        padding: 5px;  
     }
     
 }
