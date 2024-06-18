@@ -18,7 +18,7 @@ function ResultadosViajeConVuelos() {
     setSelectedOption(newPosition);
   };
 
-  console.log(viaje.vuelos)
+  console.log(viaje.vuelos.lenght)
 
   if(viaje.booking== null){
     return (
@@ -50,7 +50,7 @@ function ResultadosViajeConVuelos() {
               <p >Estas son los planes que te recomendamos</p>
 
           {/* Validación para comprobar si hay vuelos disponibles */}
-          {viaje.vuelos && viaje.vuelos !== "No hay vuelos disponibles" ? (
+          {viaje.vuelos && viaje.vuelos !== "No hay vuelos disponibles"  ? (
           <div className="containerResultadosViajeDiv">
                 {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={viaje.vuelos} datos={datos} />}
                 {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.airbnb} vuelos={viaje.vuelos}  datos={datos} alojamientos2={viaje.booking} />}

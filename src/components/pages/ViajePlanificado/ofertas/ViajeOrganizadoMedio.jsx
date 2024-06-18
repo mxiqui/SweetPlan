@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import imgAvion from '../../../../images/icon/avion2.png'
 import '../../../../assets/styles/ViajeOrganizadoCaro.css'
 import { useNavigate } from 'react-router-dom';
+import { calcularNumeroDeNoches } from '../../../../utils/adapters/functions';
 
 function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
 
@@ -16,6 +17,33 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
             datos
         }
         });
+    };
+
+    const handleClick2 = () => {
+        
+        const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = `/alojamientoPlaneado/${alojamiento.id}/${alojamiento.nombre}`;
+
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'data';
+            input.value = JSON.stringify({
+                id: alojamiento.id,
+                name: alojamiento.nombre,
+                puntuacion: alojamiento.puntuacion,
+                direccion: alojamiento.direccion,
+                precio: alojamiento.precio,
+                noches: calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
+                totalPrice: alojamiento.precioTotal,
+                galeria:alojamiento.galeria,
+                link:alojamiento.url 
+            });
+
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        
     };
 
 
@@ -64,7 +92,7 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
         )
     }else{
         return (
-            <div className='containerViajeOrganizadoCaro' onClick={handleClick}>
+            <div className='containerViajeOrganizadoCaro' onClick={handleClick2}>
                 <div className="top" style={{backgroundImage: `url(${alojamiento.galeria[2]})`}}>
     
                    
