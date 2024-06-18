@@ -7,6 +7,7 @@ import { calcularNumeroDeNoches } from '../../../../utils/adapters/functions';
 function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
 
 
+
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -38,7 +39,7 @@ function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
                 precio: alojamiento.precio,
                 noches: calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
                 totalPrice: alojamiento.precioTotal,
-                galeria:alojamiento.galeria,
+                galeria:alojamiento.galeria.split(';'),
                 link:alojamiento.url 
             });
 
@@ -47,6 +48,7 @@ function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
             form.submit();
         
     };
+
 
     if(vuelo!=null){
         return (
@@ -79,7 +81,7 @@ function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>
-                        <p className='precioAlojamiento'><b>{((alojamiento.precioTotal+vuelo[0].precio)/datos.personas).toFixed(2)}€</b> <br/>  por persona</p>
+                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.precioTotal)+parseFloat(vuelo[0].precio))/datos.personas).toFixed(2)}€</b> <br/>  por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">
@@ -107,7 +109,7 @@ function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>
-                        <p className='precioAlojamiento'><b>{(alojamiento.precioTotal/datos.personas).toFixed(2)}€</b> <br/>  por persona</p>
+                        <p className='precioAlojamiento'><b>{(parseFloat(alojamiento.precioTotal)/datos.personas).toFixed(2)}€</b> <br/>  por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">

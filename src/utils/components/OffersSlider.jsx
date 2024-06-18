@@ -55,8 +55,7 @@ const OffersSlider = ({ offers }) => {
     ]
   };
 
-  console.log(offers)
-  return (
+    return (
     <div className="containerSliderSlick" style={{ margin: '0 auto', padding: '40px', maxWidth: '100%' }}>
       <Slider {...settings}>
         {offers.map((offer, index) => (

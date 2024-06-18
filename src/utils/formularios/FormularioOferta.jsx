@@ -22,25 +22,31 @@ function FormularioOferta({ oferta }) {
     }, []);
 
     return (
-        <form action="" className="formularioOfertaEspecial">
-            <div className="containerFormularioCabecera">
+        // <form action="" className="formularioOfertaEspecial">
+        //     {/* <div className="containerFormularioCabecera">
 
 
-                <div>
-                    <p className="precioForm">
-                        Desde <span>{oferta.getPrecio()} € </span>
-                    </p>
-                    <p className="fechaForm">{oferta.getFechas()}</p>
-                </div>
-                <button>Ver Oferta</button>
-                <p className="containerFormularioCabeceraSalida">Salida desde Madrid</p>
-            </div>
-            <div className="containerFormularioBody">
-                <p>¿Deseas viajar desde otro lugar o en otras fechas?</p>
-                <button disabled>Ver más opciones</button>
-            </div>
-            {!isMobile && <Anuncio tipo={'horizontal'} />}
-        </form>
+        //         <div>
+        //             <p className="precioForm">
+        //                 Desde <span>{oferta.getPrecio()} € </span>
+        //             </p>
+        //             <p className="fechaForm">{oferta.getFechas()}</p>
+        //         </div>
+        //         <button>Ver Oferta</button>
+        //         <p className="containerFormularioCabeceraSalida">Salida desde Madrid</p>
+        //     </div>
+        //     <div className="containerFormularioBody">
+        //         <p>¿Deseas viajar desde otro lugar o en otras fechas?</p>
+        //         <button disabled>Ver más opciones</button>
+        //     </div>
+        //     {!isMobile && <Anuncio tipo={'horizontal'} />} */}
+        //     {/* <Anuncio tipo={"vertical"}/> */}
+        //     <div className="containerAnuncio2">
+
+        //     </div>
+        // </form>
+        <div className="containerAuxiliar2">
+        </div>
     );
 }
 

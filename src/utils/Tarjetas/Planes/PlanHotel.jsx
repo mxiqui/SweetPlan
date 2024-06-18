@@ -4,7 +4,6 @@ import '../../../assets/styles/PlanHotel.css';
 function PlanHotel({ alojamiento, almacenado }) {
     const [puntuacion, setPuntuacion] = useState();
 
-    console.log(alojamiento, almacenado)
 
     useEffect(() => {
         const puntuation = alojamiento.getPuntuation()*2;
@@ -47,6 +46,7 @@ function PlanHotel({ alojamiento, almacenado }) {
         }
     };
 
+
     return (
         <div className='containerPlanHotel tarjetaItinerario' onClick={open}>
             {/* <div className="containerPlanHotelImagen"></div> */}
@@ -57,7 +57,7 @@ function PlanHotel({ alojamiento, almacenado }) {
                     <span>★★★</span>
                 </div>
                 <div className='containerPlanHotelDatosValoracion'>
-                    <span className={`nota ${puntuacion}`}>{alojamiento.getPuntuation()*2}</span>
+                    <span className={`nota ${puntuacion}`}>{alojamiento.getPuntuation()}</span>
                     <p className='nota2'>{(alojamiento.getValoration())}</p>
                 </div>
                 <div className='containerPlanHotelDireccion'>

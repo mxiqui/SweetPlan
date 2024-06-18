@@ -110,10 +110,10 @@ function AlojamientoPlaneado() {
                         <div className='containerDetallesAlojamiento'>
                             <Descripcion descripcion={"Este agradable hotel se encuentra junto a la reserva natural de Breña. Dispone de un bonito jardín con piscina al aire libre de temporada, solárium y conexión Wi-Fi gratuita. <br><br> Se halla a 100 metros de la playa de Castillejos. Las habitaciones de La Breña presentan una decoración clásica en tonos pastel. Cuentan con aire acondicionado, vistas hermosas, TV de plasma con canales vía satélite y baño privado con secador de pelo. <br><br> Cada mañana se sirve un desayuno continental en el restaurante del hotel, que tiene una preciosa terraza con vistas al mar. También ofrece un menú del día para el almuerzo y platos tradicionales elaborados con productos de la zona. <br><br> El hotel goza de una ubicación idónea para disfrutar de la playa y el campo. Se encuentra a solo 40 metros de la pintoresca cueva Las Cortinas y a 700 metros del centro de la ciudad, donde encontrará diversos restaurantes y comercios. La Breña ofrece aparcamiento privado gratuito. Está a 10 km de Conil de la Frontera y a menos de 1 hora en coche de Cádiz."} />
                             <DetallesAlojamiento />
-                            <Anuncio tipo={"horizontal"} />
+                            {/* <Anuncio tipo={"horizontal"} /> */}
                         </div>
                         {reviews && <Reviews reviews={{ company: alojamiento.company, data: reviews }} />}
-                        <Anuncio tipo={"horizontal"} />
+                        {/* <Anuncio tipo={"horizontal"} /> */}
                         <SliderOffers />
                         <Anuncio tipo={"horizontal"} />
                     </div>

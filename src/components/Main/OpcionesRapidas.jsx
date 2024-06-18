@@ -35,10 +35,10 @@ function OpcionesRapidas() {
             <h3>Románticas</h3>
         </div>
 
-        <div className="containerOpcionRapidaChollos" onClick={ABRIR_ESCAPADAS}>
+        {/* <div className="containerOpcionRapidaChollos" onClick={ABRIR_ESCAPADAS}>
           <img src={iconoTierra} alt="" />
             <h3>Chollos</h3>
-        </div>
+        </div> */}
 
         <div className="containerOpcionRapidaCualquierDestino" onClick={ABRIR_CUALQUIER}>
             <img src={iconoTierra} alt="" />

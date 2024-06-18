@@ -4,7 +4,6 @@ import '../../../../assets/styles/ViajesCaros.css'
 
 function ViajesCaros({alojamientos, vuelos, datos}) {
 
-    console.log(alojamientos)
 
     if(vuelos!=null && vuelos!='No hay vuelos disponibles'){
         return (

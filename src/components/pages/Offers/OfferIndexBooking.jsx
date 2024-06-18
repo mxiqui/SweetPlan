@@ -58,7 +58,7 @@ function OfferIndexBooking() {
                 const data = await response.json();
                 setGaleria(data);
                 const nuevaOferta = new OfertaEspecial(null, data[0], datos.destino, datos.fecha_ida + datos.fecha_vuelta, data, null, vueloIda, vueloVuelta, alojamientoo);
-                setOferta(nuevaOferta);
+                await setOferta(nuevaOferta);
             } else {
                 console.log('Error al obtener las reviews:', response.statusText);
             }
@@ -66,6 +66,14 @@ function OfferIndexBooking() {
 
         cargarImagenes();
     }, []);
+
+    useEffect(() => {
+        if (oferta) {
+            console.log(oferta);
+        }
+    }, [oferta]);
+
+    console.log(galeria)
 
     return (
         <div className="containerOfertaEspecialIndex">
@@ -76,11 +84,11 @@ function OfferIndexBooking() {
                 {galeria.length > 0 && <CaruselImagenes3 images={galeria} />}
                 <div className="contenedorFlex">
                     <div className="containerDatosOfertas">
-                        {oferta && (
+                        {(oferta && galeria.length > 0) && (
                             <>
                                 <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${oferta.getDestino()} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
-                                <Itinerario data={oferta} almacenado={true} />
-                                <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
+                                <Itinerario data={oferta} almacenado={true} dataOpcional={galeria}/>
+                                <p className="alertaPrecios">*Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                             </>
                         )}
                     </div>

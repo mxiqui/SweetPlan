@@ -80,7 +80,7 @@ function ViajeOrganizadoBarato({alojamiento, vuelo, datos}) {
                             <span>Precio vuelos y alojamiento</span>
                         </p>
     
-                        <p className='precioAlojamiento'><b>{((alojamiento.precio_total + vuelo[0].precio)/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
+                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.precio_total) + parseFloat(vuelo[0].precio))/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">
@@ -109,7 +109,7 @@ function ViajeOrganizadoBarato({alojamiento, vuelo, datos}) {
                             <span>Precio vuelos y alojamiento</span>
                         </p>
     
-                        <p className='precioAlojamiento'><b>{(alojamiento.precio_total/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
+                        <p className='precioAlojamiento'><b>{(parseFloat(alojamiento.precio_total)/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">

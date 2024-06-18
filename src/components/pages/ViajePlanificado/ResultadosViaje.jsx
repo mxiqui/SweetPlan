@@ -18,7 +18,6 @@ function ResultadosViajeConVuelos() {
     setSelectedOption(newPosition);
   };
 
-  console.log(viaje.vuelos.lenght)
 
   if(viaje.booking== null){
     return (
@@ -44,7 +43,7 @@ function ResultadosViajeConVuelos() {
   }else{
     return (
       <div className='containerResultadosViaje'>
-              <p className='textoPresupuesto'>Seleccione el presupuesto</p>
+              <p className='textoPresupuesto'>Seleccione la acomodación</p>
               <ThreeWaySwitch onChange={handleSwitchChange} />
   
               <p >Estas son los planes que te recomendamos</p>

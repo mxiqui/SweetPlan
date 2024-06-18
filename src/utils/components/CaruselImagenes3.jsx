@@ -9,7 +9,6 @@ import imagen5 from '../../images/bali/bali2.jpg'
 import CarruselImagenesMovil from './CarruselImagenesMovil';
 
 function CaruselImagenes3({images}) {
-    console.log(images)
 
     const [imagenes, setImagenes]= useState([])
     images.forEach((imagen)=>{
