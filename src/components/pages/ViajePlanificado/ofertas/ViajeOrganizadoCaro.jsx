@@ -24,28 +24,30 @@ function ViajeOrganizadoCaro({alojamiento, vuelo, datos}) {
 
     const handleClick2 = () => {
         
-        const form = document.createElement('form');
-            form.method = 'GET';
-            form.action = `/alojamientoPlaneado/${alojamiento.id}/${alojamiento.nombre}`;
+        window.open(alojamiento.link, '_blank');
 
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'data';
-            input.value = JSON.stringify({
-                id: alojamiento.id,
-                name: alojamiento.nombre,
-                puntuacion: alojamiento.puntuacion,
-                direccion: alojamiento.direccion,
-                precio: alojamiento.precio,
-                noches: calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
-                totalPrice: alojamiento.precioTotal,
-                galeria:alojamiento.galeria.split(';'),
-                link:alojamiento.url 
-            });
+        //const form = document.createElement('form');
+            // form.method = 'GET';
+            // form.action = `/alojamientoPlaneado/${alojamiento.id}/${alojamiento.nombre}`;
 
-            form.appendChild(input);
-            document.body.appendChild(form);
-            form.submit();
+            // const input = document.createElement('input');
+            // input.type = 'hidden';
+            // input.name = 'data';
+            // input.value = JSON.stringify({
+            //     id: alojamiento.id,
+            //     name: alojamiento.nombre,
+            //     puntuacion: alojamiento.puntuacion,
+            //     direccion: alojamiento.direccion,
+            //     precio: alojamiento.precio,
+            //     noches: calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
+            //     totalPrice: alojamiento.precioTotal,
+            //     galeria:alojamiento.galeria.split(';'),
+            //     link:alojamiento.url 
+            // });
+
+            // form.appendChild(input);
+            // document.body.appendChild(form);
+            // form.submit();
         
     };
 

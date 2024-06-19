@@ -58,7 +58,7 @@ function OfferIndex() {
                 <div className='containerTituloOferta'>
                     <h3 className='esloganDescripcion'>Disfruta de un viaje fantastico a {oferta.getDestino()}</h3>
                         <div className='containerDescripcionPrecio'>
-                            <h5 className='precioDescripcion'>¡Desde <span>{alojamientoo._totalPrice+vueloIda._price}€!</span> con vuelos y alojamiento incluidos</h5>
+                            <h5 className='precioDescripcion'>¡Desde <span>{(alojamientoo._totalPrice+vueloIda._price).toFixed(2)}€!</span> con vuelos y alojamiento incluidos</h5>
                         </div>
                 </div>
 

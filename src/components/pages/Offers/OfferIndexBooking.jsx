@@ -73,21 +73,27 @@ function OfferIndexBooking() {
         }
     }, [oferta]);
 
-    console.log(galeria)
+    console.log(oferta)
 
     return (
         <div className="containerOfertaEspecialIndex">
             <Header />
             <main>
                 <TarjetaTipo tipo={"plan"} />
-                {oferta && <TituloOferta oferta={oferta} texto={"viaje fantastico a"} />}
+                {oferta && 
+                <div className='containerTituloOferta'>
+                <h3 className='esloganDescripcion'>Disfruta de un viaje fantastico a {oferta.destino}</h3>
+                    <div className='containerDescripcionPrecio'>
+                        <h5 className='precioDescripcion'>¡Desde <span>{(alojamientoo._totalPrice+vueloIda._price).toFixed(2)}€!</span> con vuelos y alojamiento incluidos</h5>
+                    </div>
+            </div>}
                 {galeria.length > 0 && <CaruselImagenes3 images={galeria} />}
                 <div className="contenedorFlex">
                     <div className="containerDatosOfertas">
                         {(oferta && galeria.length > 0) && (
                             <>
                                 <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${oferta.getDestino()} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
-                                <Itinerario data={oferta} almacenado={true} dataOpcional={galeria}/>
+                                <div><Itinerario data={oferta} almacenado={true} dataOpcional={galeria}/></div>
                                 <p className="alertaPrecios">*Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                             </>
                         )}

@@ -37,7 +37,7 @@ import OfferIndexBooking from "./components/pages/Offers/OfferIndexBooking";
             <Route path="/ofertaPlanificada" element={<OfferIndex/>} />
             <Route path="/ofertaPlanificadaBooking" element={<OfferIndexBooking/>} />
             <Route path="/alojamiento/:id" element={<AlojamientoIndex/>} />
-            <Route path="/alojamientoPlaneado/:id/:nombre" element={<AlojamientoPlaneado/>} />
+            <Route path="/alojamientoPlaneado/:id/" element={<AlojamientoPlaneado/>} />
             <Route path="/addoffer/" element={<FormularioSubida/>} />
           </Routes>
         </BrowserRouter>

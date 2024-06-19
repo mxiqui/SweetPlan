@@ -16,14 +16,17 @@ function PlanHotel({ alojamiento, almacenado }) {
         }
     }, [alojamiento]); // Dependencia alojamiento para actualizar cuando cambie
     
+
     const open = () => {
         if (almacenado == null || almacenado == undefined || almacenado == false) {
             window.location.href = `/alojamiento/${alojamiento.getId()}`;
         } else {
             // Create a form and submit it
-            const form = document.createElement('form');
+           
+            if(Array.isArray(alojamiento._galeria) || alojamiento._galeria.split(";").lenght>0){
+                const form = document.createElement('form');
             form.method = 'GET';
-            form.action = `/alojamientoPlaneado/${alojamiento.getId()}/${alojamiento.getName()}`;
+            form.action = `/alojamientoPlaneado/${alojamiento.getId()}`;
 
             const input = document.createElement('input');
             input.type = 'hidden';
@@ -43,8 +46,18 @@ function PlanHotel({ alojamiento, almacenado }) {
             form.appendChild(input);
             document.body.appendChild(form);
             form.submit();
+            }else{
+                window.open(alojamiento._url, '_blank');
+
+            }
+
+            
         }
     };
+
+   if(alojamiento){
+    console.log(alojamiento)
+   }
 
 
     return (
