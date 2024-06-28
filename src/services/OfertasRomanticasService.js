@@ -5,7 +5,7 @@ import imagenPrueba4 from '../images/paris.jpg'
 import { Alojamiento } from '../models/Alojamiento'
 import { Vuelos } from '../models/Vuelos'
 import { OfertaRomantica } from '../models/OfertaRomantica'
-import {adaptadorEscapadas, adaptadorRomantico} from '../utils/adapters/offersAdapter'
+import {adaptadorEscapadas, adaptadorOfertasV2, adaptadorRomantico} from '../utils/adapters/offersAdapter'
 import {server} from '../utils/Constantes'
 
 const datos= [
@@ -119,25 +119,55 @@ export class OfertaRomanticaService{
     async findByOrigen(origen){
 
         try {
-            if(this. ofertas==null){
-                const response = await fetch(`${server}/getAllOffers/romantico`, { method: 'GET' });
+            if (this.ofertas == null || this.ofertas.lenght==0) {
+                const response = await fetch(`${server}/getOfertas/V2`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ tipo: "romanticas"})
+                });
                 const offers = await response.json();
-                this.ofertas= await adaptadorRomantico(offers);
+                this.ofertas = await adaptadorOfertasV2(offers);
             }
-            var offers = [];
 
+
+            var ofertas2 = [];
+            console.log(this.ofertas)
             this.ofertas.forEach(oferta=>{
-                if(oferta.getOrigen()==origen){
-                    offers.push(oferta);
+                if(oferta.getOrigen()==origen && oferta.getTipo()=="romantica"){
+                    ofertas2.push(oferta);
                 }
             })
+            console.log(ofertas2.length)
 
-            console.log(offers)
-
-            return offers;
+            return ofertas2;
         } catch (error) {
-            
+            console.error("Ocurrio un error: "+error)
         }
+
+        //Version 1
+
+        // try {
+        //     if(this. ofertas==null){
+        //         const response = await fetch(`${server}/getAllOffers/romantico`, { method: 'GET' });
+        //         const offers = await response.json();
+        //         this.ofertas= await adaptadorRomantico(offers);
+        //     }
+        //     var offers = [];
+
+        //     this.ofertas.forEach(oferta=>{
+        //         if(oferta.getOrigen()==origen){
+        //             offers.push(oferta);
+        //         }
+        //     })
+
+        //     console.log(offers)
+
+        //     return offers;
+        // } catch (error) {
+            
+        // }
         // var ofertas=[];
 
         // for(let i=0; i<datos.length; i++){

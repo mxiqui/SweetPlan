@@ -8,6 +8,20 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Ajusta la sombra según sea necesario */
 
 }
+
+.containerNumeroUsuarios{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: 5px;
+  left: 5px;
+  justify-content: center;
+  gap: 5px;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+
   
   .containerOfertaEspecial img {
     width: 100%;
@@ -15,6 +29,16 @@
     object-fit: cover;
   }
   
+  .containerNumeroUsuarios img{
+    width: 20px !important;
+  }
+
+  .containerNumeroUsuarios p{
+    margin: 0 !important;
+    color: #fff !important;
+    padding-left: 0 !important; 
+  }
+
   .overlay {
     position: absolute;
     top: 0;

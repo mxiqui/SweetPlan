@@ -132,20 +132,82 @@ const ofertasPrueba=[
 
 export class OfertaEspecialService {
 
-    async findAll() {
+    async findAll(origen){
+        var ofertaEspecial = [];
+        var offers;
+
         try {
-            const response = await fetch(`${server}/getAllOffers/ofertaEspecial`);
-            if (!response.ok) {
-                throw new Error('Hubo un problema al realizar la solicitud.');
-            }
-            const data = await response.json();
-            const ofertasEspeciales = await adaptadorOfertasEspeciales(data);
-            return ofertasEspeciales;
+                const response = await fetch(`${server}/getOfertas/V2`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ tipo: "ofertaEspecial"})
+                });
+                offers = await response.json();
+
+                offers.forEach(oferta=>{
+                    if(oferta.origen==origen && oferta.tipo=="ofertaEspecial"){
+                        ofertaEspecial.push(oferta);
+                    }
+
+                })
+                
+                return ofertaEspecial;
+            
         } catch (error) {
-            console.error('Error:', error);
-            return null;
+            console.error("Ocurrio un error: "+error)
+        }
+    
+    }
+
+    
+    async ofertasSlider(){
+        var ofertaEspecial = [];
+        var offers;
+
+        try {
+                const response = await fetch(`${server}/getOfertas/V2`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ tipo: "ofertaEspecial"})
+                });
+                offers = await response.json();
+
+                offers.forEach(oferta=>{
+                    if(oferta.tipo=="ofertaEspecial"){
+                        ofertaEspecial.push(oferta);
+                    }
+
+                })
+                
+                return ofertaEspecial;
+            
+        } catch (error) {
+            console.error("Ocurrio un error: "+error)
         }
     }
+
+    
+
+    //Version 1
+
+    // async findAll() {
+    //     try {
+    //         const response = await fetch(`${server}/getAllOffers/ofertaEspecial`);
+    //         if (!response.ok) {
+    //             throw new Error('Hubo un problema al realizar la solicitud.');
+    //         }
+    //         const data = await response.json();
+    //         const ofertasEspeciales = await adaptadorOfertasEspeciales(data);
+    //         return ofertasEspeciales;
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //         return null;
+    //     }
+    // }
 
 
         
@@ -155,19 +217,37 @@ export class OfertaEspecialService {
 
     async findById(id){
 
-        try {
-            const response = await fetch(`${server}/getOfferById/${id}`);
-            if (!response.ok) {
-                throw new Error('Hubo un problema al realizar la solicitud.');
-            }
-            const data = await response.json();
-            const oferta = await adaptadorOfertaEspecial(data);
-            return oferta;
+        //Version 1
+        // try {
+        //     const response = await fetch(`${server}/getOfferById/${id}`);
+        //     if (!response.ok) {
+        //         throw new Error('Hubo un problema al realizar la solicitud.');
+        //     }
+        //     const data = await response.json();
+        //     const oferta = await adaptadorOfertaEspecial(data);
+        //     return oferta;
             
+        // } catch (error) {
+        //     console.error('Error:', error);
+        //     return null;
+        // }
+
+        try {
+            const response = await fetch(`${server}/getOfertaById/V2`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id})
+            });
+    
+            const oferta = await response.json();
+            return oferta
         } catch (error) {
-            console.error('Error:', error);
+            console.log(error)
             return null;
         }
+
     }
 
 

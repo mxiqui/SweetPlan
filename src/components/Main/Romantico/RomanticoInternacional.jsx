@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../../assets/styles/RomanticoInternacional.css'
 import imgAvion from '../../../images/icon/avion2.png'
+import imgUser from '../../../images/icon/user2.png'
+
 
 function RomanticoInternacional({oferta}) {
     const handleClick = () => {
@@ -45,6 +47,10 @@ function RomanticoInternacional({oferta}) {
     <div className='containerEscapada'>
         <img src={oferta.getImagen()} alt={oferta.getDestino()} />
             <div className='overlayEscapada'>
+                <div className="containerEscapadaOrigen">
+                        <p>{oferta.getOrigen()}</p>
+                        <p> <img src={imgUser} alt="" /> {oferta.getPersonas()} </p>
+                    </div>
                 <div className="containerDestinoEscapada">
                     <p className='destinoEscapada'>{oferta.getDestino()}</p>
                     <p className='fechaEscapada'>{oferta.getFechas()}</p>

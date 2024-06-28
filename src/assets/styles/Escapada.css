@@ -14,6 +14,8 @@
 }
 
 
+
+
 .containerEscapada:hover .overlayEscapada button{
     display: flex;
 }
@@ -102,8 +104,40 @@
 }
 
 
+.containerEscapadaOrigen{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.286);
+    border-radius: 10px;
+    padding: 1px 15px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 25px;
+    gap: 10px;
+    font-family: opensans-normal;
+    font-size: 13px;
+}
+
+.containerEscapadaOrigen p{
+    display: flex;
+    align-items: center;
+}
+
+.containerEscapadaOrigen p img{
+    width: 16px;
+}
+
+
 
 @media screen and (max-width:1100px){
+
+    .containerDescripcionOfertas{
+        margin-top:-15px ;
+        margin-bottom: 20px;
+        width: 90%;
+        background-color: #FF8A67;
+    }
     .containerEscapada{
         width: 90%;
     }
@@ -111,4 +145,9 @@
     .destinoEscapada{
         margin-top: -15px;
     }
+    .containerEscapadaOrigen{
+        border-radius: 20px;
+        margin: 12px;
+    }
+
 }

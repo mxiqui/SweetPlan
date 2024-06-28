@@ -22,6 +22,7 @@ import { createContext, useContext, useEffect, useReducer, useState } from 'reac
 import Espera from '../../utils/PantallaEspera/Espera'
 import { server } from '../../utils/Constantes'
 import InputCalendarios from '../pages/Pruebas/PruebasIndex'
+import { AvisoContext } from './Header'
 
 export const datosRutaContext= createContext()
 export const datosRutaReducer = (state, action) => {
@@ -48,6 +49,20 @@ export const datosRutaReducer = (state, action) => {
 
 function Formulario(){
 
+    const { dispatchAviso } = useContext(AvisoContext);
+
+    const cerrarAviso = () => {
+        dispatchAviso({ type: "CERRAR_AVISO" });
+    };
+
+
+    const abrirAviso = () =>{
+        console.log("Hola")
+        dispatchAviso({ type: "ABRIR_AVISO" });
+        setTimeout(()=>{
+            dispatchAviso({ type: "CERRAR_AVISO" });
+        }, 2500)
+    }
 
 
     //Llamamos a las funciones del hook useForm
@@ -103,7 +118,8 @@ function Formulario(){
 
     return (
         <datosRutaContext.Provider value={{rutaSeleccionada, dispatchRuta}}>
-        <form className='formularioBus' onSubmit={handleSubmit(handleForm)}>
+        {/* <form className='formularioBus' onSubmit={handleSubmit(handleForm)}> */}
+        <form className='formularioBus'>
 
             {/* Contenedor input Desde */}
             <div className="inputOrigen" id='inputOrigen'>
@@ -145,7 +161,7 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Ida</label>
-                        <input  autoComplete='false' placeholder='01/01/2024'  id='input_ida_buscador' type="text" {...register("ida",{required:true})}/>
+                        <input  autoComplete={false} placeholder='01/01/2024'  id='input_ida_buscador' type="text" {...register("ida",{required:true})}/>
                     </div>
                 </div>
 
@@ -157,7 +173,7 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Vuelta</label>
-                        <input  autoComplete='false' placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta_buscador' type="text" {...register("vuelta",{required:true})}/>
+                        <input  autoComplete={false} placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta_buscador' type="text" {...register("vuelta",{required:true})}/>
                     </div>
                 </div>
 
@@ -187,7 +203,7 @@ function Formulario(){
                 </div>
 
                 {/* Boton envio formulario */}
-                <button className='buttonForm'>Planear</button>
+                <button className='buttonForm' onClick={abrirAviso}>Planear</button>
                 {abrirEspera && <Espera/>}
             </form>
             </datosRutaContext.Provider>

@@ -48,7 +48,7 @@ function EscapadaIndex() {
             <main>
             <TarjetaTipo tipo={"escapada"} />
             <TituloOferta oferta={escapada} texto={"viaje fantastico a"} />
-            <CaruselImagenes3 images={escapada.getGaleria()} />
+            <CaruselImagenes3 images={escapada.galeria.split(";")} />
 
                 
                     <div className="contenedorFlex">
@@ -57,7 +57,7 @@ function EscapadaIndex() {
                             
                             {escapada && (
                                 <>
-                                    <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${escapada._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
+                                    <Descripcion descripcion={escapada.descripcion} />
                                     <Itinerario data={escapada} almacenado={false}/>
                                     <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                                 </>

@@ -8,10 +8,12 @@ function SliderOffers() {
     const obtenerOfertas = async () => {
         try {
             const escapadaService = new OfertaEspecialService();
-            const nuevasOfertas = await escapadaService.findAll();
+            const nuevasOfertas = await escapadaService.ofertasSlider();
             if (nuevasOfertas !== undefined) {
                 setOfertas(nuevasOfertas);
             }
+            console.log(nuevasOfertas)
+
         } catch (error) {
             console.error('Error al obtener las ofertas:', error);
         }
@@ -24,10 +26,10 @@ function SliderOffers() {
     const offers=[]
     ofertas.forEach((oferta)=>{
         offers.push({
-            title:oferta._destino,
-            description: oferta._precio,
-            imageUrl: oferta._imagen,
-            id:oferta._id
+            title:oferta.destino,
+            description: oferta.precio,
+            imageUrl: oferta.imagen,
+            id:oferta.id
         })
     })
 

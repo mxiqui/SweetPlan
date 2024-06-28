@@ -22,7 +22,6 @@ function OfertaRomanticaIndex() {
     const params = useParams();
     const id = params.id;
 
-    const ofertaEspecialService = new OfertaEspecialService();
     const [ofertaEspecial, setOfertaEspecial] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
@@ -74,17 +73,17 @@ function OfertaRomanticaIndex() {
                     <>
                     <TarjetaTipo tipo={"romantico"} />
                     <div className='containerTituloOferta'>
-                        <h3 className='esloganDescripcion'>❤️ Disfruta de un viaje fantastico a {ofertaEspecial.getDestino()} con tu pareja ❤️</h3>
+                        <h3 className='esloganDescripcion'>❤️ Disfruta de un viaje fantastico a {ofertaEspecial.destino} con tu pareja ❤️</h3>
                             <div className='containerDescripcionPrecio'>
-                                <h5 className='precioDescripcion'>¡Desde <span>{(ofertaEspecial.getPrecio()/2).toFixed(2)}€ p.p!</span> con vuelos y alojamiento incluidos</h5>
+                                <h5 className='precioDescripcion'>¡Desde <span>{(ofertaEspecial.precio/2).toFixed(2)}€ p.p!</span> con vuelos y alojamiento incluidos</h5>
                             </div>
                     </div>
-                    <CaruselImagenes3 images={ofertaEspecial ? ofertaEspecial.getGaleria() : []} />
+                    <CaruselImagenes3 images={ofertaEspecial ? ofertaEspecial.galeria.split(";") : []} />
                     <div className="contenedorFlex">
                             <div className="containerDatosOfertas">
                                 {ofertaEspecial && (
                                     <>
-                                        <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${ofertaEspecial._destino} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
+                                        <Descripcion descripcion={ofertaEspecial.descripcion} />
                                         {isMobile && <Anuncio tipo={"horizontal"} />}
                                         <Itinerario data={ofertaEspecial} almacenado={false} />
                                         <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>

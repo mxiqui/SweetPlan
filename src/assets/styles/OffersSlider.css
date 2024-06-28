@@ -1,6 +1,7 @@
 @media screen and (max-width:768px) {
-    .containerSliderSlick{
-        width: 100%;
+    .containerSliderr{
+        display: none;
+        width: 75%;
         padding: 5px;
     }
 }

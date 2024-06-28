@@ -6,9 +6,9 @@ function TituloOferta({oferta, texto}) {
 
   return (
     <div className='containerTituloOferta'>
-        <h3 className='esloganDescripcion'>Disfruta de un {texto} {oferta.getDestino()}</h3>
+        <h3 className='esloganDescripcion'>Disfruta de un {texto} {oferta.destino}</h3>
             <div className='containerDescripcionPrecio'>
-                <h5 className='precioDescripcion'>¡Desde <span>{oferta.getPrecio().toFixed(2)}€!</span> con vuelos y alojamiento incluidos</h5>
+                <h5 className='precioDescripcion'>¡Desde <span>{oferta.precioPersona.toFixed(2)}€ p.p!</span> con vuelos y alojamiento incluidos ({oferta.personas} personas)</h5>
             </div>
     </div>
   )

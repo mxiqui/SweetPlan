@@ -37,3 +37,13 @@
     font-family: opensans-normal;
     src: url(../../../public/fonts/Open_Sans/static/OpenSans-Medium.ttf);
 }
+
+@font-face {
+    font-family: outfit-normal;
+    src: url(../../../public/fonts/Outfit/Outfit-Medium.ttf);
+}
+
+@font-face {
+    font-family: outfit-light;
+    src: url(../../../public/fonts/Outfit/Outfit-Light.ttf);
+}

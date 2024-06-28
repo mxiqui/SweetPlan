@@ -6,4 +6,8 @@
     .containerCarruselImagenesMovil{
         display: flex;
     }
+
+    .image-gallery{
+        width: 100%;
+    }
 }

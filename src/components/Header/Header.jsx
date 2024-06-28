@@ -8,8 +8,11 @@ import Menu from '../Menu/Menu'
 import Calendar from '../../utils/calendario/Calendar'
 import { ScrollContext } from '../pages/Inicio'
 import CalendarioDoble from '../../utils/calendario/CalendarioDoble'
+import Aviso from '../../utils/components/Aviso'
+
 export const MenuContext= createContext();
 export const CalendarioContext= createContext();
+export const AvisoContext= createContext();
 
 
 
@@ -26,6 +29,17 @@ function Header() {
             case 'CERRAR_MENU':
                 // dispatchScroll({type:"ENABLED"})
                 document.getElementById("body").style.overflow = "auto";
+                return false;
+            default:
+                return state;
+      }
+    };
+
+    const avisoReducer = (state, action) => {
+        switch (action.type) {
+            case 'ABRIR_AVISO':
+                return true;
+            case 'CERRAR_AVISO':
                 return false;
             default:
                 return state;
@@ -49,6 +63,7 @@ function Header() {
 
     const [abrirMenu, dispatch]=useReducer(menuReducer, false);
     const [abrirCalendario, dispatchCalendario]=useReducer(calendarioReducer, false);
+    const [abrirAviso, dispatchAviso]=useReducer(avisoReducer, false);
     
 
     return (
@@ -56,10 +71,13 @@ function Header() {
         <div className="containerHeader">
         <MenuContext.Provider value={{abrirMenu, dispatch}}>
             <CalendarioContext.Provider value={{abrirCalendario, dispatchCalendario}}>
-                <Cabecera/>
-                <Buscador/>
-                {abrirCalendario && <CalendarioDoble/>}
-                {abrirMenu && <Menu />}
+                <AvisoContext.Provider value={{abrirAviso, dispatchAviso}}>
+                    <Cabecera/>
+                    <Buscador/>
+                    {abrirCalendario && <CalendarioDoble/>}
+                    {abrirMenu && <Menu />}
+                    {abrirAviso && <Aviso/>}
+                </AvisoContext.Provider>
             </CalendarioContext.Provider>
         </MenuContext.Provider>  
         </div>

@@ -18,6 +18,7 @@ import AlojamientoPlaneado from "./components/pages/Alojamiento/AlojamientoPlane
 import ContactoIndex from "./components/pages/Contacto/ContactoIndex";
 import FormularioSubida from "./components/pages/AddOferta/FormularioSubida";
 import OfferIndexBooking from "./components/pages/Offers/OfferIndexBooking";
+import FormularioOfertav2 from "./components/pages/AddOferta/FormularioOfertav2";
 
 
   function App() {
@@ -39,6 +40,7 @@ import OfferIndexBooking from "./components/pages/Offers/OfferIndexBooking";
             <Route path="/alojamiento/:id" element={<AlojamientoIndex/>} />
             <Route path="/alojamientoPlaneado/:id/" element={<AlojamientoPlaneado/>} />
             <Route path="/addoffer/" element={<FormularioSubida/>} />
+            <Route path="/addofferv2/" element={<FormularioOfertav2/>} />
           </Routes>
         </BrowserRouter>
     );

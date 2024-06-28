@@ -7,8 +7,8 @@ function Itinerario({data, almacenado, dataOpcional}) {
 
     return (
         <div className='containerItinerario'>
-            <PlanVuelos ida={data.getVueloIda()} vuelta={data.getVueloVuelta()}/>
-            <PlanHotel  alojamiento={data.getAlojamiento()} almacenado={almacenado}/>
+            <PlanVuelos ida={data.vueloIda} vuelta={data.vueloVuelta}/>
+            <PlanHotel  alojamiento={data.AlojamientoV2} almacenado={almacenado} oferta={data}/>
         </div>
     )
 }

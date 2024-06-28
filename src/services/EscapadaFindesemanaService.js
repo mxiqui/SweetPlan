@@ -6,7 +6,7 @@ import { Alojamiento } from '../models/Alojamiento'
 import { Escapada } from '../models/Escapada'
 import { Vuelos } from '../models/Vuelos'
 import { server } from '../utils/Constantes'
-import {adaptadorEscapadas, adaptadorOfertaEspecial, adaptadorOfertasEspeciales} from '../utils/adapters/offersAdapter'
+import {adaptadorEscapadas, adaptadorOfertaEspecial, adaptadorOfertasEspeciales, adaptadorOfertasV2} from '../utils/adapters/offersAdapter'
 
 const datos= [
     {
@@ -105,25 +105,56 @@ export class EscapadaFindesemanaService{
 
 
     
-    async findByOrigen(origen) {
+    async findByOrigen(origen, filtros) {
+        //Version 1
+
+        // try {
+        //     if(this. ofertas==null){
+        //         const response = await fetch(`${server}/getAllOffers/escapada`, { method: 'GET' });
+        //         const offers = await response.json();
+        //         this.ofertas= await adaptadorEscapadas(offers);
+        //     }
+        //     var escapadas = [];
+
+        //     this.ofertas.forEach(oferta=>{
+        //         if(oferta.getOrigen()==origen){
+        //             escapadas.push(oferta);
+        //         }
+        //     })
+
+        //     return escapadas;
+        // } catch (error) {
+            
+        // }
+
 
         try {
-            if(this. ofertas==null){
-                const response = await fetch(`${server}/getAllOffers/escapada`, { method: 'GET' });
+            if (this.ofertas == null) {
+                const response = await fetch(`${server}/getOfertas/V2`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ tipo: "escapadas"})
+                });
+        
                 const offers = await response.json();
-                this.ofertas= await adaptadorEscapadas(offers);
+                this.ofertas = await adaptadorOfertasV2(offers);
             }
+
+
             var escapadas = [];
 
             this.ofertas.forEach(oferta=>{
-                if(oferta.getOrigen()==origen){
+                if(oferta.getOrigen()==origen && oferta.getTipo()=="escapadas"){
                     escapadas.push(oferta);
                 }
             })
+            console.log(escapadas)
 
             return escapadas;
         } catch (error) {
-            
+            console.error("Ocurrio un error: "+error)
         }
     
         
@@ -134,20 +165,37 @@ export class EscapadaFindesemanaService{
 
     async findById(id){
 
-        try {
+        // try {
         
-            const response = await fetch(`${server}/getOfferById/${id}`);
-            if (!response.ok) {
-                throw new Error('Hubo un problema al realizar la solicitud.');
-            }
-            const data = await response.json();
-            const oferta = await adaptadorOfertaEspecial(data);
-            return oferta;
+        //     const response = await fetch(`${server}/getOfferById/${id}`);
+        //     if (!response.ok) {
+        //         throw new Error('Hubo un problema al realizar la solicitud.');
+        //     }
+        //     const data = await response.json();
+        //     const oferta = await adaptadorOfertaEspecial(data);
+        //     return oferta;
             
+        // } catch (error) {
+        //     console.error('Error:', error);
+        //     return null;
+        // }
+
+        try {
+            const response = await fetch(`${server}/getOfertaById/V2`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id})
+            });
+    
+            const oferta = await response.json();
+            return oferta
         } catch (error) {
-            console.error('Error:', error);
+            console.log(error)
             return null;
         }
+        
     }
 
 }

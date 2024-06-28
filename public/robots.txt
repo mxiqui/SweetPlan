@@ -1,3 +1,19 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /pruebas
+Disallow: /prueba2
+Disallow: /addoffer
+Disallow: /addofferv2
+Disallow: /termsOfUse
+Allow: /
+Allow: /specialOffer/
+Allow: /escapadaFin/
+Allow: /mostVisited
+Allow: /ofertaRomantica/
+Allow: /viajePlanificado
+Allow: /contacto
+Allow: /ofertaPlanificada
+Allow: /ofertaPlanificadaBooking
+Allow: /alojamiento/
+Allow: /alojamientoPlaneado/
+Sitemap: https://tu-dominio.com/sitemap.xml
+
