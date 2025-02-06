@@ -19,8 +19,9 @@ function OpcionesRapidas() {
     dispatch({ type: 'ROMANTICO' });
   }
   const ABRIR_CUALQUIER=()=>{
-    dispatch({ type: 'default' });
-    window.location.href="/mostVisited"
+    //dispatch({ type: 'default' });
+    //window.location.href="/mostVisited"
+    window.location.href="/"
   }
 
   return (

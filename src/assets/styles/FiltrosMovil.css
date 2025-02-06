@@ -226,4 +226,8 @@
         background: #05203C;
         color: #fff;
     }
+
+    .containerFiltrosSeleccionados{
+        display: none;
+    }
 }

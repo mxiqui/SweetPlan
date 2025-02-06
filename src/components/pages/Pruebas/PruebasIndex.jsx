@@ -58,9 +58,9 @@ function InputCalendarios({ type }) {
                 type="text"
                 placeholder="Select an airport"
                 onClick={toggleOptions}
+                onFocus={toggleOptions}
                 value={searchTerm}
                 onChange={handleInputChange}
-                readOnly={!showOptions}
             />
             {showOptions && searchTerm && (
                 <ul className='contenedorAeropuertosDisponibles'>

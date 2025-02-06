@@ -14,6 +14,14 @@ const Footer = () => {
       case 'Contacto':
         window.location.href = `/contacto`;
       break;
+
+      case 'Política de Cookies':
+        window.location.href = `/privacy-policy`;
+      break;
+
+      case 'Sobre Nosotros':
+        window.location.href = `/quienSomos`;
+      break;
     
       default:
         break;
@@ -24,13 +32,12 @@ const Footer = () => {
       <RedesSociales/>
       <div className="footerContent">
         <ul>
-          <li>Info</li>
+          <li onClick={handleClick}>Sobre Nosotros</li>
           <li onClick={handleClick}>Contacto</li>
-          <li>FaQs</li>
         </ul>
         <ul>
           <li onClick={handleClick}>Terminos de uso</li>
-          <li>Política de seguridad</li>
+          <li onClick={handleClick}>Política de Cookies</li>
         </ul>
         <h1>SweetPlan</h1>
         <p className='derechosReservados'>&copy; 2024 SweetPlan. Todos los derechos reservados.</p>

@@ -38,19 +38,18 @@ function ContenedorMainInferior() {
         };
     
         obtenerOfertas();
+        // console.log(ofertas)
     }, [origen]);
 
     useEffect(() => {
         const arrayIncludes = (array, target) => {
             if (!Array.isArray(target)) {
-                console.log(target);
                 return false;
             }
             return target.every(item => array.includes(item));
         };
     
         const ofertasFiltradas = ofertas.filter(oferta => {
-            console.log(filtros.cantidadPersonas+ " "+oferta.personas)
             if (filtros.cantidadPersonas && parseFloat(oferta.personas) !== parseFloat(filtros.cantidadPersonas)) {
                 return false;
             }

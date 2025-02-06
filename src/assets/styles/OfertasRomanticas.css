@@ -38,5 +38,9 @@
     .containerOfertasRomanticas{
         width: 100%;
     }
+
+    .containerSeleccionarOrigenes{
+        justify-content: center;
+    }
     
 }

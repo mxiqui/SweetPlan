@@ -27,7 +27,7 @@ function SliderOffers() {
     ofertas.forEach((oferta)=>{
         offers.push({
             title:oferta.destino,
-            description: oferta.precio,
+            description: oferta.precioPersona,
             imageUrl: oferta.imagen,
             id:oferta.id
         })

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAlojamientoById } from '../../../services/Alojamiento';
+import { getAlojamientoById, getAlojamientoByIdV2 } from '../../../services/Alojamiento';
 import Header from '../../Header/Header';
 import CaruselImagenes3 from '../../../utils/components/CaruselImagenes3';
 import Titulo from '../../../utils/components/Titulos/Titulo';
@@ -27,8 +27,9 @@ function AlojamientoIndex() {
         const fetchAlojamiento = async () => {
             setIsLoading(true);
             try {
-                const alo = await getAlojamientoById(id);
+                const alo = await getAlojamientoByIdV2(id);
                 setAlojamiento(alo);
+                console.log(alo)
             } catch (error) {
                 console.error("Error al obtener el alojamiento:", error);
             } finally {

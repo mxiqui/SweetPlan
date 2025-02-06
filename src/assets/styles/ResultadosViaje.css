@@ -22,6 +22,20 @@
     margin-bottom: -10px;
 }
 
+.botonPersonalizarOferta{
+    width: 100%;
+    text-align: center;
+}
+
+.botonPersonalizarOferta button{
+    width: 250px;
+    height: 40px;
+    margin: 25px;
+    border-radius: 20px;
+    background-color: #061C43;
+    color: #fff;
+    border: none;
+}
 
 
 

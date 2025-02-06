@@ -68,7 +68,6 @@ function OfferIndex() {
                         <div className="containerDatosOfertas">
                             {oferta && (
                                 <>
-                                    <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${oferta.getDestino()} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
                                     <Itinerario data={oferta} almacenado={true} />
                                     <p className="alertaPrecios">*Algunos precios  pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                                 </>
@@ -78,12 +77,9 @@ function OfferIndex() {
                             {oferta && <FormularioOferta oferta={oferta} />}
                         </div>
                     </div>
-                <Anuncio tipo={"horizontal"} />
-                <Anuncio tipo={"horizontal"} />
+                
                 <SliderOffers/>
-                <Anuncio tipo={"cuadrado"} />
-                <Anuncio tipo={"cuadrado"} />
-                <Anuncio tipo={"cuadrado"} />
+                
             </main>
             <Footer />
         </div>

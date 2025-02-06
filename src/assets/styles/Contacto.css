@@ -120,3 +120,22 @@
 .containerIzquierdaContacto div{
     margin-bottom: -150px;
 }
+
+
+@media screen and (max-width: 1100px) {
+    .containerContactoIndex{
+        grid-template-columns: 100%;
+    }
+
+    .containerIzquierdaContacto div{
+        margin-bottom: 0;
+    }
+
+    .containerContacto{
+        padding: 25px;
+    }
+
+    .containerIzquierdaContacto{
+        padding: 0;
+    }
+}

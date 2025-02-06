@@ -5,7 +5,7 @@ const TermsOfService = () => {
   return (
     <div className="terms-container">
       <h2 className='title'>Términos de Servicio de SweetPlan</h2>
-      <p className='update'>Última actualización: 15/05/2024</p>
+      <p className='update'>Última actualización: 01/07/2024</p>
       
       <h3>1. Introducción</h3>
       <p>Bienvenido a SweetPlan. Los siguientes términos de servicio (en adelante, los "Términos") regulan el uso de nuestra aplicación móvil y cualquier otro servicio ofrecido por SweetPlan (en adelante, la "Aplicación"). Al acceder o utilizar la Aplicación, usted acepta cumplir con estos Términos y todas las leyes y regulaciones aplicables. Si no está de acuerdo con alguno de estos términos, no está autorizado para utilizar la Aplicación.</p>
@@ -60,10 +60,10 @@ const TermsOfService = () => {
       <p>El hecho de que no hagamos valer ningún derecho o disposición de estos Términos no se considerará una renuncia a dicho derecho o disposición. Nuestra renuncia a cualquier derecho o disposición será efectiva solo si se realiza por escrito y firmada por nosotros.</p>
       
       <h3>15. Ley Aplicable</h3>
-      <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes del [país], sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier acción legal o procedimiento relacionado con la Aplicación estará sujeto exclusivamente a la jurisdicción de los tribunales del [país].</p>
+      <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de España, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier acción legal o procedimiento relacionado con la Aplicación estará sujeto exclusivamente a la jurisdicción de los tribunales de España.</p>
       
       <h3>16. Contacto</h3>
-      <p>Si tiene alguna pregunta sobre estos Términos de Servicio, puede ponerse en contacto con nosotros a través de [correo electrónico] o [número de teléfono].</p>
+      <p>Si tiene alguna pregunta sobre estos Términos de Servicio, puede ponerse en contacto con nosotros a través de hellosweetplan@gmail.com.</p>
       
       <p className='footerTermsOfService'>Gracias por utilizar SweetPlan.</p>
     </div>

@@ -183,4 +183,8 @@
     .containerPlanHotelDatosValoracion{
         margin-top: 0;
     }
+
+    .containerPlanHotelDatos div:first-child h4{
+        font-size: 12px;
+    }
 }

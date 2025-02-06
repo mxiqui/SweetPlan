@@ -1,11 +1,10 @@
-export const opcionesMenu=[ { texto: "Viajes más populares", enlace: "/mostVisited" },
-{ texto: "Escapadas fin de semana", enlace: "#" },
-{ texto: "Viajes Nacionales", enlace: "#" },
-{ texto: "Viajes Internacionales", enlace: "#" },
-{ texto: "Ofertas especiales", enlace: "/#containerContenedorMainInferior" },
-{ texto: "Experiencias romanticas", enlace: "/#containerContenedorMainInferior" },
-{ texto: "Experiencias unicas", enlace: "#" },
-{ texto: "Contacto", enlace: "/contacto" },
-{ texto: "Preguntas Frecuentes (FAQ)", enlace: "#" },
-{ texto: "Sobre Nosotros", enlace: "#" },
-{ texto: "Ajustes", enlace: "#" }]
+export const opcionesMenu=[ 
+// { texto: "Viajes más populares", enlace: "/mostVisited" },
+// { texto: "Viajes Nacionales", enlace: "#" },
+// { texto: "Viajes Internacionales", enlace: "#" },
+{ texto: "Ofertas especiales", enlace: "https://sweetplan.es/#containerContenedorMainInferior" },
+{ texto: "Quienes Somos", enlace: "https://sweetplan.es/quienSomos" },
+{ texto: "Política de Cookies", enlace: "https://sweetplan.es/privacy-policy" },
+{ texto: "Contacto", enlace: "https://sweetplan.es/contacto" },
+{ texto: "Terminos de uso", enlace: "termsOfUse" },
+{ texto: "Sobre Nosotros", enlace: "https://sweetplan.es/quienSomos" }]

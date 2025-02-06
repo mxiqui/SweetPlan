@@ -120,6 +120,7 @@ function EscapadasFinDeSemana() {
                 <h2 className='tituloOferta'>Escapadas Fin de semana</h2>
                 <div className='seleccionadorDestino'>
                     <select onChange={handleChange} value={origen}>
+                        <option value="all">Toda españa </option>
                         <option value="Madrid">Madrid</option>
                         <option value="Malaga">Málaga</option>
                         <option value="Barcelona">Barcelona</option>

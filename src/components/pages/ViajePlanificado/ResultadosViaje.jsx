@@ -65,6 +65,10 @@ function ResultadosViajeConVuelos() {
             
             
           )}
+
+          <div className="botonPersonalizarOferta">
+            <button>Mostrar más vuelos y alojamientos</button>
+          </div>
       </div>
     )
   }

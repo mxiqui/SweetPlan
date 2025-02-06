@@ -146,11 +146,17 @@ export class EscapadaFindesemanaService{
             var escapadas = [];
 
             this.ofertas.forEach(oferta=>{
-                if(oferta.getOrigen()==origen && oferta.getTipo()=="escapadas"){
-                    escapadas.push(oferta);
+                if(oferta.getTipo()=="escapadas"){
+                    if(origen=="all"){
+                        escapadas.push(oferta)
+                    }else{
+                        if(oferta.getOrigen()==origen){
+                            escapadas.push(oferta)
+                        }
+                    }
                 }
+                
             })
-            console.log(escapadas)
 
             return escapadas;
         } catch (error) {

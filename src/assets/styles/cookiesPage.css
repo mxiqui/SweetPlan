@@ -1,0 +1,13 @@
+.contarinerPaginaCookies{
+    width: 1100px;
+    margin: auto;
+    padding: 10px;
+    font-family: outfit-normal;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .contarinerPaginaCookies{
+        width: 90%;
+    }
+}

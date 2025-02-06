@@ -8,7 +8,7 @@ import imagenTiktok from '../../images/icon/tiktok.png'
 function RedesSociales() {
 
   const openTiktok = () =>{
-    window.location.href='https://www.tiktok.com/@sweetplan12';
+    window.location.href='https://www.tiktok.com/@sweetplan.es';
   }
 
   return (
