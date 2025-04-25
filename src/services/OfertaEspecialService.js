@@ -137,17 +137,16 @@ export class OfertaEspecialService {
         var offers;
 
         try {
-                const response = await fetch(`${server}/getOfertas/V2`, {
-                    method: 'POST',
+                const response = await fetch(`${server}/getOfertas/OfertaEspecial`, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ tipo: "ofertaEspecial"})
                 });
                 offers = await response.json();
 
                 offers.forEach(oferta=>{
-                    if(oferta.origen==origen && oferta.tipo=="ofertaEspecial"){
+                    if(oferta.origen==origen && oferta.tipoOferta=="OfertaEspecial"){
                         ofertaEspecial.push(oferta);
                     }
 
@@ -167,12 +166,11 @@ export class OfertaEspecialService {
         var offers;
 
         try {
-                const response = await fetch(`${server}/getOfertas/V2`, {
-                    method: 'POST',
+                const response = await fetch(`${server}/getOfertas/Slider`, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ tipo: "ofertaEspecial"})
                 });
                 offers = await response.json();
 

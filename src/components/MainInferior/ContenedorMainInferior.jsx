@@ -1,14 +1,14 @@
 import React, { useState, useEffect, createContext } from 'react';
 import OfertaEspecial from './OfertaEspecial';
-import { OfertaEspecialService } from '../../services/OfertaEspecialService';
 import FiltrosSeleccionados from '../../utils/filtros/FiltrosSeleccionados';
 import imgFiltros from '../../images/icon/filtrar.png'
 import Filtros from '../../utils/filtros/Filtros';
+import { OfertaService } from '../pages/Ofertas/OfertaService';
 
 export const filtrosContextOE = createContext();
 
 function ContenedorMainInferior() {
-    const ofertaEspecialService = new OfertaEspecialService();
+    const ofertaService = new OfertaService();
     const [ofertas, setOfertas] = useState([]);
     const [origen, setOrigen] = useState("Madrid");
     const [cargando, setCargando] = useState(true);
@@ -26,7 +26,7 @@ function ContenedorMainInferior() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const nuevasOfertas = await ofertaEspecialService.findAll(origen);
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "OfertaEspecial");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }
@@ -38,7 +38,6 @@ function ContenedorMainInferior() {
         };
     
         obtenerOfertas();
-        // console.log(ofertas)
     }, [origen]);
 
     useEffect(() => {
@@ -53,16 +52,16 @@ function ContenedorMainInferior() {
             if (filtros.cantidadPersonas && parseFloat(oferta.personas) !== parseFloat(filtros.cantidadPersonas)) {
                 return false;
             }
-            if (filtros.categoria.length > 0 && !arrayIncludes(filtros.categoria, [oferta.alojamientoV1.estrellas])) {
+            if (filtros.categoria.length > 0 && !arrayIncludes(filtros.categoria, [oferta._alojamiento._estrellas])) {
                 return false;
             }
-            if (filtros.regimen.length > 0 && !arrayIncludes(filtros.regimen, [oferta.regimen])) {
+            if (filtros.regimen.length > 0 && !arrayIncludes(filtros.regimen, [oferta._regimen])) {
                 return false;
             }
     
-            const fechaInicio = new Date(oferta.fechaInicio);
+            const fechaInicio = new Date(oferta._fechaInicio);
             const mesFechaInicio = fechaInicio.getMonth() + 1;
-            const fechaFin = new Date(oferta.fechaFin);
+            const fechaFin = new Date(oferta._fechaFin);
             const mesFechaFin = fechaFin.getMonth() + 1;
     
             if (filtros.fecha.length > 0) {

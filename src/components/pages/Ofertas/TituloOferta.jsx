@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../assets/styles/TituloOferta.css'
+import '../../../assets/styles/TituloOferta.css'
 
 function TituloOferta({oferta, texto}) {
 
@@ -9,8 +9,8 @@ function TituloOferta({oferta, texto}) {
             <div className='containerDescripcionPrecio'>
               <h5 className='precioDescripcion'>
                 ¡Desde <span>
-                  {(oferta.precioPersona ?? (oferta.precioTotal / oferta.personas)).toFixed(2)}€ p.p!
-                </span> con vuelos y alojamiento incluidos ({oferta.personas} personas)
+                  {(oferta.precioTotal).toFixed(2)}€ p.p!
+                </span> con vuelos y alojamiento incluidos ({oferta.personas} Personas)
               </h5>
             </div>
     </div>

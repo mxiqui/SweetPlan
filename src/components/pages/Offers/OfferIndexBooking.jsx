@@ -23,9 +23,9 @@ function OfferIndexBooking() {
     const [galeria, setGaleria] = useState([]);
     const [oferta, setOferta] = useState(null);
 
-    const vueloIda = new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, datos.fecha_ida, null);
-    const vueloVuelta = new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, datos.fecha_vuelta, null);
-    
+    const vueloIda= new Vuelos(null, vuelo.vueloIda.aerolinea, vuelo.vueloIda.urlImagen, vuelo.vueloIda.precio, vuelo.vueloIda.aeropuertoSalida, vuelo.vueloIda.aeropuetoLlegada, vuelo.vueloIda.horaSalida, vuelo.vueloIda.horaLLegada, datos.fechaIda,null )
+    const vueloVuelta= new Vuelos(null, vuelo.vueloVulta.aerolinea, vuelo.vueloVulta.urlImagen, vuelo.vueloVulta.precio, vuelo.vueloVulta.aeropuetoLlegada, vuelo.vueloVulta.horaSalida, vuelo.vueloVulta.horaLLegada, vuelo.vueloVulta.horaLLegada, datos.fechaVuelta,null )
+        
     let puntuacion = alojamiento.rating;
     if (puntuacion < 5) {
         puntuacion *= 2;
@@ -44,36 +44,35 @@ function OfferIndexBooking() {
         alojamiento.imagen
     );
 
-    useEffect(() => {
-        const cargarImagenes = async () => {
-            const response = await fetch(`${server}/getImages`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: alojamiento.id })
-            });
+    // useEffect(() => {
+    //     const cargarImagenes = async () => {
+    //         const response = await fetch(`${server}/getImages`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ id: alojamiento.id })
+    //         });
 
-            if (response.ok) {
-                const data = await response.json();
-                setGaleria(data);
-                const nuevaOferta = new OfertaEspecial(null, data[0], datos.destino, datos.fecha_ida + datos.fecha_vuelta, data, null, vueloIda, vueloVuelta, alojamientoo);
-                await setOferta(nuevaOferta);
-            } else {
-                console.log('Error al obtener las reviews:', response.statusText);
-            }
-        };
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             setGaleria(data);
+    //             const nuevaOferta = new OfertaEspecial(null, data[0], datos.destino, datos.fecha_ida + datos.fecha_vuelta, data, null, vueloIda, vueloVuelta, alojamientoo);
+    //             await setOferta(nuevaOferta);
+    //         } else {
+    //             console.log('Error al obtener las reviews:', response.statusText);
+    //         }
+    //     };
 
-        cargarImagenes();
-    }, []);
+    //     cargarImagenes();
+    // }, []);
 
-    useEffect(() => {
-        if (oferta) {
-            console.log(oferta);
-        }
-    }, [oferta]);
+    // useEffect(() => {
+    //     if (oferta) {
+    //         console.log(oferta);
+    //     }
+    // }, [oferta]);
 
-    console.log(oferta)
 
     return (
         <div className="containerOfertaEspecialIndex">
@@ -87,16 +86,14 @@ function OfferIndexBooking() {
                         <h5 className='precioDescripcion'>¡Desde <span>{(alojamientoo._totalPrice+vueloIda._price).toFixed(2)}€!</span> con vuelos y alojamiento incluidos</h5>
                     </div>
             </div>}
-                {galeria.length > 0 && <CaruselImagenes3 images={galeria} />}
+                {/* {galeria.length > 0 && <CaruselImagenes3 images={galeria} />} */}
                 <div className="contenedorFlex">
                     <div className="containerDatosOfertas">
-                        {(oferta && galeria.length > 0) && (
                             <>
-                                <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${oferta.getDestino()} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
+                                <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${datos.origen} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
                                 <div><Itinerario data={oferta} almacenado={true} dataOpcional={galeria}/></div>
                                 <p className="alertaPrecios">*Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                             </>
-                        )}
                     </div>
                     <div className="containerFormularioOfertas">
                         {oferta && <FormularioOferta oferta={oferta} />}

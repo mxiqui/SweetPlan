@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import '../../assets/styles/CarruselImagenes2.css'; // Archivo CSS para los estilos del carrusel
+import '../../../assets/styles/CarruselImagenes2.css';
+import CarruselImagenesMovil from '../../../utils/components/CarruselImagenesMovil';
 
-import imagen from '../../images/bali.jpg'
-import imagen2 from '../../images/bali/bali1.jpg'
-import imagen3 from '../../images/bali/bali2.jpg'
-import imagen4 from '../../images/bali/bali2.jpg'
-import imagen5 from '../../images/bali/bali2.jpg'
-import CarruselImagenesMovil from './CarruselImagenesMovil';
 
-function CaruselImagenes3({images}) {
-
+function Carrusel({images, portada}) {
 
     const [imagenes, setImagenes]= useState([])
+    imagenes.push(portada)
     images.substring(1).split(",").forEach((imagen)=>{
         if(imagenes.length<5){
             imagenes.push(imagen)
@@ -30,4 +25,4 @@ function CaruselImagenes3({images}) {
       );
 }
 
-export default CaruselImagenes3;
+export default Carrusel;

@@ -1,0 +1,2 @@
+El front esta realizado en react y esta hosteado en 
+El back esta realizado en nodeJs y esta alojado en render, en la cuenta mohamed2002xiiqui@gmail.com https://dashboard.render.com/.

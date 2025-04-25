@@ -5,6 +5,7 @@ import { EscapadaFindesemanaService } from '../../../services/EscapadaFindeseman
 import imgFiltros from '../../../images/icon/filtrar.png';
 import Filtros from '../../../utils/filtros/Filtros';
 import FiltrosSeleccionados from '../../../utils/filtros/FiltrosSeleccionados';
+import { OfertaService } from '../../pages/Ofertas/OfertaService';
 
 export const filtrosContext = createContext();
 
@@ -28,8 +29,8 @@ function EscapadasFinDeSemana() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const escapadaService = new EscapadaFindesemanaService();
-                const nuevasOfertas = await escapadaService.findByOrigen(origen);
+                const ofertaService = new OfertaService();
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "Escapada");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }
@@ -122,7 +123,7 @@ function EscapadasFinDeSemana() {
                     <select onChange={handleChange} value={origen}>
                         <option value="all">Toda españa </option>
                         <option value="Madrid">Madrid</option>
-                        <option value="Malaga">Málaga</option>
+                        <option value="Málaga">Málaga</option>
                         <option value="Barcelona">Barcelona</option>
                     </select>
                     <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />

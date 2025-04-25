@@ -48,7 +48,7 @@ function EscapadaIndex() {
             <main>
             <TarjetaTipo tipo={"escapada"} />
             <TituloOferta oferta={escapada} texto={"viaje fantastico a"} />
-            <CaruselImagenes3 images={escapada.galeria.split(";")} />
+            {/* <CaruselImagenes3 images={escapada.galeria.split(";")} /> */}
 
                 
                     <div className="contenedorFlex">

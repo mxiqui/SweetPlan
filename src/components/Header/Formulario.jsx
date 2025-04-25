@@ -65,19 +65,28 @@ function Formulario(){
         try {
             setAbrirEspera(true)
             document.getElementById("body").style.overflow = "hidden";
-
+            console.log(data.ida)
             const response = await fetch(`${server}/findPlan`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
                 },
+                
+                // body: JSON.stringify({
+                //     origen:rutaSeleccionada.ida,
+                //     destino: rutaSeleccionada.vuelta,
+                //     fecha_ida: data.ida,
+                //     fecha_vuelta: data.vuelta,
+                //     personas:data.personas
+                // })
+
                 body: JSON.stringify({
-                    origen:rutaSeleccionada.ida,
-                    destino: rutaSeleccionada.vuelta,
-                    fecha_ida: data.ida,
-                    fecha_vuelta: data.vuelta,
-                    personas:data.personas
-                })
+                        origen:rutaSeleccionada.ida,
+                        destino: rutaSeleccionada.vuelta,
+                        fechaIda: data.ida,
+                        fechaVuelta: data.vuelta,
+                        personas:data.personas
+                    })
             });
         
             if (!response.ok) {

@@ -49,24 +49,24 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
         
     };
 
-
+    
     if(vuelo!=null){
         return (
             <div className='containerViajeOrganizadoCaro' onClick={handleClick}>
-                <div className="top" style={{backgroundImage: `url(${alojamiento.galeria[2]})`}}>
+                <div className="top" style={{backgroundImage: `url(${alojamiento.galeria.split(',')[2]})`}}>
     
-                    <img className='imagenAerolinea' src={vuelo[0].urlImagen} alt="" />
+                    <img className='imagenAerolinea' src={vuelo.vueloIda.urlImagen} alt="" />
                     <div className="vuelo">
                         <div className="vueloIda">
-                            <h3>{vuelo[0].origen}</h3>
-                            <h4>{vuelo[0].aeropuertoIda}</h4>
+                            <h3>{vuelo.vueloIda.origen}</h3>
+                            <h4>{vuelo.vueloIda.aeropuertoSalida}</h4>
                         </div>
     
                         <img width={"20px"} src={imgAvion} alt="" />
     
                         <div className="vueloVuelta">
-                            <h3>{vuelo[0].destino}</h3>
-                            <h4>{vuelo[0].aeropuertoVuelta}</h4>
+                            <h3>{vuelo.vueloIda.destino}</h3>
+                            <h4>{vuelo.vueloIda.aeropuertoLlegada}</h4>
                         </div>
                     </div>
     
@@ -76,12 +76,12 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
     
                     <div className="containerViajeOrganizadoCaroFecha">
                     <p className='nameAlojamiento'>
-                            {alojamiento.nombre.length > 18 ? alojamiento.nombre.substring(0, 18) + '...' : alojamiento.nombre}
-                            <span>({alojamiento.puntuacion * 2})</span> 
+                            {alojamiento.name.length > 18 ? alojamiento.name.substring(0, 18) + '...' : alojamiento.name}
+                            <span>({alojamiento.rating * 2})</span> 
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>                    
-                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.precio_total) + parseFloat(vuelo[0].precio))/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
+                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.totalPrice) + parseFloat(vuelo.vueloIda.precio))/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">
@@ -96,7 +96,7 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
     }else{
         return (
             <div className='containerViajeOrganizadoCaro' onClick={handleClick2}>
-                <div className="top" style={{backgroundImage: `url(${alojamiento.galeria[2]})`}}>
+                <div className="top" style={{backgroundImage: `url(${alojamiento.galeria.split(',')[2]})`}}>
     
                    
     
@@ -106,12 +106,12 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
     
                     <div className="containerViajeOrganizadoCaroFecha">
                     <p className='nameAlojamiento'>
-                            {alojamiento.nombre.length > 18 ? alojamiento.nombre.substring(0, 18) + '...' : alojamiento.nombre}
-                            <span>({alojamiento.puntuacion * 2})</span> 
+                            {alojamiento.name.length > 18 ? alojamiento.name.substring(0, 18) + '...' : alojamiento.name}
+                            <span>({alojamiento.rating * 2})</span> 
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>                    
-                        <p className='precioAlojamiento'><b>{(parseFloat(alojamiento.precio_total)/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
+                        <p className='precioAlojamiento'><b>{(parseFloat(alojamiento.totalPrice)/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">

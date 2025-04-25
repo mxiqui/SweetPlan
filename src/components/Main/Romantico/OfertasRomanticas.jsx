@@ -7,6 +7,7 @@ import Interruptor from "../../../utils/components/Interruptor";
 import Filtros from "../../../utils/filtros/Filtros";
 import FiltrosSeleccionados from "../../../utils/filtros/FiltrosSeleccionados";
 import imgFiltros from '../../../images/icon/filtrar.png';
+import { OfertaService } from "../../pages/Ofertas/OfertaService";
 
 
 export const TipoOfertaRomanticaContext = createContext();
@@ -16,7 +17,7 @@ export const filtrosContextRom = createContext();
 function OfertasRomanticas() {
 
     //**************** DECLARACIONES ****************
-    const ofertaRomanticaService = new OfertaRomanticaService();
+    const ofertaService = new OfertaService();
     const [origen, setOrigen] = useState("Madrid");
     const [ofertas, setOfertas] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -34,7 +35,7 @@ function OfertasRomanticas() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const nuevasOfertas = await ofertaRomanticaService.findByOrigen(origen);
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "Romantica");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }

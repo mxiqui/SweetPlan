@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 // Componente de oferta individual
 const OfferCard = ({ offer }) => (
     <div style={{ margin: 10}} onClick={()=>{
-      window.location.href=`/specialOffer/${offer.id}`
+      window.location.href=`/escapadaFin/${offer.id}`
     }}>
         <img src={offer.imageUrl} alt={offer.title} style={{ width: '175px', height: '150px', borderRadius: '15px' }} />
         <h3 style={{color: '#000', marginBottom:'-15px', paddingLeft:'5px', marginTop:'0px'}}>{offer.title}</h3>

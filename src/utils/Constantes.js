@@ -1,3 +1,3 @@
-//export const server = 'https://sweetplanback.onrender.com';
-export const server = 'http://192.168.1.130:3001';
+export const server = 'https://sweetplanspring.onrender.com/';
+//export const server = 'http://192.168.1.134:8080';
 

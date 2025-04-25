@@ -18,8 +18,10 @@ function ResultadosViajeConVuelos() {
     setSelectedOption(newPosition);
   };
 
+  
 
-  if(viaje.booking== null){
+
+  if(viaje.alojamientoBooking == null){
     return (
       <div className='containerResultadosViaje'>
               <p className='textoPresupuesto'>Estas son los planes que te recomendamos</p>  
@@ -28,12 +30,12 @@ function ResultadosViajeConVuelos() {
           {/* Validación para comprobar si hay vuelos disponibles */}
           {viaje.vuelos && viaje.vuelos !== "No hay vuelos disponibles" ? (
           <div className="containerResultadosViajeDiv">
-                <ViajesBaratos alojamientos={viaje.airbnb} vuelos={viaje.vuelos}  datos={datos} />
+                <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} />
           </div>
           ) : (
             <>
               <p>No hay vuelos disponibles pero te agregamos los mejores alojamientos</p>
-             <ViajesBaratos alojamientos={viaje.airbnb} vuelos={null}  datos={datos} />
+             <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} />
             </>
             
             
@@ -49,18 +51,18 @@ function ResultadosViajeConVuelos() {
               <p >Estas son los planes que te recomendamos</p>
 
           {/* Validación para comprobar si hay vuelos disponibles */}
-          {viaje.vuelos && viaje.vuelos !== "No hay vuelos disponibles"  ? (
+          {viaje.vuelos && viaje.vuelos !== "null"  ? (
           <div className="containerResultadosViajeDiv">
-                {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={viaje.vuelos} datos={datos} />}
-                {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.airbnb} vuelos={viaje.vuelos}  datos={datos} alojamientos2={viaje.booking} />}
-                {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.airbnb} vuelos={viaje.vuelos}  datos={datos} />}
+                {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.alojamientoBooking} vuelos={viaje.vuelos} datos={viaje.datosBusqueda} />}
+                {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} alojamientos2={viaje.alojamientoBooking} />}
+                {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} />}
           </div>
           ) : (
             <>
               <p>No hay vuelos disponibles pero te agregamos los mejores alojamientos</p>
-              {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.booking} vuelos={null}  datos={datos} />}
-              {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.airbnb} vuelos={null}  datos={datos} alojamientos2={viaje.booking} />}
-              {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.airbnb} vuelos={null}  datos={datos} />}
+              {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.alojamientoBooking} vuelos={null}  datos={viaje.datosBusqueda} />}
+              {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} alojamientos2={viaje.alojamientoBooking} />}
+              {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} />}
             </>
             
             

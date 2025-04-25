@@ -25,9 +25,9 @@ function OfferIndex() {
     const location = useLocation();
     const { vuelo, alojamiento, datos } = location.state || {};
 
-    const vueloIda= new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, datos.fecha_ida,null )
-    const vueloVuelta= new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, datos.fecha_vuelta,null )
-    let puntuacion = alojamiento.puntuacion;
+    const vueloIda= new Vuelos(null, vuelo.vueloIda.aerolinea, vuelo.vueloIda.urlImagen, vuelo.vueloIda.precio, vuelo.vueloIda.aeropuertoSalida, vuelo.vueloIda.aeropuetoLlegada, vuelo.vueloIda.horaSalida, vuelo.vueloIda.horaLLegada, datos.fechaIda,null )
+    const vueloVuelta= new Vuelos(null, vuelo.vueloVulta.aerolinea, vuelo.vueloVulta.urlImagen, vuelo.vueloVulta.precio, vuelo.vueloVulta.aeropuetoLlegada, vuelo.vueloVulta.aeropuetoLlegada, vuelo.vueloVulta.horaLLegada, vuelo.vueloVulta.horaLLegada, datos.fechaVuelta,null )
+    let puntuacion = alojamiento.rating;
 
     if (puntuacion < 5) {
         puntuacion *= 2;
@@ -35,17 +35,16 @@ function OfferIndex() {
     
     const alojamientoo = new Alojamiento(
         alojamiento.id, 
-        alojamiento.nombre, 
+        alojamiento.name, 
         puntuacion, 
         puntuacion, 
-        alojamiento.direccion, 
-        alojamiento.precio, 
-        calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
-        datos.fecha_ida + datos.fecha_vuelta, 
+        alojamiento.address, 
+        alojamiento.price, 
+        calcularNumeroDeNoches(datos.fechaIda, datos.fechaVuelta),
+        datos.fechaIda + datos.fechaVuelta, 
         alojamiento.url, 
         alojamiento.galeria
     );    
-
     console.log(alojamiento)
 
     const oferta= new OfertaEspecial(null, alojamiento.galeria[0], datos.destino, datos.fecha_ida+datos.fecha_vuelta, alojamiento.galeria, null, vueloIda, vueloVuelta, alojamientoo);
@@ -65,7 +64,7 @@ function OfferIndex() {
                 <CaruselImagenes3 images={alojamiento.galeria}/>
 
                     <div className="contenedorFlex">
-                        <div className="containerDatosOfertas">
+                        <div className="containerdatosOfertas">
                             {oferta && (
                                 <>
                                     <Itinerario data={oferta} almacenado={true} />
@@ -89,7 +88,7 @@ function OfferIndex() {
     //       <h1>Oferta Planificada</h1>
     //       {vuelo && <p>Vuelo: {JSON.stringify(vuelo)}</p>}
     //       {alojamiento && <p>Alojamiento: {JSON.stringify(alojamiento)}</p>}
-    //       {datos && <p>Datos: {JSON.stringify(datos)}</p>}
+    //       {datos && <p>datos: {JSON.stringify(datos)}</p>}
     //     </div>
     //   );
     
