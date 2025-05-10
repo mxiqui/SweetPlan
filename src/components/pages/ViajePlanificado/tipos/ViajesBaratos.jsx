@@ -4,6 +4,7 @@ import '../../../../assets/styles/ViajesCaros.css'
 import ViajeOrganizadoBarato from '../ofertas/ViajeOrganizadoBarato'
 import ViajeOrganizadoMedio from '../ofertas/ViajeOrganizadoMedio'
 
+
 function ViajesBaratos({alojamientos, vuelos, datos}) {
 
     if(vuelos!=null){

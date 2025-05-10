@@ -19,7 +19,7 @@ const Suscripcion = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email }) // Debe coincidir con el backend
       });
   
       if (response.ok) {
@@ -32,6 +32,7 @@ const Suscripcion = () => {
       console.error('Error al suscribirse:', error);
     }
   };
+  
   
 
   return (

@@ -4,7 +4,7 @@ import ContenedorMainInferior from './ContenedorMainInferior'
 
 function MainInferior() {
   return (
-    <main className='mainInferior'>
+    <main id='mainInferior' className='mainInferior'>
         <ContenedorMainInferior/>
     </main>
   )

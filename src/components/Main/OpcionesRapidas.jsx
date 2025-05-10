@@ -1,50 +1,147 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
-
-import iconoPalmera from '../../images/icon/palmeraBlanca.png'
-import iconoCorazon from '../../images/icon/corazonBlanco.svg'
-import iconoTierra from '../../images/icon/tierra.svg'
+// Importa versiones de los iconos en dos colores
+import iconoPalmeraBlanca from '../../images/icon/icnPalmeraGris.png'
+import iconoPlayaGris from '../../images/icon/icnPlayaGris.png'
+import iconoPlayaOscuro from '../../images/icon/icnPlayaOscuro.png'
+import iconoPalmeraAzul from '../../images/icon/icnPalmeraOscuro.png'
+import iconoCorazonBlanco from '../../images/icon/icnCorazonGris.png'
+import iconoCorazonAzul from '../../images/icon/icnCorazonOscuro.png'
+import iconoTierraGris from '../../images/icon/tierra.svg'
+import iconoTierraAzul from '../../images/icon/icnPalmeraOscuro.png'
 
 import '../../assets/styles/OpcionesRapidas.css'
 import { opcionesContext } from './Main'
 
-
 function OpcionesRapidas() {
+  const { dispatch } = useContext(opcionesContext)
+  const [opcionActiva, setOpcionActiva] = useState('ESCAPADAS')
 
-  const {dispatch}=useContext(opcionesContext);
-  const ABRIR_ESCAPADAS=()=>{
-    dispatch({ type: 'ESCAPADAS' });
+  const ABRIR_ESCAPADAS = () => {
+    setOpcionActiva('ESCAPADAS')
+    dispatch({ type: 'ESCAPADAS' })
   }
-  const ABRIR_EXPERIENCIAS=()=>{
-    dispatch({ type: 'ROMANTICO' });
+
+  const ABRIR_EXPERIENCIAS = () => {
+    setOpcionActiva('ROMANTICO')
+    dispatch({ type: 'ROMANTICO' })
   }
-  const ABRIR_CUALQUIER=()=>{
-    //dispatch({ type: 'default' });
-    //window.location.href="/mostVisited"
-    window.location.href="/"
+
+  const ABRIR_OFERTASESPECIALES = () => {
+  setOpcionActiva('MAS_POPULARES');
+  const element = document.getElementById('mainInferior');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
+};
+
 
   return (
     <div className='containerOpcionesRapidas'>
-        <div className="containerOpcionRapidaEscapadas" onClick={ABRIR_ESCAPADAS}>
-            <img src={iconoPalmera} alt="" />
-            <h3>Escapadas</h3>
-        </div>
+      <div
+        className={`containerOpcionRapidaEscapadas ${
+          opcionActiva === 'ESCAPADAS' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_ESCAPADAS}
+      >
+        <img
+          src={
+            opcionActiva === 'ESCAPADAS'
+              ? iconoPalmeraAzul
+              : iconoPalmeraBlanca
+          }
+          alt=""
+        />
+        <h3>Escapadas</h3>
+      </div>
 
-        <div className="containerOpcionRapidaExperiencias" onClick={ABRIR_EXPERIENCIAS}>
-        <img src={iconoCorazon} alt="" />
-            <h3>Románticas</h3>
-        </div>
+      <div
+        className={`containerOpcionRapidaExperiencias ${
+          opcionActiva === 'ROMANTICO' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_EXPERIENCIAS}
+      >
+        <img
+          src={
+            opcionActiva === 'ROMANTICO'
+              ? iconoCorazonAzul
+              : iconoCorazonBlanco
+          }
+          alt=""
+        />
+        <h3>Románticas</h3>
+      </div>
 
-        {/* <div className="containerOpcionRapidaChollos" onClick={ABRIR_ESCAPADAS}>
-          <img src={iconoTierra} alt="" />
-            <h3>Chollos</h3>
-        </div> */}
+      {/* <div
+        className={`containerOpcionRapidaExperiencias ${
+          opcionActiva === 'PLAYA' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_EXPERIENCIAS}
+      >
+        <img
+          src={
+            opcionActiva === 'PLAYA'
+              ? iconoCorazonAzul
+              : iconoCorazonBlanco
+          }
+          alt=""
+        />
+        <h3>Playa</h3>
+      </div> */}
 
-        <div className="containerOpcionRapidaCualquierDestino" onClick={ABRIR_CUALQUIER}>
-            <img src={iconoTierra} alt="" />
-            <h3>Más populares</h3>
-        </div>
+
+      {/* <div
+        className={`containerOpcionRapidaExperiencias ${
+          opcionActiva === 'MULTIPLES' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_EXPERIENCIAS}
+      >
+        <img
+          src={
+            opcionActiva === 'MULTIPLES'
+              ? iconoCorazonAzul
+              : iconoCorazonBlanco
+          }
+          alt=""
+        />
+        <h3>Multiples Destinos</h3>
+      </div> */}
+
+
+      <div
+        className={`containerOpcionRapidaExperiencias ${
+          opcionActiva === 'PLAYA' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_EXPERIENCIAS}
+      >
+        <img
+          src={
+            opcionActiva === 'PLAYA'
+              ? iconoPlayaOscuro
+              : iconoPlayaGris
+          }
+          alt=""
+        />
+        <h3>Playa</h3>
+      </div>
+      
+
+      <div
+        className={`containerOpcionRapidaCualquierDestino ${
+          opcionActiva === 'MAS_POPULARES' ? 'opcion-activa' : ''
+        }`}
+        onClick={ABRIR_OFERTASESPECIALES}
+      >
+        <img
+          src={
+            opcionActiva === 'MAS_POPULARES'
+              ? iconoTierraAzul
+              : iconoTierraGris
+          }
+          alt=""
+        />
+        <h3>Más populares</h3>
+      </div>
     </div>
   )
 }

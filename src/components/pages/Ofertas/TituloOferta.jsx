@@ -9,7 +9,7 @@ function TituloOferta({oferta, texto}) {
             <div className='containerDescripcionPrecio'>
               <h5 className='precioDescripcion'>
                 ¡Desde <span>
-                  {(oferta.precioTotal).toFixed(2)}€ p.p!
+                  {(oferta.precioTotal).toFixed(0)}€ por persona!
                 </span> con vuelos y alojamiento incluidos ({oferta.personas} Personas)
               </h5>
             </div>

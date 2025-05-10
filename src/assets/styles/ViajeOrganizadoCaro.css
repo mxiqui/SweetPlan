@@ -65,6 +65,7 @@
 }
 
 .nameAlojamiento{
+    text-align: left;
     width: 60%;
 }
 
@@ -78,6 +79,11 @@
 
 .nameAlojamiento span{
     color: #949494;
+}
+
+.imgEstrellaValoracionOfertas{
+    width: 15px;
+    height: 15px;
 }
 
 

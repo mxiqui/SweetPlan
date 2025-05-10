@@ -2259,6 +2259,509 @@ export const aeropuertosSinFiltrar = [
     "Tarija (Bolivia), TJA",
     "Tarso (Brasil), TSR",
     "Tasiilaq (Groenlandia), AGM",
+
+    //Italia
+    "Milán (Italia), LIN",
+    "Milán (Italia), MXP",
+    "Milán (Italia), BGY",
+    "Roma (Italia), FCO",
+    "Roma (Italia), CIA",
+    "Roma (Italia), UBE",
+    "Venecia (Italia), VCE",
+    "Turín (Italia), TRN",
+    "Bolonia (Italia), BLQ",
+    "Florencia (Italia), FLR",
+    "Nápoles (Italia), NAP",
+    "Catania (Italia), CTA",
+    "Palermo (Italia), PMO",
+    "Bari (Italia), BRI",
+    "Verona (Italia), VRN",
+    "Génova (Italia), GOA",
+    "Pisa (Italia), PSA",
+    "Cagliari (Italia), CAG",
+    "Olbia (Italia), OLB",
+    "Alghero (Italia), AHO",
+    "Brindisi (Italia), BDS",
+    "Lamezia Terme (Italia), SUF",
+    "Reggio Calabria (Italia), REG",
+    "Trapani (Italia), TPS",
+    "Trieste (Italia), TRS",
+    "Ancona (Italia), AOI",
+    "Perugia (Italia), PEG",
+    "Pescara (Italia), PSR",
+    "Rímini (Italia), RMI",
+    "Comiso (Italia), CIY",
+    "Lampedusa (Italia), LMP",
+    "Pantelleria (Italia), PNL",
+    "Treviso (Italia), TSF",
+    "Bolzano (Italia), BZO",
+    "Cuneo (Italia), CUF",
+    "Parma (Italia), PMF",
+    "Forlì (Italia), FRL",
+    "Crotone (Italia), CRV",
+    "Brescia (Italia), VBS",
+    "Roma (Todos los aeropuertos)",
+
+    //Reino unido
+    "Aberdeen (Reino Unido), ABZ",
+"Belfast (Reino Unido), BFS",
+"Belfast City/George Best (Reino Unido), BHD",
+"Belfast (Todos los aeropuertos)",
+"Birmingham (Reino Unido), BHX",
+"Bournemouth (Reino Unido), BOH",
+"Bristol (Reino Unido), BRS",
+"Cardiff (Reino Unido), CWL",
+"East Midlands (Reino Unido), EMA",
+"Edimburgo (Reino Unido), EDI",
+"Exeter (Reino Unido), EXT",
+"Glasgow (Reino Unido), GLA",
+"Glasgow Prestwick (Reino Unido), PIK",
+"Glasgow (Todos los aeropuertos)",
+"Inverness (Reino Unido), INV",
+"Isla de Man (Reino Unido), IOM",
+"Jersey (Reino Unido), JER",
+"Leeds Bradford (Reino Unido), LBA",
+"Liverpool (Reino Unido), LPL",
+"Manchester (Reino Unido), MAN",
+"Newcastle (Reino Unido), NCL",
+"Newquay (Reino Unido), NQY",
+"Norwich (Reino Unido), NWI",
+"Southampton (Reino Unido), SOU",
+"Teesside (Reino Unido), MME",
+"Islas del Canal (Reino Unido), GCI",
+"Islas del Canal (Reino Unido), ACI",
+"Islas del Canal (Todos los aeropuertos)",
+
+//Sudeste asiatico
+"Yakarta (Indonesia), CGK",
+
+"Yakarta (Indonesia), HLP",
+
+"Yakarta (Todos los aeropuertos)",
+
+"Bali (Indonesia), DPS",
+
+"Surabaya (Indonesia), SUB",
+
+"Makassar (Indonesia), UPG",
+
+"Medan (Indonesia), KNO",
+
+"Yogyakarta (Indonesia), JOG",
+
+"Balikpapan (Indonesia), BPN",
+
+"Bandung (Indonesia), BDO",
+
+"Padang (Indonesia), PDG",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+"Langkawi (Malasia), LGK",
+
+"Kuching (Malasia), KCH",
+
+"Kota Kinabalu (Malasia), BKI",
+
+"Johor Bahru (Malasia), JHB",
+
+"Subang (Malasia), SZB",
+
+"Senai (Malasia), JHB",
+
+"Banda Aceh (Indonesia), BTJ",
+
+"Batam (Indonesia), BTH",
+
+"Pangkal Pinang (Indonesia), PGK",
+
+"Manado (Indonesia), MDC",
+
+"Lombok (Indonesia), LOP",
+
+"Pekanbaru (Indonesia), PKU",
+
+"Pontianak (Indonesia), PNK",
+
+"Kuala Lumpur (Malasia), KUL",
+
+"Penang (Malasia), PEN",
+
+    "Langkawi (Malasia), LGK",
+
+    "Kuching (Malasia), KCH",
+
+    "Kota Kinabalu (Malasia), BKI",
+
+    "Johor Bahru (Malasia), JHB",
+
+    "Subang (Malasia), SZB",
+
+    "Senai (Malasia), JHB",
+
+    "Banda Aceh (Indonesia), BTJ",
+
+    "Batam (Indonesia), BTH",
+
+    "Pangkal Pinang (Indonesia), PGK",
+
+    "Manado (Indonesia), MDC",
+
+    "Lombok (Indonesia), LOP",
+
+    "Pekanbaru (Indonesia), PKU",
+
+    "Pontianak (Indonesia), PNK",
+
+    "Kuala Lumpur (Malasia), KUL",
+
+    "Penang (Malasia), PEN",
+
+    "Langkawi (Malasia), LGK",
+
+    "Kuching (Malasia), KCH",
+
+    "Kota Kinabalu (Malasia), BKI",
+
+    "Johor Bahru (Malasia), JHB",
+
+    "Subang (Malasia), SZB",
+
+    "Senai (Malasia), JHB",
+
+    "Banda Aceh (Indonesia), BTJ",
+
+    "Batam (Indonesia), BTH",
+
+    "Bangkok (Tailandia), BKK",
+
+    "Bangkok (Tailandia), DMK",
+
+    "Bangkok (Todos los aeropuertos)",
+    "Singapur (Singapur), SIN",
+
+
+
+
+
+
+    //Todos los aeropuertos
+    "Londres (Todos los aeropuertos)",
+    "New York (Todos los aeropuertos)",
+    "Los Angeles (Todos los aeropuertos)",
+    "Berlin (Todos los aeropuertos)",
+    "Paris (Todos los aeropuertos)",
+    "Barcelona (Todos los aeropuertos)",
+    "Roma (Todos los aeropuertos)",
+    "Bangkok (Todos los aeropuertos)",
+    "Tokio (Todos los aeropuertos)",
+    "Shanghai (Todos los aeropuertos)",
+    "Sydney (Todos los aeropuertos)",
+    "Seul (Todos los aeropuertos)",
+    "Amsterdam (Todos los aeropuertos)",
+    "Frankfurt (Todos los aeropuertos)",
+    "Milan (Todos los aeropuertos)",
+    "Madrid (Todos los aeropuertos)",
+    "Dubai (Todos los aeropuertos)",
+    "Hong Kong (Todos los aeropuertos)",
+    "Singapur (Todos los aeropuertos)",
+    "Los Ángeles (Todos los aeropuertos)",
+    "Chicago (Todos los aeropuertos)",
+    "San Francisco (Todos los aeropuertos)",
+    "Miami (Todos los aeropuertos)",
+    "Shanghai (Todos los aeropuertos)",
+    "Beijing (Todos los aeropuertos)",
+    "Sao Paulo (Todos los aeropuertos)",
+    "Buenos Aires (Todos los aeropuertos)",
+    "Sevilla (Todos los aeropuertos)",
+    "Lisboa (Todos los aeropuertos)",
+    "Estambul (Todos los aeropuertos)",
+    "Delhi (Todos los aeropuertos)",
+    "Bangkok (Todos los aeropuertos)",
 ];
 
 
@@ -2282,4 +2785,3 @@ function eliminarDuplicados(aeropuertos) {
 }
 
 export const aeropuertos = eliminarDuplicados(aeropuertosSinFiltrar);
-  

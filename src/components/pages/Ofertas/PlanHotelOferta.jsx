@@ -55,56 +55,92 @@ function PlanHotel({ alojamiento, oferta }) {
         if (rating <= 1.0) return "Mala";
         if (rating <= 2.5) return "Regular";
         if (rating <= 4.0) return "Buena";
-        return "Excelente";
+        if (rating <= 5.0) return "Buena";
+        return "Sin valoraciones";
     };
 
     return (
         <div
             className="containerPlanHotel tarjetaItinerario"
             onClick={open}
-            style={{ height: "200px" }}
+            style={{ height: "120px" }}
         >
             <img className='containerPlanHotelImagen' src={imagenPrincipal} alt="" />
             <div className="containerPlanHotelDatos">
                 <div className='nombre'>
-                    <h4>{oferta.alojamiento.name}</h4>
-                    <span>{renderStars(estrellas)}</span>
+                    {/* <span>{renderStars(estrellas)}</span> */}
                 </div>
                 <div className='containerPlanHotelDatosValoracion'>
-                    {oferta.alojamiento.rating != null ? <span className={`nota ${puntuacion}`}>{oferta.alojamiento.rating}</span> : <span></span>}
+                    {oferta.alojamiento.rating != null ? <span className={`nota ${puntuacion}`}>{oferta.alojamiento.rating}</span> : <span>(0)</span>}
                     <p className='nota2'>{oferta.alojamiento.wordRating || obtenerWordRating(parseFloat(oferta.alojamiento.rating))}</p>
                 </div>
                 <div className='containerPlanHotelDireccion'>
                     <h5 className='direccion'>{oferta.alojamiento.address}</h5>
-                    <h4>{(parseFloat(oferta.alojamiento.price)).toFixed(2)} € <span
-                        style={{
-                            color: "#8c8a8a",
-                            fontFamily: "inter-light",
-                            marginBottom: "-20px",
-                            fontSize: "12px"
-                        }}
-                    >por noche</span></h4>
+                    <h4 className='containerPlanHotelDireccionPrecio'>
+  {(oferta.alojamiento.price === oferta.alojamiento.totalPrice
+    ? (
+        oferta.alojamiento.url.includes("airbnb")
+          ? parseFloat(oferta.alojamiento.price) / calcularNoches()
+          : parseFloat(oferta.alojamiento.price)
+      )
+    : (
+        parseFloat(oferta.alojamiento.totalPrice) / calcularNoches()
+      )
+  ).toFixed(0)}€ 
+  <span
+    style={{
+      color: "#8c8a8a",
+      fontFamily: "inter-light",
+      marginBottom: "-20px",
+      fontSize: "12px"
+    }}
+  >
+    por noche
+  </span>
+</h4>
+
                 </div>
                 <div className='containerPlanHotelTotalMovil'>
-                    <h4>{(calcularNoches() * parseFloat(oferta.alojamiento.price)).toFixed(2)} € <span>/ Total</span></h4>
+                <h4>
+                    {oferta.alojamiento.price === oferta.alojamiento.totalPrice ? (
+                        `${(
+                        oferta.alojamiento.url.includes("airbnb")
+                            ? parseFloat(oferta.alojamiento.price)
+                            : calcularNoches() * parseFloat(oferta.alojamiento.price)
+                        ).toFixed(0)} € / Total`
+                    ) : (
+                        `${parseFloat(oferta.alojamiento.totalPrice).toFixed(0)} € / Total`
+                    )}
+                    </h4>
+
                     <button className='btnVisitar2'>Ver</button>
                 </div>
             </div>
             <div className='containerPlanHotelTotal'>
                 <h4>
-                    {(calcularNoches() * parseFloat(oferta.alojamiento.price)).toFixed(2)} €
-                    <span
-                        style={{
-                            color: "#8c8a8a",
-                            fontFamily: "inter-light",
-                            marginBottom: "-20px",
-                            fontSize: "12px"
-                        }}
-                    >
-                        (
-                        {calcularNoches()} noches )
-                    </span>
-                </h4>
+  {oferta.alojamiento.price === oferta.alojamiento.totalPrice
+    ? (
+        parseFloat(oferta.alojamiento.price)
+      ).toFixed(0)
+    : (
+        parseFloat(oferta.alojamiento.totalPrice)
+      ).toFixed(0)
+  }
+  € 
+  <span
+    style={{
+      color: "#8c8a8a",
+      fontFamily: "inter-light",
+      marginBottom: "-20px",
+      fontSize: "12px"
+    }}
+  >
+    (
+    {calcularNoches()} noches
+    )
+  </span>
+</h4>
+
 
                 <button className='btnVisitar2'>Ver</button>
             </div>

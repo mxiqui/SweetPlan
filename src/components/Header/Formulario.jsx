@@ -51,7 +51,7 @@ function Formulario(){
 
 
     //Llamamos a las funciones del hook useForm
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit,setValue } = useForm();
     const {dispatchCalendario}=useContext(CalendarioContext)
     const [abrirEspera, setAbrirEspera]=useState(false)
     
@@ -61,49 +61,67 @@ function Formulario(){
     });
 
     //función para manejar el evento del formulario
-    const handleForm = async(data) => {
+    const handleForm = async (data) => {
         try {
             setAbrirEspera(true)
             document.getElementById("body").style.overflow = "hidden";
-            console.log(data.ida)
-            const response = await fetch(`${server}/findPlan`, {
+    
+            const timeout = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('timeout')), 60000) // 1 minuto
+            );
+    
+            const fetchRequest = fetch(`${server}/findPlan`, {
                 method: 'POST',
                 headers: {
-                'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
-                
-                // body: JSON.stringify({
-                //     origen:rutaSeleccionada.ida,
-                //     destino: rutaSeleccionada.vuelta,
-                //     fecha_ida: data.ida,
-                //     fecha_vuelta: data.vuelta,
-                //     personas:data.personas
-                // })
-
                 body: JSON.stringify({
-                        origen:rutaSeleccionada.ida,
-                        destino: rutaSeleccionada.vuelta,
-                        fechaIda: data.ida,
-                        fechaVuelta: data.vuelta,
-                        personas:data.personas
-                    })
+                    origen: rutaSeleccionada.ida,
+                    destino: rutaSeleccionada.vuelta,
+                    fechaIda: document.getElementById('input_ida_buscador').value,
+                    fechaVuelta: document.getElementById('input_vuelta_buscador').value,
+                    personas: data.personas
+                })
             });
-        
+    
+            const response = await Promise.race([fetchRequest, timeout]);
+    
             if (!response.ok) {
                 throw new Error('Error al enviar datos');
             }
-
+    
             const data2 = await response.json();
             sessionStorage.setItem('plan', JSON.stringify(data2));
             window.location.href = "/viajePlanificado";
+    
         } catch (error) {
-            
+            // Si hay un error o timeout, recargar la página
+            console.error("Error o timeout en la petición:", error);
+            window.location.reload(); // fuerza recarga
         }
     }
+    
 
     const openCalendar=()=>{
         dispatchCalendario({ type: 'ABRIR_CALENDARIO'});
     }
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const formattedTomorrow = tomorrow.toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    const [fechaIda, setFechaIda] = useState(formattedTomorrow);
+    const [fechaVuelta, setFechaVuelta] = useState(formattedTomorrow);
+
+
+    useEffect(() => {
+        setValue("ida", fechaIda);
+        console.log(fechaIda)
+    }, [fechaIda]);
+
+    useEffect(() => {
+        setValue("vuelta", fechaVuelta);
+    }, [fechaVuelta]);
+
 
 
 
@@ -119,8 +137,19 @@ function Formulario(){
                 </div>
 
                 <div className='containerInput'>
-                    <label htmlFor="De">Desde</label>
-                    <InputCalendarios type={"ida"}/>
+                <label htmlFor="De">Desde</label>
+                    <InputCalendarios
+                        type="ida"
+                        setFechaIda={(fecha) => {
+                            setFechaIda(fecha);
+                            setValue("ida", fecha);
+                        }}
+                        setFechaVuelta={(fecha) => {
+                            setFechaVuelta(fecha);
+                            setValue("vuelta", fecha);
+                        }}
+                        />
+
                     
                 </div>
             </div>
@@ -146,27 +175,64 @@ function Formulario(){
 
 
                 {/* Contenedor Fecha de ida */}
-                <div className="inputIda" id='inputIda' onClick={openCalendar}>
+                <div className="inputDestino" id='inputFechas' onClick={openCalendar}>
                     <div className='containerImagen'>
                         <img src={imgCalendario} alt="" />
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Ida</label>
-                        <input  autoComplete={false} placeholder='01/01/2024'  id='input_ida_buscador' type="text" {...register("ida",{required:true})}/>
+                        <input  autoComplete={false} placeholder='Seleccione tu fecha'  id='input_buscador_fecha' type="text" />
                     </div>
                 </div>
 
+                <input  autoComplete={false} placeholder=''  id='input_ida_buscador' type="hidden" {...register("ida",{required:true})}/>
+                {/* <div className="inputIda" id='inputIda'>
+                    <div className='containerImagen'>
+                        <img src={imgCalendario} alt="" />
+                    </div>
+                    <div className='containerInput'>
+                        <label htmlFor="De">Ida</label>
+                        <input
+                            type="date"
+                            id="input_ida_buscador"
+                            value={fechaIda}
+                            autoComplete="off"
+                            {...register("ida", { required: true })}
+                            onChange={(e) => {
+                                setFechaIda(e.target.value);
+                                setValue("ida", e.target.value);
+                                setFechaVuelta(e.target.value);      // <-- sincroniza también la vuelta
+                                setValue("vuelta", e.target.value);  // <-- actualiza en react-hook-form
+                            }}
+                        />
+
+                    </div>
+                </div> */}
+
 
                 {/* Contenedor Fecha de vuelta */}
-                <div className="inputVuelta" id='inputVuelta' onClick={openCalendar}>
+                <input autoComplete={false} placeholder='' onClick={openCalendar} id='input_vuelta_buscador' type="hidden" {...register("vuelta",{required:true})}/>
+                {/* <div className="inputVuelta" id='inputVuelta'>
                     <div className='containerImagen'>
                         <img src={imgCalendario} alt="" />
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Vuelta</label>
-                        <input  autoComplete={false} placeholder='01/01/2024' onClick={openCalendar} id='input_vuelta_buscador' type="text" {...register("vuelta",{required:true})}/>
+                        <input
+                            type="date"
+                            id="input_vuelta_buscador"
+                            value={fechaVuelta}
+                            autoComplete="off"
+                            {...register("vuelta", { required: true })}
+                            onChange={(e) => {
+                                setFechaVuelta(e.target.value);
+                                setValue("vuelta", e.target.value);
+                            }}
+                        />
+
+
                     </div>
-                </div>
+                </div> */}
 
 
                 {/* Contenedor Numero de personas */}

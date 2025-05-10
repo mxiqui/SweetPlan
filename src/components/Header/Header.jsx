@@ -5,9 +5,7 @@ import Buscador from './Buscador'
 //Importar el css
 import '../../assets/styles/Header.css'
 import Menu from '../Menu/Menu'
-import Calendar from '../../utils/calendario/Calendar'
-import { ScrollContext } from '../pages/Inicio'
-import CalendarioDoble from '../../utils/calendario/CalendarioDoble'
+import Calendar from '../../utils/components/Calendar'
 import Aviso from '../../utils/components/Aviso'
 
 export const MenuContext= createContext();
@@ -23,12 +21,12 @@ function Header() {
         switch (action.type) {
             case 'ABRIR_MENU':
                 // dispatchScroll({type:"DISABLED"})
-                document.getElementById("body").style.overflow = "hidden";
+                // document.getElementById("body").style.overflow = "hidden";
 
                 return true;
             case 'CERRAR_MENU':
                 // dispatchScroll({type:"ENABLED"})
-                document.getElementById("body").style.overflow = "auto";
+                // document.getElementById("body").style.overflow = "auto";
                 return false;
             default:
                 return state;
@@ -50,11 +48,11 @@ function Header() {
         switch (action.type) {
             case 'ABRIR_CALENDARIO':
                 // dispatchScroll({type:"DISABLED"})
-                document.getElementById("body").style.overflow = "hidden";
+                // document.getElementById("body").style.overflow = "hidden";
                 return true;
             case 'CERRAR_CALENDARIO':
                 // dispatchScroll({type:"ENABLED"})
-                document.getElementById("body").style.overflow = "auto";
+                // document.getElementById("body").style.overflow = "auto";
                 return false;
             default:
                 return state;
@@ -74,7 +72,7 @@ function Header() {
                 <AvisoContext.Provider value={{abrirAviso, dispatchAviso}}>
                     <Cabecera/>
                     <Buscador/>
-                    {abrirCalendario && <CalendarioDoble/>}
+                    {abrirCalendario && <Calendar/>}
                     {abrirMenu && <Menu />}
                     {abrirAviso && <Aviso/>}
                 </AvisoContext.Provider>

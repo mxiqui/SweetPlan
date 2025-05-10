@@ -1,12 +1,12 @@
 .containerEscapada{
     position: relative;
     width: 48%;
-    height: 300px;
+    height: 290px;
     margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 6px #00000080;
     transition: 1s;
     display: flex;
     justify-content: center;
@@ -20,8 +20,18 @@
     display: flex;
 }
 
+.imgCalendarioOferta{
+    width: 20px;
+    height: 20px;
+}
 
-.containerEscapada img {
+.fechaEscapada{
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+}
+
+.imgFondoOferta {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -36,12 +46,11 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
-    flex-wrap: wrap;
     color: #fff;
 }
 
 .containerDestinoEscapada{
-    width: 50%;
+    width: 35%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -49,7 +58,6 @@
 }
 
 .containerDestinoEscapada .destinoEscapada, .containerDestinoEscapada .fechaEscapada{
-    margin-left: 20px;
     text-align: left;
     transition: 1s;
 }
@@ -104,6 +112,8 @@
 }
 
 
+
+
 .containerEscapadaOrigen{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.286);
@@ -128,6 +138,69 @@
     width: 16px;
 }
 
+.containerDestinoEscapadaV2{
+    height: auto;
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px 15px;
+}
+
+.destinoEscapadaV2, .containerFechaEscapadaV2{
+    text-shadow: 2px #000;
+    font-family: opensans-normal;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: -10px;
+}
+
+.precioEscapadaV2{
+    text-align: left;
+    font-size: 12px;
+    color: #d9d7d7;
+}
+
+.precioEscapadaV2 span{
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.containerFechaEscapadaV2{
+    height: auto;
+    width: 50%; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px 15px;
+}
+
+.fechaEscapada{
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: -10px;
+    font-weight: normal;
+}
+
+.nochesEscapada{
+    text-align: right;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.nochesEscapada img{
+    width: 15px;
+    height: 15px;
+}
+
+.containerNochesEscapada{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
 
 
 @media screen and (max-width:1100px){
@@ -140,6 +213,7 @@
     }
     .containerEscapada{
         width: 90%;
+        height: 270px;
     }
 
     .destinoEscapada{
@@ -150,4 +224,14 @@
         margin: 12px;
     }
 
+    .card{
+        width: 80%;
+    }
+
+    .imgCalendarioOferta{
+        width: 20px;
+        height: 20px;
+    }
+
 }
+

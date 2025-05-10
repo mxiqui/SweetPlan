@@ -21,6 +21,7 @@
     width: 150px;
     height: 40px;
     border-radius: 30px;
+    text-align: center;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -40,7 +41,10 @@
     }
 
     .containerSeleccionarOrigenes{
-        justify-content: center;
+        justify-content: space-between;
     }
-    
+
+    .containerSeleccionarOrigenes select{
+        margin-left: 20px;
+    }
 }

@@ -107,10 +107,6 @@
     background-color: #941010;
 }
 
-.containerPlanHotelDatosValoracion .nota2{
-    margin: 0;
-    font-family: campton;
-}
 
 .containerPlanHotelTotalMovil{
     display: none;
@@ -121,9 +117,10 @@
     font-size: 11px;
 }
 
+
 @media screen and (max-width:768px) {
     .containerPlanHotelImagen {
-        background-image: url(https://s1.elespanol.com/2022/11/21/malaga/vivir/turismo/720189001_228892439_1706x960.jpg);
+        /* background-image: url(https://s1.elespanol.com/2022/11/21/malaga/vivir/turismo/720189001_228892439_1706x960.jpg); */
         background-size: cover;
         border-radius: 0;
         border-top-left-radius: 10px;
@@ -137,6 +134,7 @@
 
     .containerPlanHotelDireccion{
         margin-bottom: 25px;
+        margin-top: -30px;
     }
 
     .containerPlanHotelDireccion-h5{
@@ -150,7 +148,6 @@
     }
     .containerPlanHotel{
         margin: auto;
-        width: 90%;
         padding: 0;
         border-radius: 10px;
         background-color: #fff;
@@ -186,5 +183,9 @@
 
     .containerPlanHotelDatos div:first-child h4{
         font-size: 12px;
+    }
+
+    .containerPlanHotelDireccionPrecio{
+        display: none;
     }
 }

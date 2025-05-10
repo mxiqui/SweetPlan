@@ -1,46 +1,82 @@
-.containerOpcionesRapidas{
+/* Contenedor principal horizontal */
+.containerOpcionesRapidas {
     margin-top: 20px;
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Oculta scroll en Firefox */
 }
 
-.containerOpcionRapidaEscapadas, .containerOpcionRapidaExperiencias, .containerOpcionRapidaCualquierDestino, .containerOpcionRapidaChollos{
-    padding: 5px 15px 5px 15px;
-    border-radius: 50px;
-    border: 1px solid #061c43;
-    background: #061c43;
-    width: 30%;
+
+.opcion-activa {
+    color: #061c43 !important;
+    border-bottom: 3px solid #061c43;
+  }
+  
+
+/* Estilos generales de las opciones */
+.containerOpcionRapidaEscapadas,
+.containerOpcionRapidaExperiencias,
+.containerOpcionRapidaCualquierDestino,
+.containerOpcionRapidaChollos {
+    padding: 5px 15px;
+    border: none;
+    background: transparent;
+    min-width: 19%;
     height: 45px;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    color: #fff;
-    font-family: opensans-normal;
-    transition: 0.7s;
-    font-size: 15px;
     align-items: center;
+    gap: 15px;
+    color: #999; /* Gris por defecto */
+    font-family: opensans-normal;
+    font-size: 15px;
+    transition: 0.3s;
+    flex-shrink: 0;
+    border-bottom: 3px solid transparent;
 }
 
-.containerOpcionRapidaEscapadas img, .containerOpcionRapidaExperiencias img, .containerOpcionRapidaCualquierDestino img, .containerOpcionRapidaChollos img{
+/* Iconos */
+.containerOpcionRapidaEscapadas img,
+.containerOpcionRapidaExperiencias img,
+.containerOpcionRapidaCualquierDestino img,
+.containerOpcionRapidaChollos img {
     width: 25px;
     height: 25px;
 }
 
-
-.containerOpcionRapidaEscapadas:hover, .containerOpcionRapidaExperiencias:hover, .containerOpcionRapidaCualquierDestino:hover, .containerOpcionRapidaChollos:hover{
-    background-color: #fff;
-    color: #061c43;
-    border: 1px solid #ccc;
+/* Hover */
+.containerOpcionRapidaEscapadas:hover,
+.containerOpcionRapidaExperiencias:hover,
+.containerOpcionRapidaCualquierDestino:hover,
+.containerOpcionRapidaChollos:hover {
     cursor: pointer;
+    color: #061c43;
 }
 
+/* Elemento activo */
+.opcion-activa {
+    color: #061c43 !important;
+    border-bottom: 3px solid #061c43;
+}
 
-@media screen and (max-width:1100px) {
-    .containerOpcionRapidaEscapadas, .containerOpcionRapidaExperiencias, .containerOpcionRapidaCualquierDestino{
-        width: 80%;
-        margin: auto;
+/* Responsivo */
+@media screen and (max-width: 1100px) {
+    .containerOpcionRapidaEscapadas,
+    .containerOpcionRapidaExperiencias,
+    .containerOpcionRapidaCualquierDestino,
+    .containerOpcionRapidaChollos {
+        min-width: 19%;
         margin-bottom: 10px;
+        font-size: 12px;
+        height: 25px;
+    }
+
+    .containerOpcionesRapidas {
+        flex-wrap: nowrap;
     }
 }

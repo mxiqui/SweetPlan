@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../assets/styles/PlanVuelos.css';
 import AvionComponent from '../../../utils/components/AvionComponent';
+import AvionVuelo from '../../../utils/components/AvionVuelo';
 
 /**
  * Componente que muestra la información de los vuelos de ida y vuelta.
@@ -19,6 +20,20 @@ function PlanVuelos({ ida, vuelta }) {
     return hora.includes('T') ? hora.split('T')[1].substring(0, 5) : hora.substring(0, 5);
   };
 
+  const formatFecha = (fechaISO) => {
+    const fecha = new Date(fechaISO);
+    const [dia, mes] = fecha.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: 'short'
+    }).replace('.', '').split(' ');
+  
+    const mesCapitalizado = mes.charAt(0).toUpperCase() + mes.slice(1);
+    return `${dia} ${mesCapitalizado}`;
+  };
+  
+  
+  
+
   if (!ida || !vuelta) {
     return (
       <div className='containerPlanVuelos'>
@@ -33,20 +48,28 @@ function PlanVuelos({ ida, vuelta }) {
 
   const renderVuelo = (vuelo, tipo) => (
     <div className='cAirplanes tarjetaItinerario' onClick={() => abrirEnlace(vuelo.url)} role='button' tabIndex={0}>
-      <div className='containerAirlines'>
-        <img className='imageAirline' src={vuelo.urlImagen} alt={`Logo de ${vuelo.aerolinea}`} loading='lazy' />
-        <h5>{vuelo.aerolinea}</h5>
-      </div>
+      <div className='containerCabeceraItinerarioVuelos'>
+        <div className='containerAirlines'>
+          <img className='imageAirline' src={vuelo.urlImagen} alt={`Logo de ${vuelo.aerolinea}`} loading='lazy' />
+          <h5>{vuelo.aerolinea}</h5>
+        </div>
+        <p>{formatFecha(vuelo.horaSalida)}</p>
+        </div>
 
       <div className={tipo}>
         <div className='containerPlaceAndTime'>
-          <h4>{formatearHora(vuelo.horaSalida)}</h4>
           <h5>{vuelo.aeropuertoSalida}</h5>
+          <h4>{formatearHora(vuelo.horaSalida)}</h4>
         </div>
-        <AvionComponent />
+        <div className='containerItinerarioEscalas'>
+        <AvionVuelo escala={0} duracion={1200} /> 
+
+          <p>Directo</p>
+        </div>
         <div className='containerPlaceAndTime'>
-          <h4>{formatearHora(vuelo.horaLLegada)}</h4>
           <h5>{vuelo.aeropuetoLlegada}</h5>
+          <h4>{formatearHora(vuelo.horaLLegada)}</h4>
+
         </div>
       </div>
     </div>

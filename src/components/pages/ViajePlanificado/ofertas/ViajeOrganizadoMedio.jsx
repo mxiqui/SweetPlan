@@ -3,6 +3,7 @@ import imgAvion from '../../../../images/icon/avion2.png'
 import '../../../../assets/styles/ViajeOrganizadoCaro.css'
 import { useNavigate } from 'react-router-dom';
 import { calcularNumeroDeNoches } from '../../../../utils/adapters/functions';
+import imgEstrella from '../../../../images/icon/estrella.png'
 
 function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
 
@@ -58,15 +59,15 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
                     <img className='imagenAerolinea' src={vuelo.vueloIda.urlImagen} alt="" />
                     <div className="vuelo">
                         <div className="vueloIda">
-                            <h3>{vuelo.vueloIda.origen}</h3>
+                            <h3>{datos.origen}</h3>
                             <h4>{vuelo.vueloIda.aeropuertoSalida}</h4>
                         </div>
     
                         <img width={"20px"} src={imgAvion} alt="" />
     
                         <div className="vueloVuelta">
-                            <h3>{vuelo.vueloIda.destino}</h3>
-                            <h4>{vuelo.vueloIda.aeropuertoLlegada}</h4>
+                            <h3>{datos.destino}</h3>
+                            <h4>{vuelo.vueloIda.aeropuetoLlegada}</h4>
                         </div>
                     </div>
     
@@ -76,12 +77,12 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
     
                     <div className="containerViajeOrganizadoCaroFecha">
                     <p className='nameAlojamiento'>
-                            {alojamiento.name.length > 18 ? alojamiento.name.substring(0, 18) + '...' : alojamiento.name}
-                            <span>({alojamiento.rating * 2})</span> 
+                            {alojamiento.name.length > 18 ? alojamiento.name.substring(0, 16) + '...' : alojamiento.name}
+                            <span> ({alojamiento.rating * 2}<img className='imgEstrellaValoracionOfertas' src={imgEstrella} alt="" /> ) </span> 
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>                    
-                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.totalPrice) + parseFloat(vuelo.vueloIda.precio))/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
+                        <p className='precioAlojamiento'><b>{((parseFloat(alojamiento.price) + parseFloat(vuelo.vueloIda.precio))/datos.personas).toFixed(2)}€</b> <br/> por persona</p>
                     </div>
     
                     <div className="containerViajeOrganizadoCaroAdicional">
@@ -107,7 +108,7 @@ function ViajeOrganizadoMedio({alojamiento, vuelo, datos}) {
                     <div className="containerViajeOrganizadoCaroFecha">
                     <p className='nameAlojamiento'>
                             {alojamiento.name.length > 18 ? alojamiento.name.substring(0, 18) + '...' : alojamiento.name}
-                            <span>({alojamiento.rating * 2})</span> 
+                            <span>({alojamiento.rating * 2}) <img src={imgEstrella} alt="" /></span> 
                             <br/>
                             <span>Precio vuelos y alojamiento</span>
                         </p>                    

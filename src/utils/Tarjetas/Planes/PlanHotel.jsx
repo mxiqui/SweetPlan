@@ -34,7 +34,6 @@ function PlanHotel({ alojamiento, almacenado, oferta }) {
     };
 
 
-    
     return (
         <div className='containerPlanHotel tarjetaItinerario' onClick={open}>
             <img className='containerPlanHotelImagen' src={almacenado ? oferta._alojamiento._galeria.substring(1).split(',')[0] : alojamiento.galeria.split(";")[0]} alt="" />
@@ -50,7 +49,7 @@ function PlanHotel({ alojamiento, almacenado, oferta }) {
                 <div className='containerPlanHotelDireccion'>
                     <h5 className='direccion'>{almacenado ? oferta._alojamiento._address : alojamiento.direccion}</h5>
                     <h5 className='direccion'>{almacenado ? oferta._alojamiento._night : oferta.noches} noches</h5>
-                    <h5 className='containerPlanHotelDireccion-h5'>{almacenado ? (oferta._alojamiento._price / oferta._alojamiento._night).toFixed(2) : alojamiento.precio.toFixed(2)}€ / noche</h5>
+                    <h5 className='containerPlanHotelDireccion-h5'>{almacenado ? (oferta._alojamiento._price).toFixed(2) : alojamiento.precio.toFixed(2)}€ / noche</h5>
                 </div>
                 <div className='containerPlanHotelTotalMovil'>
                     <h4>{almacenado ? (parseFloat(oferta._alojamiento._night) * parseFloat(oferta._alojamiento._price)).toFixed(2) : (parseFloat(oferta.noches) * parseFloat(alojamiento.precio)).toFixed(2)} € <span>/ Total</span></h4>
@@ -58,8 +57,8 @@ function PlanHotel({ alojamiento, almacenado, oferta }) {
                 </div>
             </div>
             <div className='containerPlanHotelTotal'>
-                <h4>{almacenado ? (parseFloat(oferta._alojamiento._price)).toFixed(2) : ( parseFloat(alojamiento.precio)).toFixed(2)} €</h4>
-                <button className='btnVisitar2'>Ver</button>
+            <h4>{almacenado ? (parseFloat(oferta._alojamiento._night) * parseFloat(oferta._alojamiento._price)).toFixed(2) : (parseFloat(oferta.noches) * parseFloat(alojamiento.precio)).toFixed(2)} €</h4>
+            <button className='btnVisitar2'>Ver</button>
             </div>
         </div>
     );

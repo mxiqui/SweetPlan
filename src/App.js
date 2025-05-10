@@ -20,6 +20,7 @@ const CookiesPage = lazy(() => import('./components/pages/Cookies/CookiesPage'))
 const SomosIndex = lazy(() => import('./components/pages/Quien/SomosIndex'));
 const NewsLetter = lazy(() => import('./components/pages/NewsLetter/NewsLetterIndex'));
 const PlanificadorViaje = lazy(() => import('./components/pages/AddOferta/PlanificadorViaje'));
+const PlanificadorViajeAlternativo = lazy(() => import('./components/pages/AddOferta/PlanificadorViajeAlternativo'));
 const OfertaIndex = lazy(() => import('./components/pages/Ofertas/IndexOfertas'));
 const OfertasList = lazy(() => import('./components/pages/Ofertas/OfertasList'));
 const NotFound = lazy(() => import('./components/pages/Errors/404'));
@@ -56,7 +57,8 @@ function App() {
           <Route path="/privacy-policy/" element={<CookiesPage />} />
           <Route path="/quienSomos/" element={<SomosIndex />} />
           <Route path="/suscribete/" element={<NewsLetter />} />
-          <Route path="/try/" element={<PlanificadorViaje />} />
+          <Route path="/createOffer/" element={<PlanificadorViaje />} />
+          <Route path="/createOfferAlternativa/" element={<PlanificadorViajeAlternativo />} />
           <Route path="/listaOfertas/" element={<OfertasList />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

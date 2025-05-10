@@ -5,75 +5,91 @@ import ThreeWaySwitch from '../../../utils/components/ThreeWaySwitch';
 import ViajesCaros from './tipos/ViajesCaros';
 import ViajesMedios from './tipos/ViajesMedios';
 import ViajesBaratos from './tipos/ViajesBaratos';
+import MasVuelos from '../Ofertas/MasVuelos';
+import MasAlojamientosAirbnb from '../Ofertas/MasAlojamientosAirbnb';
 
 function ResultadosViajeConVuelos() {
-
   const [selectedOption, setSelectedOption] = useState('medio');
-  var valor = sessionStorage.getItem('plan');
-  var viaje = JSON.parse(valor);
-  const [datos, setDatos]= useState(viaje.datos)
-
+  const valor = sessionStorage.getItem('plan');
+  const viaje = JSON.parse(valor);
+  const { vuelos, alojamientoBooking, alojamientosAirbnb, datosBusqueda } = viaje;
 
   const handleSwitchChange = newPosition => {
     setSelectedOption(newPosition);
   };
 
-  
+  const hayVuelos = vuelos && vuelos !== "null" && vuelos !== "No hay vuelos disponibles";
+  const hayBooking = alojamientoBooking != null;
+  const hayAirbnb = alojamientosAirbnb != null;
 
+  const mostrarViajes = (tipo) => {
+    switch (tipo) {
+      case 'alto':
+        return <ViajesCaros alojamientos={alojamientoBooking} vuelos={hayVuelos ? vuelos : null} datos={datosBusqueda} />;
+      case 'medio':
+        return <ViajesMedios 
+                 alojamientos={alojamientosAirbnb} 
+                 vuelos={hayVuelos ? vuelos : null} 
+                 datos={datosBusqueda} 
+                 alojamientos2={alojamientoBooking} 
+               />;
+      case 'bajo':
+      default:
+        return <ViajesBaratos alojamientos={alojamientosAirbnb} vuelos={hayVuelos ? vuelos : null} datos={datosBusqueda} />;
+    }
+  };
 
-  if(viaje.alojamientoBooking == null){
+  // ✅ Directriz 1: Hay vuelos + Booking + Airbnb
+  if (hayVuelos && hayBooking && hayAirbnb) {
     return (
       <div className='containerResultadosViaje'>
-              <p className='textoPresupuesto'>Estas son los planes que te recomendamos</p>  
-              <p > Estamos teniendo problemas, porfavor, vuelva a intentarlo más tarde</p>
-
-          {/* Validación para comprobar si hay vuelos disponibles */}
-          {viaje.vuelos && viaje.vuelos !== "No hay vuelos disponibles" ? (
-          <div className="containerResultadosViajeDiv">
-                <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} />
-          </div>
-          ) : (
-            <>
-              <p>No hay vuelos disponibles pero te agregamos los mejores alojamientos</p>
-             <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} />
-            </>
-            
-            
-          )}
+        <p className='textoPresupuesto'>Seleccione la acomodación</p>
+        <ThreeWaySwitch onChange={handleSwitchChange} />
+        {/* <p>Estas son los planes que te recomendamos</p> */}
+        <div className="containerResultadosViajeDiv">
+          {mostrarViajes(selectedOption)}
+        </div>
+        <div className="botonPersonalizarOferta">
+          <button>Mostrar más vuelos y alojamientos</button>
+        </div>
+        {/* <MasVuelos/>
+        <MasAlojamientosAirbnb/> */}
       </div>
-    )
-  }else{
-    return (
-      <div className='containerResultadosViaje'>
-              <p className='textoPresupuesto'>Seleccione la acomodación</p>
-              <ThreeWaySwitch onChange={handleSwitchChange} />
-  
-              <p >Estas son los planes que te recomendamos</p>
-
-          {/* Validación para comprobar si hay vuelos disponibles */}
-          {viaje.vuelos && viaje.vuelos !== "null"  ? (
-          <div className="containerResultadosViajeDiv">
-                {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.alojamientoBooking} vuelos={viaje.vuelos} datos={viaje.datosBusqueda} />}
-                {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} alojamientos2={viaje.alojamientoBooking} />}
-                {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={viaje.vuelos}  datos={viaje.datosBusqueda} />}
-          </div>
-          ) : (
-            <>
-              <p>No hay vuelos disponibles pero te agregamos los mejores alojamientos</p>
-              {selectedOption === "alto" && <ViajesCaros alojamientos={viaje.alojamientoBooking} vuelos={null}  datos={viaje.datosBusqueda} />}
-              {selectedOption === "medio" && <ViajesMedios alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} alojamientos2={viaje.alojamientoBooking} />}
-              {selectedOption === "bajo" && <ViajesBaratos alojamientos={viaje.alojamientosAirbnb} vuelos={null}  datos={viaje.datosBusqueda} />}
-            </>
-            
-            
-          )}
-
-          <div className="botonPersonalizarOferta">
-            <button>Mostrar más vuelos y alojamientos</button>
-          </div>
-      </div>
-    )
+    );
   }
+
+  // ✅ Directriz 2: Solo Booking y Airbnb, sin vuelos
+  if (!hayVuelos && hayBooking && hayAirbnb) {
+    return (
+      <div className='containerResultadosViaje'>
+        <p className='textoPresupuesto'>Seleccione la acomodación</p>
+        <ThreeWaySwitch onChange={handleSwitchChange} />
+        <p>No hay vuelos disponibles en este momento. Por favor, inténtalo más tarde.</p>
+        <div className="containerResultadosViajeDiv">
+          {mostrarViajes(selectedOption)}
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ Directriz 3: Solo vuelos + Airbnb (sin Booking)
+  if (hayVuelos && !hayBooking && hayAirbnb) {
+    return (
+      <div className='containerResultadosViaje'>
+        <p className='textoPresupuesto'>Estas son los planes más económicos que te recomendamos</p>
+        <div className="containerResultadosViajeDiv">
+          <ViajesBaratos alojamientos={alojamientosAirbnb} vuelos={vuelos} datos={datosBusqueda} />
+        </div>
+      </div>
+    );
+  }
+
+  // ⚠️ Fallback: datos incompletos o error
+  return (
+    <div className='containerResultadosViaje'>
+      <p className='textoPresupuesto'>Estamos teniendo problemas. Por favor, vuelva a intentarlo más tarde.</p>
+    </div>
+  );
 }
 
 export default ResultadosViajeConVuelos;

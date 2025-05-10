@@ -12,6 +12,10 @@ const PlanificadorViaje = () => {
     personas: 1,
     tipoOferta: '',
     descripcion: '',
+    urlVuelo:"",
+    escalasIda:"",
+    escalasVuelta:"",
+    multidestino:"",
     regimen: '',             // nuevo
     conNinos: false,         // nuevo
     presupuestoMax: '',      // nuevo
@@ -24,6 +28,7 @@ const PlanificadorViaje = () => {
   const [alojamientos, setAlojamientos] = useState([]);
   const [selectedVuelo, setSelectedVuelo] = useState(null);
   const [selectedAlojamiento, setSelectedAlojamiento] = useState(null);
+  const tagOptions = ['Escapada', 'Romantica', 'Playa', 'Montaña'];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +45,8 @@ const PlanificadorViaje = () => {
   };
 
   const confirmarSeleccion = async () => {
+    selectedVuelo.vueloIda.url = formData.urlVuelo;
+    selectedVuelo.vueloVulta.url = formData.urlVuelo;
     const resultadoFinal = {
       datosBusqueda: formData,
       vueloSeleccionado: selectedVuelo,
@@ -175,6 +182,24 @@ const PlanificadorViaje = () => {
 </label>
 
 <label>
+    escala Ida:
+    <input
+      type="text"
+      value={formData.escalasIda}
+      onChange={(e) => setFormData({ ...formData, escalasIda: e.target.value })}
+    />
+  </label>
+
+  <label>
+    escala Vuelta:
+    <input
+      type="text"
+      value={formData.escalasVuelta}
+      onChange={(e) => setFormData({ ...formData, escalasVuelta: e.target.value })}
+    />
+  </label>
+
+<label>
   Presupuesto máximo (€):
   <input
     type="number"
@@ -193,6 +218,10 @@ const PlanificadorViaje = () => {
     onChange={(e) => setFormData({ ...formData, actividadesDeseadas: e.target.value })}
   />
 </label>
+
+<input type="text" placeholder='UrlVuelo' 
+    onChange={(e) => setFormData({ ...formData, urlVuelo: e.target.value })}
+/>
 
   <button type="submit" style={{ marginTop: '10px' }}>Buscar</button>
 </form>
@@ -251,6 +280,18 @@ const PlanificadorViaje = () => {
         </>
       )}
 
+<select
+  value={formData.multidestino}
+  onChange={(e) => setFormData({ ...formData, multidestino: e.target.value })}
+>
+  <option value="false">Multidestino</option>
+  <option value="true">Sí</option>
+  <option value="false">No</option>
+</select>
+
+
+   
+
       {selectedVuelo && selectedAlojamiento && (
         <button
           onClick={confirmarSeleccion}
@@ -264,3 +305,7 @@ const PlanificadorViaje = () => {
 };
 
 export default PlanificadorViaje;
+
+
+
+

@@ -39,13 +39,12 @@ function OfferIndex() {
         puntuacion, 
         puntuacion, 
         alojamiento.address, 
-        alojamiento.price, 
+        alojamiento.price / calcularNumeroDeNoches(datos.fechaIda, datos.fechaVuelta)   , 
         calcularNumeroDeNoches(datos.fechaIda, datos.fechaVuelta),
         datos.fechaIda + datos.fechaVuelta, 
         alojamiento.url, 
         alojamiento.galeria
     );    
-    console.log(alojamiento)
 
     const oferta= new OfertaEspecial(null, alojamiento.galeria[0], datos.destino, datos.fecha_ida+datos.fecha_vuelta, alojamiento.galeria, null, vueloIda, vueloVuelta, alojamientoo);
 

@@ -9,6 +9,26 @@
     font-family: inter-light;
 }
 
+.iconoFiltros{
+    width: 20px;
+    height: 20px;
+}
+
+.containerIconoFiltros{
+    display: flex;
+    border-radius: 30px;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    width: 150px;
+    justify-content: center;
+    height: 40px;
+    margin-right: 20px;
+    background-color: #061c43;
+    color: #fff;
+    border: 1px solid #061c43;
+}
+
 .containerPrincipalEscapadas .seleccionadorDestino{
     width: 100%;
     display: flex;
@@ -37,11 +57,6 @@
     margin-top: 30px;
 }
 
-.iconoFiltros{
-    width: 30px;
-    height: 30px;
-}
-
 .seleccionadorDestino img:hover{
     cursor: pointer;
 }
@@ -56,17 +71,30 @@
     }
 
     .seleccionadorDestino{
-        justify-content: center;
+        justify-content: space-between;
     }
     .iconoFiltros{
-        position: absolute;
+        width: 20px;
+        height: 20px;
+    }
 
-        width: 30px;
-        height: 30px;
-        right: 30px;
+    .containerIconoFiltros{
+        display: flex;
+        border-radius: 30px;
+        align-items: center;
+        gap: 10px;
+        height: auto;
+        width: 150px;
+        justify-content: center;
+        height: 40px;
+        margin-right: 20px;
+        background-color: #061c43;
+        color: #fff;
+        border: 1px solid #061c43;
     }
 
     .seleccionadorDestino select{
         margin-left: 20px;
+        text-align: center;
     }
 }

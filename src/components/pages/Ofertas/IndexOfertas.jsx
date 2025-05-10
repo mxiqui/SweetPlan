@@ -17,6 +17,10 @@ import { EscapadaFindesemanaService } from '../../../services/EscapadaFindeseman
 import TituloOferta from './TituloOferta';
 import { OfertaService } from './OfertaService';
 
+import Lottie from "lottie-react";
+import loadingAnimation from '../../../assets/json/loader.json'; // ajusta el path
+import ItinerarioAlternativo from './Alternativo/ItinerarioAlternativo';
+
 function OfertaIndex() {
     const { id } = useParams();
     const ofertaService = new OfertaService();
@@ -40,7 +44,7 @@ function OfertaIndex() {
         if (id) fetchOferta();
     }, [id]);
 
-    console.log(oferta)
+
 
     return (
         <div className="containerOfertaEspecialIndex">
@@ -53,7 +57,9 @@ function OfertaIndex() {
             <Header />
 
             {isLoading ? (
-                <div role="status" className="loading">Cargando...</div>
+                <div role='status' className="spinner-container">
+                        <Lottie animationData={loadingAnimation} loop={true} style={{ height: 100, width: 100 }} />
+                    </div>
             ) : (
                 <main className='mainSuperior'>
                     <TarjetaTipo tipo="escapada" />
@@ -61,8 +67,12 @@ function OfertaIndex() {
                     <Carrusel portada={oferta.imagen} images={oferta.alojamiento?.galeria} />
 
                     <div className="contenedorFlex">
+                            {(oferta.vueloIdaAlternativa != null && oferta.vueloVueltaAlternativa !=null) ? (
+                                <ItinerarioAlternativo data={oferta} almacenado={false} />
+                            ) : (
+                                <Itinerario data={oferta} almacenado={false} />
+                            )}
                             <Descripcion descripcion={oferta.descripcion} />
-                            <Itinerario data={oferta} almacenado={false} />
                             <p className="alertaPrecios">
                                 *Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento.
                             </p>
