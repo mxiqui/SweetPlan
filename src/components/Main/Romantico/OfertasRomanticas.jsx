@@ -6,7 +6,12 @@ import { OfertaRomanticaService } from "../../../services/OfertasRomanticasServi
 import Interruptor from "../../../utils/components/Interruptor";
 import Filtros from "../../../utils/filtros/Filtros";
 import FiltrosSeleccionados from "../../../utils/filtros/FiltrosSeleccionados";
-import imgFiltros from '../../../images/icon/filtrar.png';
+import imgFiltros from '../../../images/icon/icnMezcladorBlanco.png';
+import { OfertaService } from "../../pages/Ofertas/OfertaService";
+
+// o si usas lottie-react:
+import Lottie from "lottie-react";
+import loadingAnimation from '../../../assets/json/loader.json'; // ajusta el path
 
 
 export const TipoOfertaRomanticaContext = createContext();
@@ -16,7 +21,7 @@ export const filtrosContextRom = createContext();
 function OfertasRomanticas() {
 
     //**************** DECLARACIONES ****************
-    const ofertaRomanticaService = new OfertaRomanticaService();
+    const ofertaService = new OfertaService();
     const [origen, setOrigen] = useState("Madrid");
     const [ofertas, setOfertas] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -34,7 +39,7 @@ function OfertasRomanticas() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const nuevasOfertas = await ofertaRomanticaService.findByOrigen(origen);
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "Romantica");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }
@@ -140,7 +145,7 @@ function OfertasRomanticas() {
                 <Interruptor />
             </TipoOfertaRomanticaContext.Provider> */}
             
-            <h2 className='tituloOferta'>Ofertas en Pareja</h2>
+            {/* <h2 className='tituloOferta'>Ofertas en Pareja</h2> */}
             <div className="containerSeleccionarOrigenes">
                 <select onChange={handleChange}>
                     <option value="Madrid">Madrid</option>
@@ -148,8 +153,11 @@ function OfertasRomanticas() {
                     <option value="Barcelona">Barcelona</option>
                 </select>
                 <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />
-                <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
-            </div>
+                <div className="containerIconoFiltros">
+                        <p>Filtros</p>
+                        <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                    </div>            
+                </div>
             {openFiltros && (
                     <div className='filtrosModal'>
                         <Filtros onCloseFilters={handleCloseFilters} />
@@ -158,7 +166,11 @@ function OfertasRomanticas() {
 
             <div className="containerOfertasRomanticas">
                 {/* Mostrar "Cargando ofertas" si aún se están cargando las ofertas */}
-                {cargando && <p>Cargando ofertas...</p>}
+                {cargando && (
+                    <div className="spinner-container">
+                        <Lottie animationData={loadingAnimation} loop={true} style={{ height: 100, width: 100 }} />
+                    </div>
+                )}
                 {/* Mostrar las ofertas si no están vacías */}
                 {!cargando && ofertasFiltradas.length > 0 && ofertasFiltradas.map((oferta) => (
                     <RomanticoInternacional key={oferta.getId()} oferta={oferta} />

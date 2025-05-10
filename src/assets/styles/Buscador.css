@@ -14,6 +14,10 @@
     }
 
     .containerBuscador h2{
+        width: 100%;
+        text-align: center;
+        font-family: outfit-light;
+        margin: auto;
         margin-top: 20px;
     }
 }

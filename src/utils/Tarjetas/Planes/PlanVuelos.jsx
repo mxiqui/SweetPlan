@@ -11,6 +11,8 @@ import AvionComponent from '../../components/AvionComponent'
  */
 function PlanVuelos({ida, vuelta, almacenado}) {
 
+    console.log(vuelta)
+
     const abrirVueloIda=()=>{
         window.open(ida.url, "_blank")
     }
@@ -93,12 +95,12 @@ function PlanVuelos({ida, vuelta, almacenado}) {
             
                             <div className='ida'>
                                 <div className="containerPlaceAndTime">
-                                <h4>{ida.horaLlegada.includes('T') ? ida.horaLlegada.split('T')[1].substr(0, 5) : ida.horaLlegada.substr(0, 5)}</h4>
+                                {/* <h4>{ida.horaLlegada.includes('T') ? ida.horaLlegada.split('T')[1].substr(0, 5) : ida.horaLlegada.substr(0, 5)}</h4> */}
                                     <h5>{ida.aeropuertoIda}</h5>
                                 </div>
                                 <AvionComponent/>
                                 <div className="containerPlaceAndTime">
-                                    <h4>{ida.horaSalida.includes('T') ? ida.horaSalida.split('T')[1].substr(0, 5) : ida.horaSalida.substr(0, 5)}</h4>
+                                    {/* <h4>{ida.horaSalida.includes('T') ? ida.horaSalida.split('T')[1].substr(0, 5) : ida.horaSalida.substr(0, 5)}</h4> */}
                                     <h5>{ida.aeropuertoVuelta}</h5>
                                 </div>
                             </div>
@@ -115,12 +117,12 @@ function PlanVuelos({ida, vuelta, almacenado}) {
             
                             <div className='vuelta'>
                                 <div className="containerPlaceAndTime">
-                                    <h4>{vuelta.horaLlegada.includes('T') ? vuelta.horaLlegada.split('T')[1].substr(0, 5) : vuelta.horaLlegada.substr(0, 5)}</h4>
+                                    {/* <h4>{vuelta.horaLlegada.includes('T') ? vuelta.horaLlegada.split('T')[1].substr(0, 5) : vuelta.horaLlegada.substr(0, 5)}</h4> */}
                                     <h5>{vuelta.aeropuertoIda}</h5>
                                 </div>
                                 <AvionComponent/>
                                 <div className="containerPlaceAndTime">
-                                    <h4>{vuelta.horaSalida.includes('T') ? vuelta.horaSalida.split('T')[1].substr(0, 5) : vuelta.horaSalida.substr(0, 5)}</h4>
+                                    {/* <h4>{vuelta.horaSalida.includes('T') ? vuelta.horaSalida.split('T')[1].substr(0, 5) : vuelta.horaSalida.substr(0, 5)}</h4> */}
                                     <h5>{vuelta.aeropuertoVuelta}</h5>
                                 </div>
                             </div>

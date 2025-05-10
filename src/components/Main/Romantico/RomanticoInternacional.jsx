@@ -1,68 +1,91 @@
-import React from 'react'
-import '../../../assets/styles/RomanticoInternacional.css'
-import imgAvion from '../../../images/icon/avion2.png'
-import imgUser from '../../../images/icon/user2.png'
+import React from 'react';
+import '../../../assets/styles/RomanticoInternacional.css';
+import imgAvion from '../../../images/icon/avion2.png';
+import imgUser from '../../../images/icon/user2.png';
+
+import imgSol from '../../../images/icon/sol2.png'
+import imgLuna from '../../../images/icon/moon.png'
 
 
 function RomanticoInternacional({oferta}) {
+    
     const handleClick = () => {
-        window.location.href = `/ofertaRomantica/${oferta.getId()}`;
+            window.location.href = `/escapadaFin/${oferta.getId()}`;
     };
 
-//   return (
-//     <div className='containerRomanticoInternacional' onClick={handleClick}>
+    // return (
+    //     <div className="card">
+    //         <img className="card-image" src={oferta.getImagen()} alt={oferta.getDestino()} />
+    //         <div className="card-content">
+    //             <h3 className="card-title">{oferta.getDestino()}</h3>
+    //             <p className="card-subtitle">{oferta.getOrigen()}</p>
+    //             <p className="card-price">Desde <strong>{oferta.getPrecioPersona().toFixed(2)} € p.p</strong></p>
+    //         </div>
+    //     </div>
+    // );
+    
+    
+    // return (
+    //     <div className='containerEscapada' onClick={handleClick}>
+    //         <img src={oferta.getImagen()} alt={oferta.getDestino()} />
+    //             <div className='overlayEscapada'>
+    //                 <div className="containerEscapadaOrigen">
+    //                     <p>{oferta.getOrigen()}</p>
+    //                     <p> <img src={imgUser} alt="" /> {oferta.getPersonas()} </p>
+    //                 </div>
+    //                 <div className="containerDestinoEscapada">
+    //                     <p className='destinoEscapada'>{oferta.getDestino()}</p>
+    //                     <p className='fechaEscapada'>{oferta.getFechas()}</p>
+    //                 </div>
+    //                 <div className="containerPrecioEscapada">
+    //                     <p className='precioEscapada'>Precio desde <span>{oferta.getPrecioPersona().toFixed(2)} € p.p</span></p>
+    //                 </div>
+    //                 {/* <p className='descripcionEscapada'>{oferta.descripcion}</p> */}
+    //                 <button>Visitar</button>
+    //             </div>
+    //     </div>
+    // )
 
-//         <div className="containerRomanticoInternacionalDiv1" style={{backgroundImage: `url(${oferta.getImagen()})`}}>
-//             <p className='containerRomanticoInternacionalState'></p>
-//             <div className="containerRomanticoInternacionalVuelo">
-//                 <div className="containerRomanticoInternacionalVuelo-ida">
-//                     <h3>{oferta.getOrigen()}</h3>
-//                     <h4>{oferta.getVueloIda().getOriginAirport()}</h4>
-//                 </div>
-//                 <img width={"20px"} src={imgAvion} alt="" />
-//                 <div className="containerRomanticoInternacionalVuelo-vuelta">
-//                     <h3>{oferta.getDestino()}</h3>
-//                     <h4>{oferta.getVueloIda().getDestinationAirport()}</h4>
-//                 </div>
-//             </div>
-//         </div>
-//         <div className="containerRomanticoInternacionalDiv2">
+    const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+    const inicio = new Date('2025-07-09');
+    const fin = new Date('2025-07-12');
 
-//             <div className="containerRomanticoInternacionalFecha">
-//                 <p className='romanticoInternacionalFecha'>{oferta.getFechas()}</p>
-//                 <p className='romanticoInternacionalPrecio'>{oferta.getPrecio()} €</p>
-//             </div>
-//             <div className="containerRomanticoInternacionalFechaAdicional">
-//                 <p>Vuelos y alojamiento</p>
-//                 <p>Precio 2 personas</p>
-//             </div>
+    let textoFecha;
+const opcionesMes = { month: 'short' };
 
-//         </div>
+if (inicio.getMonth() === fin.getMonth()) {
+  textoFecha = `${inicio.getDate()}–${fin.getDate()} ${inicio.toLocaleDateString('es-ES', opcionesMes)} ${inicio.getFullYear()}`;
+} else {
+  textoFecha = `${inicio.getDate()} ${inicio.toLocaleDateString('es-ES', opcionesMes)} – ${fin.getDate()} ${fin.toLocaleDateString('es-ES', opcionesMes)} ${inicio.getFullYear()}`;
+}
 
-//         <div className="containerRomanticoInternacionalDiv2"></div>
-//     </div>
-//   )
+    // Cálculo de días y noches
+    const msPorDia = 1000 * 60 * 60 * 24;
+    const diffMs = fin - inicio;
+    const dias = Math.round(diffMs / msPorDia);
+    const noches = dias > 0 ? dias - 1 : 0;
 
-  return (
-    <div className='containerEscapada'>
-        <img src={oferta.getImagen()} alt={oferta.getDestino()} />
-            <div className='overlayEscapada'>
-                <div className="containerEscapadaOrigen">
+
+    return (
+        <div className='containerEscapada' onClick={handleClick}>
+            <img src={oferta.getImagen()} alt={oferta.getDestino()} />
+                <div className='overlayEscapada'>
+                    <div className="containerEscapadaOrigen">
                         <p>{oferta.getOrigen()}</p>
                         <p> <img src={imgUser} alt="" /> {oferta.getPersonas()} </p>
                     </div>
-                <div className="containerDestinoEscapada">
-                    <p className='destinoEscapada'>{oferta.getDestino()}</p>
-                    <p className='fechaEscapada'>{oferta.getFechas()}</p>
+                    <div className="containerDestinoEscapadaV2">
+                        <p className='destinoEscapadaV2'>{oferta.getDestino()}</p>
+                        <p className='precioEscapadaV2'>desde <span>{oferta.getPrecioPersona().toFixed(2)} € </span></p>
+                    </div>
+                    <div className="containerFechaEscapadaV2">
+                        <p className='fechaEscapada'>{textoFecha}</p>
+                        <p className='nochesEscapada'>{dias+1} <img src={imgSol} alt="" /> {noches+1} <img src={imgLuna} alt="" /></p>
+                        </div>
                 </div>
-                <div className="containerPrecioEscapada">
-                    <p className='precioEscapada'>Precio desde <span>{oferta.getPrecio().toFixed(2)/2} € </span></p>
-                </div>
-                {/* <p className='descripcionEscapada'>{oferta.descripcion}</p> */}
-                <button onClick={handleClick}>Visitar</button>
-            </div>
-    </div>
-)
+        </div>
+    )
 }
 
-export default RomanticoInternacional
+
+export default RomanticoInternacional;

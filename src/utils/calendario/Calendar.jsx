@@ -4,7 +4,7 @@
     import { CalendarioContext } from '../../components/Header/Header'
 
 
-    const Calendar = () => {
+const Calendar = ({ setFechaIda, setFechaVuelta }) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -31,18 +31,18 @@
     const handleDateClick = (date) => {
         let fechaSeleccionada=`${date}/${currentMonth + 1}/${currentYear}`
 
-        if(fechas.ida==null){
-            fechas.ida=fechaSeleccionada;
-            document.getElementById("input_ida").value=fechaSeleccionada;
-        }else if(fechas.vuelta==null){
-            fechas.vuelta=fechaSeleccionada
-            document.getElementById("input_vuelta").value=fechaSeleccionada;
-            closeCalendar()
-        }else if(fechas.ida!=null && fechas.vuelta!=null){
-            fechas.ida=fechaSeleccionada
-            document.getElementById("input_ida").value=fechaSeleccionada;
-            fechas.vuelta=null
-        }
+        if (fechas.ida == null) {
+    setFechas({ ...fechas, ida: fechaSeleccionada });
+    setFechaIda(fechaSeleccionada); // ✅ sincroniza con React Hook Form
+} else if (fechas.vuelta == null) {
+    setFechas({ ...fechas, vuelta: fechaSeleccionada });
+    setFechaVuelta(fechaSeleccionada); // ✅ sincroniza con React Hook Form
+    closeCalendar();
+} else {
+    setFechas({ ida: fechaSeleccionada, vuelta: null });
+    setFechaIda(fechaSeleccionada); // ✅ reinicia ida
+}
+
 
         setSelectedDate(date);
     };

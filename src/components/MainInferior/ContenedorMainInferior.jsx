@@ -1,14 +1,18 @@
 import React, { useState, useEffect, createContext } from 'react';
 import OfertaEspecial from './OfertaEspecial';
-import { OfertaEspecialService } from '../../services/OfertaEspecialService';
 import FiltrosSeleccionados from '../../utils/filtros/FiltrosSeleccionados';
-import imgFiltros from '../../images/icon/filtrar.png'
+import imgFiltros from '../../images/icon/icnMezcladorBlanco.png';
 import Filtros from '../../utils/filtros/Filtros';
+import { OfertaService } from '../pages/Ofertas/OfertaService';
+
+// Lottie loader
+import Lottie from "lottie-react";
+import loadingAnimation from '../../assets/json/loader.json'; // Ajusta si la ruta es diferente
 
 export const filtrosContextOE = createContext();
 
 function ContenedorMainInferior() {
-    const ofertaEspecialService = new OfertaEspecialService();
+    const ofertaService = new OfertaService();
     const [ofertas, setOfertas] = useState([]);
     const [origen, setOrigen] = useState("Madrid");
     const [cargando, setCargando] = useState(true);
@@ -21,12 +25,10 @@ function ContenedorMainInferior() {
     });
     const [openFiltros, setOpenFiltros] = useState(false);
 
-
-    //**************** USE EFFECT ****************
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const nuevasOfertas = await ofertaEspecialService.findAll(origen);
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "OfertaEspecial");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }
@@ -36,9 +38,8 @@ function ContenedorMainInferior() {
                 setCargando(false);
             }
         };
-    
+
         obtenerOfertas();
-        // console.log(ofertas)
     }, [origen]);
 
     useEffect(() => {
@@ -48,39 +49,36 @@ function ContenedorMainInferior() {
             }
             return target.every(item => array.includes(item));
         };
-    
+
         const ofertasFiltradas = ofertas.filter(oferta => {
             if (filtros.cantidadPersonas && parseFloat(oferta.personas) !== parseFloat(filtros.cantidadPersonas)) {
                 return false;
             }
-            if (filtros.categoria.length > 0 && !arrayIncludes(filtros.categoria, [oferta.alojamientoV1.estrellas])) {
+            if (filtros.categoria.length > 0 && !arrayIncludes(filtros.categoria, [oferta._alojamiento._estrellas])) {
                 return false;
             }
-            if (filtros.regimen.length > 0 && !arrayIncludes(filtros.regimen, [oferta.regimen])) {
+            if (filtros.regimen.length > 0 && !arrayIncludes(filtros.regimen, [oferta._regimen])) {
                 return false;
             }
-    
-            const fechaInicio = new Date(oferta.fechaInicio);
+
+            const fechaInicio = new Date(oferta._fechaInicio);
             const mesFechaInicio = fechaInicio.getMonth() + 1;
-            const fechaFin = new Date(oferta.fechaFin);
+            const fechaFin = new Date(oferta._fechaFin);
             const mesFechaFin = fechaFin.getMonth() + 1;
-    
+
             if (filtros.fecha.length > 0) {
-                const filtrosFechaNumericos = filtros.fecha.map(mes => parseInt(mes, 10)); // Convertimos a números
+                const filtrosFechaNumericos = filtros.fecha.map(mes => parseInt(mes, 10));
                 if (!filtrosFechaNumericos.includes(mesFechaInicio) || !filtrosFechaNumericos.includes(mesFechaFin)) {
                     return false;
                 }
             }
-    
+
             return true;
         });
-    
+
         setOfertasFiltradas(ofertasFiltradas);
     }, [filtros, ofertas]);
-    
-    
 
-    //****************FUNCIONES****************
     const handleChange = (e) => {
         setOrigen(e.target.value);
     };
@@ -109,41 +107,48 @@ function ContenedorMainInferior() {
         });
     };
 
-    //**************** RENDERIZADO ****************
     return (
         <filtrosContextOE.Provider value={{ selectedFilters: filtros, setSelectedFilters: setFiltros }}>
             <div className='containerContenedorMainInferior' id='containerContenedorMainInferior'>
-            <h2>OFERTAS ESPECIALES</h2>
-            <p className='containerContenedorMainInferior-p'>¡Visita destinos a precios increíbles!</p>
-            <div className='seleccionadorDestino'>
+                <h2>OFERTAS ESPECIALES</h2>
+                <p className='containerContenedorMainInferior-p'>¡Visita destinos a precios increíbles!</p>
+                
+                <div className='seleccionadorDestino'>
                     <select onChange={handleChange} value={origen}>
                         <option value="Madrid">Madrid</option>
                         <option value="Malaga">Málaga</option>
                         <option value="Barcelona">Barcelona</option>
                     </select>
                     <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />
-                   <img onClick={abrirFiltros}  className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                    <div className="containerIconoFiltros">
+                        <h5>Filtros</h5>
+                        <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                    </div>
                 </div>
+
                 {openFiltros && (
                     <div className='filtrosModal'>
                         <Filtros onCloseFilters={handleCloseFilters} uso={"oferta"} />
                     </div>
                 )}
-            <div className='containerOfertasEspeciales'>
-                {!cargando && ofertasFiltradas.length > 0 && ofertasFiltradas.map((oferta) => (
+
+                <div className='containerOfertasEspeciales'>
+                    {cargando && (
+                        <div className="spinner-container">
+                            <Lottie animationData={loadingAnimation} loop={true} style={{ height: 100, width: 100 }} />
+                        </div>
+                    )}
+
+                    {!cargando && ofertasFiltradas.length > 0 && ofertasFiltradas.map((oferta) => (
                         <OfertaEspecial
-                        key={oferta.id}
-                        oferta={oferta}
-                    />
+                            key={oferta.id}
+                            oferta={oferta}
+                        />
                     ))}
-                {/* {ofertas.map((oferta) => (
-                    <OfertaEspecial
-                        key={oferta.id}
-                        oferta={oferta}
-                    />
-                ))}  */}
+
+                    {!cargando && ofertasFiltradas.length === 0 && <p>No hay ofertas disponibles.</p>}
+                </div>
             </div>
-        </div>
         </filtrosContextOE.Provider>
     );
 }

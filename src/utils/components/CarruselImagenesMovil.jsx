@@ -10,6 +10,7 @@ function CarruselImagenesMovil({ images }) {
         thumbnail: image
     }));
 
+
     return (
         <div className='containerCarruselImagenesMovil'>
             <ImageGallery items={imagenes} />

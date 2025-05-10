@@ -9,8 +9,7 @@ export function calcularNumeroDeNoches(fechaIdaStr, fechaVueltaStr) {
     const diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
     
     // El número de noches es la diferencia de días menos 1
-    const numeroDeNoches = diferenciaDias - 1;
-  
+    const numeroDeNoches = diferenciaDias;
     return numeroDeNoches;
   }
 

@@ -10,8 +10,9 @@ import CarruselImagenesMovil from './CarruselImagenesMovil';
 
 function CaruselImagenes3({images}) {
 
+
     const [imagenes, setImagenes]= useState([])
-    images.forEach((imagen)=>{
+    images.substring(1).split(",").forEach((imagen)=>{
         if(imagenes.length<5){
             imagenes.push(imagen)
         }
@@ -24,7 +25,7 @@ function CaruselImagenes3({images}) {
                     <div key={index} className="item" style={{ backgroundImage: `url(${img})` }}></div>
                 ))}
             </div>
-            <CarruselImagenesMovil images={images}/>
+            <CarruselImagenesMovil images={imagenes}/>
         </>
       );
 }

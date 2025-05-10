@@ -13,8 +13,7 @@ function Aeropuerto({ ciudad, pais, iata }) {
     <div className='containerAeropuertoSing'>
         <img src={imagen} alt="" />
         <div className="containerAeropuertoSingNames">
-            <p>{ciudad}</p>
-            <p>{pais}</p>
+            <p>{ciudad}, <span>{pais}</span></p>
         </div>
         <div className="containerAeropuertoSingIATA">
             <p>{iata}</p>

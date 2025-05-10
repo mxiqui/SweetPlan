@@ -8,7 +8,7 @@ import { OfertaV2 } from "../../models/v2/OfertaV2";
 import { AlojamientoV2 } from "../../models/v2/AlojamientoV2";
 
 export function extraerFecha(cadena) {
-    var fechaCompleta = cadena.substring(0, 10);
+    var fechaCompleta = cadena.split('T')[0];
     return fechaCompleta;
 }
 
@@ -26,7 +26,7 @@ export const adaptadorOfertasEspeciales=async (data)=>{
             oferta.vueloIda.aeropuertoVuelta,
             oferta.vueloIda.horaSalida,
             oferta.vueloIda.horaLlegada,
-            `${extraerFecha(oferta.fechaInicio)}`,
+            `${extraerFecha(oferta.fechaIda)}`,
             oferta.vueloIda.url
         )
 
@@ -38,7 +38,7 @@ export const adaptadorOfertasEspeciales=async (data)=>{
             oferta.vueloVuelta.aeropuertoVuelta,
             oferta.vueloVuelta.horaSalida,
             oferta.vueloVuelta.horaLlegada,
-            `${extraerFecha(oferta.fechaFin)}`,
+            `${extraerFecha(oferta.fechaVuelta)}`,
             oferta.vueloVuelta.url
         )
 
@@ -309,7 +309,7 @@ export const adaptadorOfertasV2 = async (data)=>{
             oferta.vueloIda.precio,
             oferta.vueloIda.horaSalida,
             oferta.vueloIda.horaLlegada,
-            `${extraerFecha(oferta.fechaInicio)}`,
+            `${extraerFecha(oferta.fechaIda)}`,
             oferta.vueloIda.url,
             oferta.vueloIda.imagenAerolinea
         )
@@ -321,41 +321,41 @@ export const adaptadorOfertasV2 = async (data)=>{
             oferta.vueloVuelta.precio,
             oferta.vueloVuelta.horaSalida,
             oferta.vueloVuelta.horaLlegada,
-            `${extraerFecha(oferta.fechaFin)}`,
+            `${extraerFecha(oferta.fechaVuelta)}`,
             oferta.vueloVuelta.url,
             oferta.vueloVuelta.imagenAerolinea
         )
     
         var alojamiento= new AlojamientoV2(
-            oferta.AlojamientoV2.id,
-            oferta.AlojamientoV2.nombre,
-            oferta.AlojamientoV2.estrellas,
-            oferta.AlojamientoV2.puntuacion,
-            oferta.AlojamientoV2.direccion,
-            oferta.AlojamientoV2.precio,
-            oferta.AlojamientoV2.url,
-            oferta.AlojamientoV2.fecha,
-            oferta.AlojamientoV2.galeria,
-            oferta.AlojamientoV2.company,
-            oferta.AlojamientoV2.idCompany
+            oferta.alojamiento.personalId,
+            oferta.alojamiento.name,
+            oferta.alojamiento.rating,
+            oferta.alojamiento.rating,
+            oferta.alojamiento.address,
+            oferta.alojamiento.totalPrice,
+            oferta.alojamiento.url,
+            `${extraerFecha(oferta.fechaIda)} - ${extraerFecha(oferta.fechaVuelta)}`,
+            oferta.alojamiento.galeria,
+            oferta.alojamiento.company,
+            oferta.alojamiento.idCompany
         )
 
         var offert= new OfertaV2(
             oferta.id,
             oferta.origen,
             oferta.destino,
-            oferta.fechaInicio,
-            oferta.fechaFin,
+            oferta.fechaIda,
+            oferta.fechaVuelta,
             oferta.imagen,
-            oferta.galeria.split(";"),
+            oferta.alojamiento.galeria.split(";"),
             oferta.precio,
-            oferta.tipo,
+            oferta.tipoOferta,
             oferta.descripcion,
             oferta.personas,
-            oferta.precioPersona,
+            oferta.precioTotal,
             oferta.noche,
             oferta.regimen,
-            `${extraerFecha(oferta.fechaInicio)} - ${extraerFecha(oferta.fechaFin)}`,
+            `${extraerFecha(oferta.fechaIda)} - ${extraerFecha(oferta.fechaVuelta)}`,
             vueloIda,
             vueloVuelta,
             alojamiento

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import OffersSlider from './OffersSlider'
 import { EscapadaFindesemanaService } from '../../services/EscapadaFindesemanaService';
-import { OfertaEspecialService } from '../../services/OfertaEspecialService';
+import { OfertaService } from '../../components/pages/Ofertas/OfertaService';
 
 function SliderOffers() {
     const [ofertas, setOfertas] = useState([]);
     const obtenerOfertas = async () => {
         try {
-            const escapadaService = new OfertaEspecialService();
-            const nuevasOfertas = await escapadaService.ofertasSlider();
+            const ofertaService = new OfertaService();
+            const nuevasOfertas = await ofertaService.findByOrigen("all","OfertaEspecial");
             if (nuevasOfertas !== undefined) {
                 setOfertas(nuevasOfertas);
             }
-            console.log(nuevasOfertas)
 
         } catch (error) {
             console.error('Error al obtener las ofertas:', error);
@@ -26,10 +25,10 @@ function SliderOffers() {
     const offers=[]
     ofertas.forEach((oferta)=>{
         offers.push({
-            title:oferta.destino,
-            description: oferta.precioPersona,
-            imageUrl: oferta.imagen,
-            id:oferta.id
+            title:oferta._destino,
+            description: oferta._precioPersona,
+            imageUrl: oferta._imagen,
+            id:oferta._id
         })
     })
 

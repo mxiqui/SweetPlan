@@ -1,0 +1,31 @@
+.vuelo-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+}
+
+.avion-icono {
+    width: 24px;
+    height: auto;
+    margin: 0 4px;
+    transition: transform 0.1s linear;
+}
+
+.puntos {
+    font-size: 18px;
+    color: gray;
+    white-space: pre;
+    margin: 0 2px;
+}
+
+.punto-rojo {
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 6px;
+}
+
+

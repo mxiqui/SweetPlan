@@ -12,6 +12,7 @@ export class Alojamiento{
     _url;
     _galeria;
 
+    //Hay que pasarle solo el precio por noche
     constructor(id,name, stars, puntuation, address, price, night, fecha, url, galeria=null){
         this._id=id;
         this._name=name;

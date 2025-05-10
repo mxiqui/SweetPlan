@@ -55,8 +55,9 @@ function InputCalendarios({ type }) {
     return (
         <div ref={containerRef}>
             <input
+            className='inputAirports'
                 type="text"
-                placeholder="Select an airport"
+                placeholder="Seleccione un aeropuerto"
                 onClick={toggleOptions}
                 onFocus={toggleOptions}
                 value={searchTerm}

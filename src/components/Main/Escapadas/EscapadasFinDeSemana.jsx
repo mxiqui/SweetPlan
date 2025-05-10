@@ -2,9 +2,14 @@ import React, { createContext, useEffect, useState } from 'react';
 import '../../../assets/styles/EscapadasFinDeSemana.css';
 import Escapada from './Escapada';
 import { EscapadaFindesemanaService } from '../../../services/EscapadaFindesemanaService';
-import imgFiltros from '../../../images/icon/filtrar.png';
+import imgFiltros from '../../../images/icon/icnMezcladorBlanco.png';
 import Filtros from '../../../utils/filtros/Filtros';
 import FiltrosSeleccionados from '../../../utils/filtros/FiltrosSeleccionados';
+import { OfertaService } from '../../pages/Ofertas/OfertaService';
+
+import Lottie from "lottie-react";
+import loadingAnimation from '../../../assets/json/loader.json'; // ajusta el path
+
 
 export const filtrosContext = createContext();
 
@@ -28,8 +33,8 @@ function EscapadasFinDeSemana() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const escapadaService = new EscapadaFindesemanaService();
-                const nuevasOfertas = await escapadaService.findByOrigen(origen);
+                const ofertaService = new OfertaService();
+                const nuevasOfertas = await ofertaService.findByOrigen(origen, "Escapada");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }
@@ -117,16 +122,18 @@ function EscapadasFinDeSemana() {
     return (
         <filtrosContext.Provider value={{ selectedFilters: filtros, setSelectedFilters: setFiltros }}>
             <div className='containerPrincipalEscapadas'>
-                <h2 className='tituloOferta'>Escapadas Fin de semana</h2>
                 <div className='seleccionadorDestino'>
-                    <select onChange={handleChange} value={origen}>
+                    <select className='selectOrigen' onChange={handleChange} value={origen}>
                         <option value="all">Toda españa </option>
                         <option value="Madrid">Madrid</option>
-                        <option value="Malaga">Málaga</option>
+                        <option value="Málaga">Málaga</option>
                         <option value="Barcelona">Barcelona</option>
                     </select>
                     <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />
-                    <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                    <div className="containerIconoFiltros">
+                        <p>Filtros</p>
+                        <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                    </div>
                 </div>
                 {openFiltros && (
                     <div className='filtrosModal'>
@@ -134,7 +141,11 @@ function EscapadasFinDeSemana() {
                     </div>
                 )}
                 <div className="containerEscapadasFinDeSemana">
-                    {cargando && <p>Cargando ofertas...</p>}
+                {cargando && (
+                    <div className="spinner-container">
+                        <Lottie animationData={loadingAnimation} loop={true} style={{ height: 100, width: 100 }} />
+                    </div>
+                )}
                     {!cargando && ofertasFiltradas.length > 0 && ofertasFiltradas.map((oferta) => (
                         <Escapada key={oferta.getId()} oferta={oferta} />
                     ))}

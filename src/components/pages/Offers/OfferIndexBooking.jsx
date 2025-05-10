@@ -8,92 +8,130 @@ import { Alojamiento } from "../../../models/Alojamiento";
 import Anuncio from "../../Anuncios/Anuncio";
 import FormularioOferta from '../../../utils/formularios/FormularioOferta';
 import TarjetaTipo from '../../../utils/Tarjetas/Tipo/TarjetaTipo';
-import TituloOferta from '../../../utils/components/TituloOferta';
-import Descripcion from '../../../utils/components/Descripcion';
-import Itinerario from '../../../components/pages/OfertasEspeciales/Itinerario';
+import Itinerario from '../../../components/pages/OfertasEspeciales/ItinerarioBooking';
 import { calcularNumeroDeNoches } from "../../../utils/adapters/functions";
 import { useLocation } from "react-router-dom";
 import SliderOffers from "../../../utils/components/Slider";
 import { server } from "../../../utils/Constantes";
-import CaruselImagenes3 from "../../../utils/components/CaruselImagenes3";
 
 function OfferIndexBooking() {
     const location = useLocation();
     const { vuelo, alojamiento, datos } = location.state || {};
+
     const [galeria, setGaleria] = useState([]);
     const [oferta, setOferta] = useState(null);
-
-    const vueloIda = new Vuelos(null, vuelo[0].aerolinea, vuelo[0].urlImagen, vuelo[0].precio, vuelo[0].aeropuertoIda, vuelo[0].aeropuertoVuelta, vuelo[0].horaSalida, vuelo[0].horaLlegada, datos.fecha_ida, null);
-    const vueloVuelta = new Vuelos(null, vuelo[1].aerolinea, vuelo[1].urlImagen, vuelo[1].precio, vuelo[1].aeropuertoIda, vuelo[1].aeropuertoVuelta, vuelo[1].horaSalida, vuelo[1].horaLlegada, datos.fecha_vuelta, null);
-    
-    let puntuacion = alojamiento.rating;
-    if (puntuacion < 5) {
-        puntuacion *= 2;
-    }
-
-    const alojamientoo = new Alojamiento(
-        alojamiento.id,
-        alojamiento.name,
-        puntuacion,
-        puntuacion,
-        alojamiento.address,
-        alojamiento.precio,
-        calcularNumeroDeNoches(datos.fecha_ida, datos.fecha_vuelta),
-        datos.fecha_ida + datos.fecha_vuelta,
-        alojamiento.link,
-        alojamiento.imagen
-    );
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const cargarImagenes = async () => {
-            const response = await fetch(`${server}/getImages`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: alojamiento.id })
-            });
+        if (!vuelo || !alojamiento || !datos) return;
 
-            if (response.ok) {
-                const data = await response.json();
-                setGaleria(data);
-                const nuevaOferta = new OfertaEspecial(null, data[0], datos.destino, datos.fecha_ida + datos.fecha_vuelta, data, null, vueloIda, vueloVuelta, alojamientoo);
-                await setOferta(nuevaOferta);
-            } else {
-                console.log('Error al obtener las reviews:', response.statusText);
+        const vueloIda = new Vuelos(
+            null,
+            vuelo.vueloIda.aerolinea,
+            vuelo.vueloIda.urlImagen,
+            vuelo.vueloIda.precio,
+            vuelo.vueloIda.aeropuertoSalida,
+            vuelo.vueloIda.aeropuertoLlegada,
+            vuelo.vueloIda.horaSalida,
+            vuelo.vueloIda.horaLLegada,
+            datos.fechaIda,
+            null
+        );
+
+        const vueloVuelta = new Vuelos(
+            null,
+            vuelo.vueloVulta.aerolinea,
+            vuelo.vueloVulta.urlImagen,
+            vuelo.vueloVulta.precio,
+            vuelo.vueloVulta.aeropuertoSalida,
+            vuelo.vueloVulta.aeropuertoLlegada,
+            vuelo.vueloVulta.horaSalida,
+            vuelo.vueloVulta.horaLLegada,
+            datos.fechaVulta,
+            null
+        );
+
+        let puntuacion = alojamiento.rating;
+        if (puntuacion < 5) {
+            puntuacion *= 2;
+        }
+
+        const alojamientoo = new Alojamiento(
+            alojamiento.id,
+            alojamiento.name,
+            puntuacion,
+            puntuacion,
+            alojamiento.address,
+            alojamiento.price,
+            calcularNumeroDeNoches(datos.fechaIda, datos.fechaVuelta),
+            datos.fecha_ida + datos.fecha_vuelta,
+            alojamiento.link,
+            alojamiento.imagen
+        );
+
+        const cargarImagenes = async () => {
+            try {
+                const response = await fetch(`${server}/imagenesBooking/${alojamiento.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.text();
+                    const imagenesArray = data.split(';').filter(url => url.trim() !== ""); // <- Limpiamos las URLs
+
+                    setGaleria(imagenesArray);
+
+                    const nuevaOferta = new OfertaEspecial(
+                        null,
+                        datos.imagen,
+                        datos.destino,
+                        datos.fecha_ida + datos.fecha_vuelta,
+                        imagenesArray,
+                        null,
+                        vueloIda,
+                        vueloVuelta,
+                        alojamientoo
+                    );
+
+                    nuevaOferta._alojamiento._galeria = imagenesArray;
+                    setOferta(nuevaOferta);
+                    setLoading(false); // ✅ Listo para renderizar
+                } else {
+                    console.log('Error al obtener las imágenes:', response.statusText);
+                }
+            } catch (error) {
+                console.error("Error al cargar imágenes:", error);
             }
         };
 
         cargarImagenes();
-    }, []);
+    }, [vuelo, alojamiento, datos]);
 
-    useEffect(() => {
-        if (oferta) {
-            console.log(oferta);
-        }
-    }, [oferta]);
-
-    console.log(oferta)
+    // ⏳ Mostrar solo cuando los datos estén listos
+    if (loading) return <div>Cargando imágenes...</div>;
 
     return (
         <div className="containerOfertaEspecialIndex">
             <Header />
             <main>
                 <TarjetaTipo tipo={"plan"} />
-                {oferta && 
-                <div className='containerTituloOferta'>
-                <h3 className='esloganDescripcion'>Disfruta de un viaje fantastico a {oferta.destino}</h3>
-                    <div className='containerDescripcionPrecio'>
-                        <h5 className='precioDescripcion'>¡Desde <span>{(alojamientoo._totalPrice+vueloIda._price).toFixed(2)}€!</span> con vuelos y alojamiento incluidos</h5>
-                    </div>
-            </div>}
-                {galeria.length > 0 && <CaruselImagenes3 images={galeria} />}
+                {oferta &&
+                    <div className='containerTituloOferta'>
+                        <h3 className='esloganDescripcion'>Disfruta de un viaje fantástico a {oferta.destino}</h3>
+                        <div className='containerDescripcionPrecio'>
+                            <h5 className='precioDescripcion'>
+                                ¡Desde <span>{(oferta._alojamiento._totalPrice + oferta._vueloIda._price).toFixed(2)}€</span> con vuelos y alojamiento incluidos!
+                            </h5>
+                        </div>
+                    </div>}
                 <div className="contenedorFlex">
                     <div className="containerDatosOfertas">
-                        {(oferta && galeria.length > 0) && (
+                        {oferta && (
                             <>
-                                <Descripcion descripcion={`¡Descubre tu próximo escape con nuestras ofertas especiales de viaje! a <span>${oferta.getDestino()} </span> Sumérgete en un mundo de posibilidades infinitas mientras te embarcas en una aventura única diseñada exclusivamente para ti. Desde exuberantes selvas tropicales hasta majestuosas montañas nevadas, nuestros paquetes de viaje te llevarán a destinos extraordinarios que despiertan los sentidos y alimentan el alma.`} />
-                                <div><Itinerario data={oferta} almacenado={true} dataOpcional={galeria}/></div>
+                                <div><Itinerario data={oferta} almacenado={true} dataOpcional={galeria} /></div>
                                 <p className="alertaPrecios">*Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento</p>
                             </>
                         )}

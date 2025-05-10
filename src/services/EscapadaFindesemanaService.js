@@ -106,36 +106,15 @@ export class EscapadaFindesemanaService{
 
     
     async findByOrigen(origen, filtros) {
-        //Version 1
-
-        // try {
-        //     if(this. ofertas==null){
-        //         const response = await fetch(`${server}/getAllOffers/escapada`, { method: 'GET' });
-        //         const offers = await response.json();
-        //         this.ofertas= await adaptadorEscapadas(offers);
-        //     }
-        //     var escapadas = [];
-
-        //     this.ofertas.forEach(oferta=>{
-        //         if(oferta.getOrigen()==origen){
-        //             escapadas.push(oferta);
-        //         }
-        //     })
-
-        //     return escapadas;
-        // } catch (error) {
-            
-        // }
-
 
         try {
             if (this.ofertas == null) {
-                const response = await fetch(`${server}/getOfertas/V2`, {
-                    method: 'POST',
+                const response = await fetch(`${server}/getOfertas/Escapada`, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ tipo: "escapadas"})
+                    // body: JSON.stringify({ tipo: "escapadas"})
                 });
         
                 const offers = await response.json();
@@ -146,7 +125,7 @@ export class EscapadaFindesemanaService{
             var escapadas = [];
 
             this.ofertas.forEach(oferta=>{
-                if(oferta.getTipo()=="escapadas"){
+                if(oferta.getTipo()=="Escapada"){
                     if(origen=="all"){
                         escapadas.push(oferta)
                     }else{
@@ -157,7 +136,36 @@ export class EscapadaFindesemanaService{
                 }
                 
             })
+            return escapadas;
+        } catch (error) {
+            console.error("Ocurrio un error: "+error)
+        }
+    
+        
+    }
 
+    async findAll2() {
+
+        try {
+            if (this.ofertas == null) {
+                const response = await fetch(`${server}/getAllOffer`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    // body: JSON.stringify({ tipo: "escapadas"})
+                });
+        
+                const offers = await response.json();
+                this.ofertas = await adaptadorOfertasV2(offers);
+            }
+
+
+            var escapadas = [];
+
+            this.ofertas.forEach(oferta=>{
+                escapadas.push(oferta)
+            })  
             return escapadas;
         } catch (error) {
             console.error("Ocurrio un error: "+error)
@@ -169,30 +177,14 @@ export class EscapadaFindesemanaService{
 
 
 
+
     async findById(id){
-
-        // try {
-        
-        //     const response = await fetch(`${server}/getOfferById/${id}`);
-        //     if (!response.ok) {
-        //         throw new Error('Hubo un problema al realizar la solicitud.');
-        //     }
-        //     const data = await response.json();
-        //     const oferta = await adaptadorOfertaEspecial(data);
-        //     return oferta;
-            
-        // } catch (error) {
-        //     console.error('Error:', error);
-        //     return null;
-        // }
-
         try {
-            const response = await fetch(`${server}/getOfertaById/V2`, {
-                method: 'POST',
+            const response = await fetch(`${server}/getOfertaById/${id}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: id})
             });
     
             const oferta = await response.json();

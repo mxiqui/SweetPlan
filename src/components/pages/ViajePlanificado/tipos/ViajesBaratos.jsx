@@ -4,11 +4,10 @@ import '../../../../assets/styles/ViajesCaros.css'
 import ViajeOrganizadoBarato from '../ofertas/ViajeOrganizadoBarato'
 import ViajeOrganizadoMedio from '../ofertas/ViajeOrganizadoMedio'
 
+
 function ViajesBaratos({alojamientos, vuelos, datos}) {
 
-    console.log(vuelos)
-
-    if(vuelos!=null && vuelos!='No hay vuelos disponibles'){
+    if(vuelos!=null){
         return (
             <div className='containerViajesCaros'>
                 <ViajeOrganizadoMedio alojamiento={alojamientos[2]} vuelo={vuelos[0]} datos={datos}/>

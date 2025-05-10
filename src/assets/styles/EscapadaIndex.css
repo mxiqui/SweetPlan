@@ -2,9 +2,20 @@
 
 }
 
+.mainSuperior{
+    width: 1100px;
+    margin: auto;
+}
+
 .containerOfertaEspecialIndex .tituloOferta{
     font-family: noto-normal;
     font-size: 33px;
     padding-left: 25px;
     color: #061c43;
+}
+
+@media screen and (max-width:768px) {
+    .mainSuperior{
+        width: 90%;
+    }
 }

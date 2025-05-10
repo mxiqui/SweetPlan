@@ -20,22 +20,22 @@ function OfertaEspecial({ oferta}) {
 
 
 	const handleClick = () => {
-		window.location.href = `/specialOffer/${oferta.id}`;
+		window.location.href = `/escapadaFin/${oferta._id}`;
 	};
 
 	return (
 		<OfertaEspecialContext.Provider value={{abrirViewer, dispatch}}>
 
 			<div className='containerOfertaEspecial' onClick={handleClick}>
-			<img src={oferta.imagen} alt={oferta.destino} />
+			<img src={oferta._imagen} alt={oferta._destino} />
 			<div className='overlay'>
 				<div className="containerNumeroUsuarios">
 					<img src={imgUser} alt="" />
-					<p>{oferta.personas}</p>
+					<p>{oferta._personas}</p>
 				</div>
-				<div className='destino'>{oferta.destino}</div>
-				<div className='precio'>{oferta.precioPersona.toFixed(2)} €</div>
-				<div className='fecha'>{oferta.AlojamientoV2.fecha}</div>
+				<div className='destino'>{oferta._destino}</div>
+				<div className='precio'>{oferta._precioPersona.toFixed(2)} €</div>
+				<div className='fecha'>{oferta._fechaSalida}</div>
 			</div>
 			</div>
 		</OfertaEspecialContext.Provider>

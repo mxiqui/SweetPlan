@@ -15,19 +15,19 @@ const ThreeWaySwitch = ({ onChange }) => {
         className={`opcionAlto option ${position === 'alto' ? 'active' : ''}`}
         onClick={() => handleClick('alto')}
       >
-        Alto
+        Booking
       </button>
       <button
         className={`opcionMedio option ${position === 'medio' ? 'active' : ''}`}
         onClick={() => handleClick('medio')}
       >
-        Medio
+        Indeferente
       </button>
       <button
         className={`opcionBajo option ${position === 'bajo' ? 'active' : ''}`}
         onClick={() => handleClick('bajo')}
       >
-        Bajo
+        Airbnb
       </button>
     </div>
   );
