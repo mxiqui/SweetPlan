@@ -22,6 +22,7 @@ import { createContext, useContext, useEffect, useReducer, useState } from 'reac
 import Espera from '../../utils/PantallaEspera/Espera'
 import { server } from '../../utils/Constantes'
 import InputCalendarios from '../pages/Pruebas/PruebasIndex'
+import PopupAviso from '../Avisos/PopUpAviso'
 
 export const datosRutaContext= createContext()
 export const datosRutaReducer = (state, action) => {
@@ -54,6 +55,8 @@ function Formulario(){
     const {register, handleSubmit,setValue } = useForm();
     const {dispatchCalendario}=useContext(CalendarioContext)
     const [abrirEspera, setAbrirEspera]=useState(false)
+    const [mostrarPopup, setMostrarPopup] = useState(false);
+
     
     const [rutaSeleccionada, dispatchRuta]=useReducer(datosRutaReducer, {
         ida:null,
@@ -137,7 +140,7 @@ function Formulario(){
                 </div>
 
                 <div className='containerInput'>
-                <label htmlFor="De">Desde</label>
+                <label className='labelInputAeropuertos' htmlFor="De">Desde</label>
                     <InputCalendarios
                         type="ida"
                         setFechaIda={(fecha) => {
@@ -160,7 +163,7 @@ function Formulario(){
                         <img src={imgDestino} alt="" />
                     </div>
                     <div className='containerInput'>
-                        <label htmlFor="De">Hacia</label>
+                        <label className='labelInputAeropuertos' htmlFor="De">Hacia</label>
                         <InputCalendarios type={"vuelta"}/>
                         {/* <input type="text" placeholder='A donde quieres ir' {...register("destino",{required:true})}
                         list="opcionesOrigen" // Vincula este input a la lista de opciones
@@ -236,7 +239,7 @@ function Formulario(){
 
 
                 {/* Contenedor Numero de personas */}
-                <div className="inputNumPersonas" id='inputNumPersonas'>
+                <div className="inputNumPersonas" id='inputNumPersonas' style={{gap:"0"}}>
                     <div className='containerImagen'>
                         <img src={imgPersona} alt="" />
                     </div>
@@ -260,7 +263,15 @@ function Formulario(){
                 </div>
 
                 {/* Boton envio formulario */}
-                <button className='buttonForm'>Planear</button>
+                <button
+                    className='buttonForm'
+                    type="button"
+                    onClick={() => setMostrarPopup(true)}
+                    >
+                    Planear
+                    </button>
+
+                {mostrarPopup && <PopupAviso onClose={() => setMostrarPopup(false)} />}
                 {abrirEspera && <Espera/>}
             </form>
             </datosRutaContext.Provider>

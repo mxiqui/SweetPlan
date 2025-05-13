@@ -198,9 +198,14 @@
         width: 44.5%;
     }
 
+    .labelInputAeropuertos{
+        margin-top: 5px;
+        margin-bottom: -5px;
+    }
+
     .inputOrigen, .inputDestino, .inputIda, .inputVuelta, .inputNumPersonas, .inputPresupuesto{
         gap: 10px;
-        height: 40px;
+        height: 45px;
     }
 
 
