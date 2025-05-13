@@ -82,15 +82,6 @@ function OfferIndex() {
             <Footer />
         </div>
     );
-    // return (
-    //     <div>
-    //       <h1>Oferta Planificada</h1>
-    //       {vuelo && <p>Vuelo: {JSON.stringify(vuelo)}</p>}
-    //       {alojamiento && <p>Alojamiento: {JSON.stringify(alojamiento)}</p>}
-    //       {datos && <p>datos: {JSON.stringify(datos)}</p>}
-    //     </div>
-    //   );
-    
 }
 
 export default OfferIndex;
