@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    justify-content: space-around;
     gap: 10px;
     padding-bottom: 10px;
     scrollbar-width: none; /* Oculta scroll en Firefox */
@@ -78,5 +79,7 @@
 
     .containerOpcionesRapidas {
         flex-wrap: nowrap;
+        margin-bottom: 0px;
     }
+    
 }

@@ -1,0 +1,104 @@
+.ofertas-fechas {
+  background: #ffffff;
+  border-radius: 12px;
+  height: 160px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 0px 10px 0px 10px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.titulo-fechas {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #222;
+  border-left: 4px solid #0074D9;
+  padding-left: 10px;
+}
+
+.lista-ofertas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.oferta-item {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.oferta-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: background 0.2s ease;
+}
+
+.oferta-link:hover {
+  background: #f9f9f9;
+}
+
+.oferta-fechas {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 4px;
+}
+
+.icono-calendario {
+  color: #0074D9;
+  margin-right: 6px;
+}
+
+.fecha {
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+}
+
+.duracion {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0074D9;
+}
+
+.estado {
+  font-style: italic;
+  color: #555;
+}
+
+.estado.error {
+  color: #D93025;
+}
+
+
+@media (max-width: 600px) {
+  /* .oferta-link {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
+
+  .duracion{
+    display: none;
+  }
+  
+  .ofertas-fechas{
+    margin-top: 40px;
+  }
+
+  .precio {
+    margin-top: 8px;
+  }
+}

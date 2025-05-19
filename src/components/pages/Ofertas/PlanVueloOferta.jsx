@@ -76,7 +76,7 @@ function PlanVuelos({ ida, vuelta }) {
   );
 
   return (
-    <div className='containerPlanVuelos'>
+    <div className='containerPlanVuelos' onClick={() => abrirEnlace(ida.url)}>
       <div className='containerIda-Vuelta'>
         {renderVuelo(ida, 'ida')}
         {renderVuelo(vuelta, 'vuelta')}

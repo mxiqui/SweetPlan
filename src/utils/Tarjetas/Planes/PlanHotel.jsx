@@ -46,7 +46,7 @@ function PlanHotel({ alojamiento, almacenado, oferta }) {
                     <span className={`nota ${puntuacion}`}>{almacenado ? oferta._alojamiento._puntuation : alojamiento.puntuacion}</span>
                     <p className='nota2'>{almacenado ? oferta._alojamiento._valoration : alojamiento.valoracion}</p>
                 </div>
-                <div className='containerPlanHotelDireccion'>
+                <div className='containerPlanHotelDireccion' style={{marginTop:'-20px'}}>
                     <h5 className='direccion'>{almacenado ? oferta._alojamiento._address : alojamiento.direccion}</h5>
                     <h5 className='direccion'>{almacenado ? oferta._alojamiento._night : oferta.noches} noches</h5>
                     <h5 className='containerPlanHotelDireccion-h5'>{almacenado ? (oferta._alojamiento._price).toFixed(2) : alojamiento.precio.toFixed(2)}€ / noche</h5>

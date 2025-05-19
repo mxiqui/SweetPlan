@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 import './assets/styles/Fuentes.css';
+import CustomCookieConsent from './Cookies/CustomCookieConsent';
 
 // Lazy load de páginas
 const Inicio = lazy(() => import('./components/pages/Inicio'));
@@ -28,7 +29,7 @@ const NotFound = lazy(() => import('./components/pages/Errors/404'));
 function App() {
   return (
     <BrowserRouter>
-      <CookieConsent
+      {/* <CookieConsent
         location="bottom"
         buttonText="Acepto"
         cookieName="sweetplanConsent"
@@ -38,7 +39,9 @@ function App() {
       >
         Este sitio web utiliza cookies para mejorar la experiencia del usuario.{" "}
         <a href="/privacy-policy" style={{ color: "#4e9ef3" }}>Política de Privacidad</a>
-      </CookieConsent>
+      </CookieConsent> */}
+        <CustomCookieConsent />
+
 
       <Suspense fallback={<div className="loading">Cargando página...</div>}>
         <Routes>

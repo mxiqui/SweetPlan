@@ -89,6 +89,37 @@ export class OfertaService{
     }
 
 
+    async findByDestinoAndOrigen(destino, origen, personas) {
+  try {
+    if (this.ofertas == null) {
+      const response = await fetch(`${server}/getAllOffer`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const offers = await response.json();
+      this.ofertas = await adaptadorOfertasV2(offers);
+    }
+
+    // Filtrar por destino, origen y número de personas
+    const filtradas = this.ofertas.filter(oferta => 
+      oferta._destino === destino &&
+      oferta._origen === origen &&
+      oferta._personas === personas
+    );
+
+    return filtradas;
+  } catch (error) {
+    console.error("Ocurrió un error: " + error);
+    return [];
+  }
+}
+
+
+
+
 
 
 

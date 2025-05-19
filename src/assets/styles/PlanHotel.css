@@ -1,6 +1,6 @@
 .containerPlanHotel{
-    width: 98%;
-    padding: 10px;
+    width: 100%;
+    padding: 0px 10px 0px 0px;
     display: flex;
     background-color: #fff;
     gap: 10px;
@@ -33,6 +33,7 @@
 .containerPlanHotelTotal {
     display: flex;
     width: 20%;
+    margin-bottom: 20px;
     flex-direction: column;
     align-items: center; 
     justify-content: flex-end; 
@@ -80,6 +81,10 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.containerPlanHotelDireccion{
+    margin-top: -15px;
 }
 
 .containerPlanHotelDatosValoracion .nota {

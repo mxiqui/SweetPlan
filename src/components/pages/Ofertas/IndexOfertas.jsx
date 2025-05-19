@@ -19,6 +19,7 @@ import TituloOferta from './TituloOferta';
 import Lottie from "lottie-react";
 import loadingAnimation from '../../../assets/json/loader.json';
 import ItinerarioAlternativo from './Alternativo/ItinerarioAlternativo';
+import OfertasFechas from './OfertasFecha';
 
 function OfertaIndex() {
     const { id } = useParams();

@@ -130,9 +130,9 @@ function EscapadasFinDeSemana() {
                         <option value="Barcelona">Barcelona</option>
                     </select>
                     <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />
-                    <div className="containerIconoFiltros">
+                    <div onClick={abrirFiltros} className="containerIconoFiltros">
                         <p>Filtros</p>
-                        <img onClick={abrirFiltros} className='iconoFiltros' src={imgFiltros} alt="Filtros" />
+                        <img className='iconoFiltros' src={imgFiltros} alt="Filtros" />
                     </div>
                 </div>
                 {openFiltros && (

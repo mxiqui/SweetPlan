@@ -1,6 +1,6 @@
 .containerEscapada{
     position: relative;
-    width: 48%;
+    width: 30%;
     height: 290px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -212,7 +212,7 @@
         background-color: #FF8A67;
     }
     .containerEscapada{
-        width: 90%;
+        width: 94%;
         height: 270px;
     }
 

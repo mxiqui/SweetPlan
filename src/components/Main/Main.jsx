@@ -13,21 +13,33 @@ export const opcionesReducer= (state, action)=>{
         ...state,
         default: false,
         escapadas: true,
-        romantico: false
+        romantico: false,
+        playa: false
       };
     case 'ROMANTICO':
       return {
         ...state,
         default: false,
         escapadas: false,
-        romantico: true
+        romantico: true,
+        playa: false
       };
     case 'default':
       return {
         ...state,
+        default: false,
+        escapadas: false,
+        romantico: false,
+        playa: false
+      };
+
+    case 'PLAYA':
+      return {
+        ...state,
         default: true,
         escapadas: false,
-        romantico: false
+        romantico: false,
+        playa: true
       };
     default:
       return state;
@@ -45,7 +57,8 @@ function Main() {
   const [opcionSeleccionada, dispatch]=useReducer(opcionesReducer, {
     default:false,
     escapadas:true,
-    romantico:false
+    romantico:false,
+    playa: false
   });
 
 

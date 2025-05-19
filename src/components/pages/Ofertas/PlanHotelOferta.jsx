@@ -63,7 +63,7 @@ function PlanHotel({ alojamiento, oferta }) {
         <div
             className="containerPlanHotel tarjetaItinerario"
             onClick={open}
-            style={{ height: "120px" }}
+            style={{ height: "160px" }}
         >
             <img className='containerPlanHotelImagen' src={imagenPrincipal} alt="" />
             <div className="containerPlanHotelDatos">

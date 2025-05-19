@@ -27,6 +27,11 @@ function OpcionesRapidas() {
     dispatch({ type: 'ROMANTICO' })
   }
 
+  const ABRIR_PLAYAS = () => {
+    setOpcionActiva('PLAYAS')
+    dispatch({ type: 'PLAYAS' })
+  }
+
   const ABRIR_OFERTASESPECIALES = () => {
   setOpcionActiva('MAS_POPULARES');
   const element = document.getElementById('mainInferior');
@@ -108,7 +113,7 @@ function OpcionesRapidas() {
       </div> */}
 
 
-      <div
+      {/* <div
         className={`containerOpcionRapidaExperiencias ${
           opcionActiva === 'PLAYA' ? 'opcion-activa' : ''
         }`}
@@ -123,7 +128,7 @@ function OpcionesRapidas() {
           alt=""
         />
         <h3>Playa</h3>
-      </div>
+      </div> */}
       
 
       <div
