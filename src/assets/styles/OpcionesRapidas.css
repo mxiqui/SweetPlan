@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 10px;
     padding-bottom: 10px;
     scrollbar-width: none; /* Oculta scroll en Firefox */
@@ -23,6 +23,7 @@
 .containerOpcionRapidaEscapadas,
 .containerOpcionRapidaExperiencias,
 .containerOpcionRapidaCualquierDestino,
+.containerOpcionRapidaPlayas,
 .containerOpcionRapidaChollos {
     padding: 5px 15px;
     border: none;
@@ -45,6 +46,7 @@
 .containerOpcionRapidaEscapadas img,
 .containerOpcionRapidaExperiencias img,
 .containerOpcionRapidaCualquierDestino img,
+.containerOpcionRapidaPlayas img,
 .containerOpcionRapidaChollos img {
     width: 25px;
     height: 25px;
@@ -54,6 +56,7 @@
 .containerOpcionRapidaEscapadas:hover,
 .containerOpcionRapidaExperiencias:hover,
 .containerOpcionRapidaCualquierDestino:hover,
+.containerOpcionRapidaPlayas:hover,
 .containerOpcionRapidaChollos:hover {
     cursor: pointer;
     color: #061c43;
@@ -70,7 +73,8 @@
     .containerOpcionRapidaEscapadas,
     .containerOpcionRapidaExperiencias,
     .containerOpcionRapidaCualquierDestino,
-    .containerOpcionRapidaChollos {
+    .containerOpcionRapidaChollos,
+    .containerOpcionRapidaPlayas {
         min-width: 19%;
         margin-bottom: 10px;
         font-size: 12px;

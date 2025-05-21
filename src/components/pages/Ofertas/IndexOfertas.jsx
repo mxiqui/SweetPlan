@@ -20,6 +20,7 @@ import Lottie from "lottie-react";
 import loadingAnimation from '../../../assets/json/loader.json';
 import ItinerarioAlternativo from './Alternativo/ItinerarioAlternativo';
 import OfertasFechas from './OfertasFecha';
+import OrigenYFechas from './OrigenYFechas';
 
 function OfertaIndex() {
     const { id } = useParams();
@@ -94,9 +95,10 @@ function OfertaIndex() {
                             *Algunos precios pueden experimentar cambios conforme nos acercamos a la fecha del evento.
                         </p>
 
-                        <aside className="containerFormularioOfertas">
+                        {/* <aside className="containerFormularioOfertas">
                             <FormularioOferta oferta={oferta} />
-                        </aside>
+                        </aside> */}
+                        <OrigenYFechas data={oferta}/>
                     </div>
 
                     <section aria-label="Ofertas relacionadas">

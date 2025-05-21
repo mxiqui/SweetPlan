@@ -34,7 +34,7 @@ function OfertaEspecial({ oferta}) {
 					<p>{oferta._personas}</p>
 				</div>
 				<div className='destino'>{oferta._destino}</div>
-				<div className='precio'>{oferta._precioPersona.toFixed(2)} €</div>
+				<div className='precio'>{oferta._precioPersona.toFixed(0)} €</div>
 				<div className='fecha'>{oferta._fechaSalida}</div>
 			</div>
 			</div>

@@ -4,6 +4,7 @@ import '../../assets/styles/Main.css'
 import CarreteMasVisitado from './CarreteMasVisitado'
 import EscapadasFinDeSemana from './Escapadas/EscapadasFinDeSemana'
 import OfertasRomanticas from './Romantico/OfertasRomanticas'
+import OfertasPorTags from './Escapadas/OfertasPorTags'
 
 export const opcionesContext= createContext()
 export const opcionesReducer= (state, action)=>{
@@ -24,6 +25,15 @@ export const opcionesReducer= (state, action)=>{
         romantico: true,
         playa: false
       };
+      
+      case 'PLAYAS':
+      return {
+        ...state,
+        default: false,
+        escapadas: false,
+        romantico: false,
+        playa: true
+      };
     case 'default':
       return {
         ...state,
@@ -33,14 +43,7 @@ export const opcionesReducer= (state, action)=>{
         playa: false
       };
 
-    case 'PLAYA':
-      return {
-        ...state,
-        default: true,
-        escapadas: false,
-        romantico: false,
-        playa: true
-      };
+    
     default:
       return state;
   }
@@ -69,6 +72,7 @@ function Main() {
       <section>
         {opcionSeleccionada.escapadas && <EscapadasFinDeSemana />}
         {opcionSeleccionada.romantico && <OfertasRomanticas />}
+        {opcionSeleccionada.playa && <OfertasPorTags/>}
         {opcionSeleccionada.default && <CarreteMasVisitado />}
       </section>
     </main>

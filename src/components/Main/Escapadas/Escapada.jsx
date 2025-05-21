@@ -51,7 +51,7 @@ function Escapada({ oferta }) {
                 </div>
                 <div className="containerDestinoEscapadaV2">
                     <p className='destinoEscapadaV2'>{oferta.getDestino()}</p>
-                    <p className='precioEscapadaV2'>desde <span>{oferta.getPrecioPersona().toFixed(2)} € </span></p>
+                    <p className='precioEscapadaV2'>desde <span>{oferta.getPrecioPersona().toFixed(0)} € </span></p>
                 </div>
                 <div className="containerFechaEscapadaV2">
                     <p className='fechaEscapada'> {textoFecha} <img width={"23px"} className='imgCalendarioOferta' src={imgCalendario} alt="" /></p>

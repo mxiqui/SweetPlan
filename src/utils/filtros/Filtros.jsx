@@ -3,13 +3,21 @@ import '../../assets/styles/FiltrosMovil.css';
 import { filtrosContext } from '../../components/Main/Escapadas/EscapadasFinDeSemana'; // Ajusta la ruta según tu estructura de carpetas
 import { filtrosContextRom } from '../../components/Main/Romantico/OfertasRomanticas';
 import { filtrosContextOE } from '../../components/MainInferior/ContenedorMainInferior';
+import { filtrosContextPlaya } from '../../components/Main/Escapadas/OfertasPorTags';
 
 import imgFlecha from '../../images/icon/flecha.png';
 import imgEstrella from '../../images/icon/estrella.png';
 
 function Filtros({ onCloseFilters, uso }) {
 
-    const context = uso === 'escapadas' ? filtrosContext : (uso === 'oferta' ? filtrosContextOE : filtrosContextRom);
+    const context = uso === 'playa'
+  ? filtrosContextPlaya
+  : uso === 'escapadas'
+    ? filtrosContext
+    : uso === 'oferta'
+      ? filtrosContextOE
+      : filtrosContextRom;
+
     const { selectedFilters, setSelectedFilters } = useContext(context);
 
     const handleCheckboxChange = (event) => {

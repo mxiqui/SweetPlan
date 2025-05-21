@@ -118,7 +118,6 @@ function Formulario(){
 
     useEffect(() => {
         setValue("ida", fechaIda);
-        console.log(fechaIda)
     }, [fechaIda]);
 
     useEffect(() => {
@@ -184,11 +183,11 @@ function Formulario(){
                     </div>
                     <div className='containerInput'>
                         <label htmlFor="De">Ida</label>
-                        <input  autoComplete={false} placeholder='Seleccione tu fecha'  id='input_buscador_fecha' type="text" />
+                        <input  autoComplete={"off"} placeholder='Seleccione tu fecha'  id='input_buscador_fecha' type="text" />
                     </div>
                 </div>
 
-                <input  autoComplete={false} placeholder=''  id='input_ida_buscador' type="hidden" {...register("ida",{required:true})}/>
+                <input  autoComplete={"off"} placeholder=''  id='input_ida_buscador' type="hidden" {...register("ida",{required:true})}/>
                 {/* <div className="inputIda" id='inputIda'>
                     <div className='containerImagen'>
                         <img src={imgCalendario} alt="" />

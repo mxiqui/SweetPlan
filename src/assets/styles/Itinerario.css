@@ -50,6 +50,12 @@
     padding-bottom: 5px;
 }
 
+.containerOpcionesFechaYOrigen{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
 
 @media screen and (max-width:768px){
@@ -60,5 +66,9 @@
     .containerItinerario .tarjetas{
         display: grid;
         grid-template-columns: 100%;
+    }
+
+    .containerOpcionesFechaYOrigen{
+        flex-wrap: wrap;
     }
 }

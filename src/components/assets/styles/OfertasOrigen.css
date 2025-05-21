@@ -1,0 +1,93 @@
+.ofertas-origen-container {
+  background-color: #fdfdfd;
+  padding: 0px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+  width: 30%;
+}
+
+.ofertas-titulo {
+  font-size: 14px;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.selector-origen {
+  margin-bottom: 1.5rem;
+}
+
+.selector-origen label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.selector-origen select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.lista-ofertas-origen {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.oferta-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 5px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+.oferta-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.link-oferta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.info-fechas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  color: #555;
+}
+
+.icono-mapa {
+  color: #0077cc;
+}
+
+.precio {
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(0, 153, 255);
+}
+
+.estado {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #888;
+}
+
+.estado.error {
+  color: #d9534f;
+}
+
+
+@media screen and (max-width: 768px) {
+  .ofertas-origen-container {
+    width: 100%;
+    margin-top: 25px;
+  }
+}

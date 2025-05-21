@@ -77,22 +77,22 @@ function OpcionesRapidas() {
         <h3>Románticas</h3>
       </div>
 
-      {/* <div
-        className={`containerOpcionRapidaExperiencias ${
-          opcionActiva === 'PLAYA' ? 'opcion-activa' : ''
+      <div
+        className={`containerOpcionRapidaPlayas ${
+          opcionActiva === 'PLAYAS' ? 'opcion-activa' : ''
         }`}
-        onClick={ABRIR_EXPERIENCIAS}
+        onClick={ABRIR_PLAYAS}
       >
         <img
           src={
-            opcionActiva === 'PLAYA'
+            opcionActiva === 'PLAYAS'
               ? iconoCorazonAzul
               : iconoCorazonBlanco
           }
           alt=""
         />
         <h3>Playa</h3>
-      </div> */}
+      </div>
 
 
       {/* <div

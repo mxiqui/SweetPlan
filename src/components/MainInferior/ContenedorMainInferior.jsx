@@ -28,7 +28,7 @@ function ContenedorMainInferior() {
     useEffect(() => {
         const obtenerOfertas = async () => {
             try {
-                const nuevasOfertas = await ofertaService.findByOrigen(origen, "OfertaEspecial");
+                const nuevasOfertas = await ofertaService.findByOrigenAndTipo(origen, "OfertaEspecial");
                 if (nuevasOfertas !== undefined) {
                     setOfertas(nuevasOfertas);
                 }

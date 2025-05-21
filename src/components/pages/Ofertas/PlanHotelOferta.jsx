@@ -77,27 +77,28 @@ function PlanHotel({ alojamiento, oferta }) {
                 <div className='containerPlanHotelDireccion'>
                     <h5 className='direccion'>{oferta.alojamiento.address}</h5>
                     <h4 className='containerPlanHotelDireccionPrecio'>
-  {(oferta.alojamiento.price === oferta.alojamiento.totalPrice
-    ? (
-        oferta.alojamiento.url.includes("airbnb")
-          ? parseFloat(oferta.alojamiento.price) / calcularNoches()
-          : parseFloat(oferta.alojamiento.price)
-      )
-    : (
-        parseFloat(oferta.alojamiento.totalPrice) / calcularNoches()
-      )
-  ).toFixed(0)}€ 
-  <span
-    style={{
-      color: "#8c8a8a",
-      fontFamily: "inter-light",
-      marginBottom: "-20px",
-      fontSize: "12px"
-    }}
-  >
-    por noche
-  </span>
-</h4>
+                        {(oferta.alojamiento.price === oferta.alojamiento.totalPrice
+                            ? (
+                                oferta.alojamiento.url.includes("airbnb")
+                                ? parseFloat(oferta.alojamiento.price) / calcularNoches()
+                                : parseFloat(oferta.alojamiento.price)
+                            )
+                            : (
+                                parseFloat(oferta.alojamiento.totalPrice) / calcularNoches()
+                            )
+                        ).toFixed(0)}€ 
+                        <span
+                            style={{
+                            color: "#8c8a8a",
+                            fontFamily: "inter-light",
+                            marginBottom: "-20px",
+                            marginLeft:"5px",
+                            fontSize: "12px"
+                            }}
+                        >
+                        por noche
+                        </span>
+                        </h4>
 
                 </div>
                 <div className='containerPlanHotelTotalMovil'>
@@ -118,28 +119,30 @@ function PlanHotel({ alojamiento, oferta }) {
             </div>
             <div className='containerPlanHotelTotal'>
                 <h4>
-  {oferta.alojamiento.price === oferta.alojamiento.totalPrice
-    ? (
-        parseFloat(oferta.alojamiento.price)
-      ).toFixed(0)
-    : (
-        parseFloat(oferta.alojamiento.totalPrice)
-      ).toFixed(0)
-  }
-  € 
-  <span
-    style={{
-      color: "#8c8a8a",
-      fontFamily: "inter-light",
-      marginBottom: "-20px",
-      fontSize: "12px"
-    }}
-  >
-    (
-    {calcularNoches()} noches
-    )
-  </span>
-</h4>
+                    {oferta.alojamiento.price === oferta.alojamiento.totalPrice
+                        ? (
+                            parseFloat(oferta.alojamiento.price)
+                        ).toFixed(0)
+                        : (
+                            parseFloat(oferta.alojamiento.totalPrice)
+                        ).toFixed(0)
+                    }
+                    € 
+                    <span
+                        style={{
+                        color: "#8c8a8a",
+                        fontFamily: "inter-light",
+                        marginBottom: "-20px",
+                        marginLeft:"5px",
+                        fontSize: "12px"
+                        }}
+                    >
+                        
+                        {/* {calcularNoches()} noches */}
+                        Total
+                        
+                    </span>
+                    </h4>
 
 
                 <button className='btnVisitar2'>Ver</button>

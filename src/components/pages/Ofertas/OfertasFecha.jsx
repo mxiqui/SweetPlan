@@ -4,7 +4,7 @@ import { OfertaService } from './OfertaService';
 import '../../../assets/styles/OfertaFechas.css';
 import { FaCalendarAlt } from 'react-icons/fa'; // para íconos de calendario
 
-function OfertasFechas({ destino, origen, fechaActual, personas }) {
+function OfertasFechas({ destino, origen, fechaActual, personas, id }) {
   const ofertaService = new OfertaService();
   const [ofertas, setOfertas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,7 @@ function OfertasFechas({ destino, origen, fechaActual, personas }) {
       setError(null);
       try {
         const data = await ofertaService.findByDestinoAndOrigen(destino, origen, personas);
-        const filtradas = data.filter(oferta => oferta._fechaInicio !== fechaActual);
+        const filtradas = data.filter(oferta => oferta._fechaInicio !== fechaActual &&  oferta._id !== id );
         setOfertas(filtradas);
       } catch (err) {
         setError('Error al cargar ofertas');
@@ -52,13 +52,12 @@ function OfertasFechas({ destino, origen, fechaActual, personas }) {
             <Link to={`/escapadaFin/${oferta._id}`} className="oferta-link">
               <div className="oferta-fechas">
                 <FaCalendarAlt className="icono-calendario" />
-                <span className="fecha">
+                <span className="fecha" style={{fontFamily:"monospace"}}>
                   {formatearFecha(oferta._fechaInicio)} → {formatearFecha(oferta._fechafin)}
                 </span>
-                <span className="duracion">{oferta._noches} noches</span>
               </div>
               <div className="precio">
-                {oferta._precioPersona ? `$${oferta._precioPersona}` : '--'}
+                {oferta._precioPersona.toFixed(0) ? `${oferta._precioPersona.toFixed(0)}€ ` : '--'}
               </div>
             </Link>
           </li>
