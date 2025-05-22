@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const PlanificadorViaje = () => {
+const PlanificadorViajeSoloVuelos = () => {
   const [formData, setFormData] = useState({
     imagen: '',
     tipoAlojamiento: 'airbnb',
@@ -16,11 +16,23 @@ const PlanificadorViaje = () => {
     escalasIda:"",
     escalasVuelta:"",
     multidestino:"",
-    regimen: '',             
-    conNinos: false,         
-    presupuestoMax: '',      
-    actividadesDeseadas: '', 
   });
+
+    const [alojamientoData, setAlojamientoData] = useState({
+        id: '',
+        name: '',
+        rating: '',
+        address: '',
+        price: '',
+        totalPrice: '',
+        url: '',
+        galeria: '',
+        image: '',
+        wordRating: '',
+        distance: '',
+        regimen: ''
+    });
+
   
       
 
@@ -33,11 +45,11 @@ const PlanificadorViaje = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8080/findPlan', formData);
+      const res = await axios.post('http://localhost:8080/findPlanJustFly', formData);
       setVuelos(res.data.vuelos);
       setAlojamientos([
-        ...res.data.alojamientosAirbnb,
-        ...res.data.alojamientoBooking,
+        null,
+        null
       ]);
     } catch (err) {
       console.error('Error en la búsqueda:', err);
@@ -48,10 +60,11 @@ const PlanificadorViaje = () => {
     selectedVuelo.vueloIda.url = formData.urlVuelo;
     selectedVuelo.vueloVulta.url = formData.urlVuelo;
     const resultadoFinal = {
-      datosBusqueda: formData,
-      vueloSeleccionado: selectedVuelo,
-      alojamientoSeleccionado: selectedAlojamiento,
-    };
+  datosBusqueda: formData,
+  vueloSeleccionado: selectedVuelo,
+  alojamientoSeleccionado: alojamientoData, // nuevo estado
+};
+
   
     console.log('🎯 Resultado final:', resultadoFinal);
   
@@ -157,29 +170,6 @@ const PlanificadorViaje = () => {
     />
   </label>
 
-  <label>
-  Régimen Alimenticio:
-  <select
-    value={formData.regimen}
-    onChange={(e) => setFormData({ ...formData, regimen: e.target.value })}
-  >
-    <option value="">Selecciona</option>
-    <option value="soloAlojamiento">Solo alojamiento</option>
-    <option value="desayuno">Desayuno incluido</option>
-    <option value="mediaPension">Media pensión</option>
-    <option value="pensionCompleta">Pensión completa</option>
-    <option value="todoIncluido">Todo incluido</option>
-  </select>
-</label>
-
-<label>
-  ¿Viajas con niños?
-  <input
-    type="checkbox"
-    checked={formData.conNinos}
-    onChange={(e) => setFormData({ ...formData, conNinos: e.target.checked })}
-  />
-</label>
 
 <label>
     escala Ida:
@@ -199,25 +189,7 @@ const PlanificadorViaje = () => {
     />
   </label>
 
-<label>
-  Presupuesto máximo (€):
-  <input
-    type="number"
-    value={formData.presupuestoMax}
-    onChange={(e) => setFormData({ ...formData, presupuestoMax: e.target.value })}
-    min="0"
-  />
-</label>
 
-<label>
-  Actividades deseadas:
-  <input
-    type="text"
-    placeholder="Ej: senderismo, playa, museos..."
-    value={formData.actividadesDeseadas}
-    onChange={(e) => setFormData({ ...formData, actividadesDeseadas: e.target.value })}
-  />
-</label>
 
 <input type="text" placeholder='UrlVuelo' 
     onChange={(e) => setFormData({ ...formData, urlVuelo: e.target.value })}
@@ -254,45 +226,81 @@ const PlanificadorViaje = () => {
         </>
       )}
 
-{Array.isArray(alojamientos) && alojamientos.length > 0 && (
-        <>
-          <h2>Alojamientos disponibles</h2>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-            {alojamientos.map((aloj, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedAlojamiento(aloj)}
-                style={{
-                  border: selectedAlojamiento === aloj ? '3px solid blue' : '1px solid gray',
-                  padding: '10px',
-                  cursor: 'pointer',
-                  width: '300px',
-                }}
-              >
-                <img src={aloj.image || aloj.galeria?.split(',')[0]?.replace('[', '').trim()} alt="alojamiento" width="100%" />
-                <h4>{aloj.name}</h4>
-                <p>{aloj.address}</p>
-                <p>Precio total: €{aloj.totalPrice}</p>
-                <a href={aloj.url} target="_blank" rel="noopener noreferrer">Ver más</a>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+      <h3>Datos del Alojamiento</h3>
 
-<select
-  value={formData.multidestino}
-  onChange={(e) => setFormData({ ...formData, multidestino: e.target.value })}
->
-  <option value="false">Multidestino</option>
-  <option value="true">Sí</option>
-  <option value="false">No</option>
-</select>
+<label>
+  ID:
+  <input type="text" value={alojamientoData.id} onChange={(e) => setAlojamientoData({ ...alojamientoData, id: e.target.value })} />
+</label>
+
+<label>
+  Nombre:
+  <input type="text" value={alojamientoData.name} onChange={(e) => setAlojamientoData({ ...alojamientoData, name: e.target.value })} />
+</label>
+
+<label>
+  Rating:
+  <input type="text" value={alojamientoData.rating} onChange={(e) => setAlojamientoData({ ...alojamientoData, rating: e.target.value })} />
+</label>
+
+<label>
+  Dirección:
+  <input type="text" value={alojamientoData.address} onChange={(e) => setAlojamientoData({ ...alojamientoData, address: e.target.value })} />
+</label>
+
+<label>
+  Precio:
+  <input type="number" value={alojamientoData.price} onChange={(e) => setAlojamientoData({ ...alojamientoData, price: parseFloat(e.target.value) })} />
+</label>
+
+<label>
+  Precio Total:
+  <input type="number" value={alojamientoData.totalPrice} onChange={(e) => setAlojamientoData({ ...alojamientoData, totalPrice: parseFloat(e.target.value) })} />
+</label>
+
+<label>
+  URL:
+  <input type="text" value={alojamientoData.url} onChange={(e) => setAlojamientoData({ ...alojamientoData, url: e.target.value })} />
+</label>
+
+<label>
+  Galería:
+  <input type="text" value={alojamientoData.galeria} onChange={(e) => setAlojamientoData({ ...alojamientoData, galeria: e.target.value })} />
+</label>
+
+<label>
+  Imagen:
+  <input type="text" value={alojamientoData.image} onChange={(e) => setAlojamientoData({ ...alojamientoData, image: e.target.value })} />
+</label>
+
+<label>
+  Word Rating:
+  <input type="text" value={alojamientoData.wordRating} onChange={(e) => setAlojamientoData({ ...alojamientoData, wordRating: e.target.value })} />
+</label>
+
+<label>
+  Distancia:
+  <input type="text" value={alojamientoData.distance} onChange={(e) => setAlojamientoData({ ...alojamientoData, distance: e.target.value })} />
+</label>
+
+<label>
+  Régimen:
+  <select value={alojamientoData.regimen} onChange={(e) => setAlojamientoData({ ...alojamientoData, regimen: e.target.value })}>
+    <option value="">Selecciona</option>
+    <option value="soloAlojamiento">Solo alojamiento</option>
+    <option value="desayuno">Desayuno incluido</option>
+    <option value="mediaPension">Media pensión</option>
+    <option value="pensionCompleta">Pensión completa</option>
+    <option value="todoIncluido">Todo incluido</option>
+  </select>
+</label>
+
+
 
 
    
 
-      {selectedVuelo && selectedAlojamiento && (
+      {selectedVuelo && (
         <button
           onClick={confirmarSeleccion}
           style={{ marginTop: '30px', padding: '10px 20px', fontSize: '16px' }}
@@ -304,7 +312,7 @@ const PlanificadorViaje = () => {
   );
 };
 
-export default PlanificadorViaje;
+export default PlanificadorViajeSoloVuelos;
 
 
 

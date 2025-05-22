@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 import './assets/styles/Fuentes.css';
 import CustomCookieConsent from './Cookies/CustomCookieConsent';
+import PlanificadorViajeSoloVuelos from './components/pages/AddOferta/PlanificadorViajeSOloVuelos';
 
 // Lazy load de páginas
 const Inicio = lazy(() => import('./components/pages/Inicio'));
@@ -62,6 +63,7 @@ function App() {
           <Route path="/suscribete/" element={<NewsLetter />} />
           <Route path="/createOffer/" element={<PlanificadorViaje />} />
           <Route path="/createOfferAlternativa/" element={<PlanificadorViajeAlternativo />} />
+          <Route path="/createOfferPersonal/" element={<PlanificadorViajeSoloVuelos />} />
           <Route path="/listaOfertas/" element={<OfertasList />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
