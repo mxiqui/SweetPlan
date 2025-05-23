@@ -1,11 +1,10 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CookieConsent from 'react-cookie-consent';
+// App.js
+import React, { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './assets/styles/Fuentes.css';
 import CustomCookieConsent from './Cookies/CustomCookieConsent';
+import { initGA, logPageView } from './utils/analytics';
 import PlanificadorViajeSoloVuelos from './components/pages/AddOferta/PlanificadorViajeSOloVuelos';
-import { initGA, logPageView } from './utils/analytics'; // 👈 importa esto
-
 
 // Lazy load de páginas
 const Inicio = lazy(() => import('./components/pages/Inicio'));
@@ -29,34 +28,21 @@ const OfertaIndex = lazy(() => import('./components/pages/Ofertas/IndexOfertas')
 const OfertasList = lazy(() => import('./components/pages/Ofertas/OfertasList'));
 const NotFound = lazy(() => import('./components/pages/Errors/404'));
 
-function App() {
-
+// ✅ Este es el componente que puede usar useLocation()
+function AppContent() {
   const location = useLocation();
 
   useEffect(() => {
-    initGA(); // Se ejecuta una vez
+    initGA(); // Solo una vez al montar
   }, []);
 
   useEffect(() => {
-    logPageView(location.pathname + location.search); // Se ejecuta cada vez que cambia la ruta
+    logPageView(location.pathname + location.search); // En cada cambio de ruta
   }, [location]);
-  
+
   return (
-    <BrowserRouter>
-      {/* <CookieConsent
-        location="bottom"
-        buttonText="Acepto"
-        cookieName="sweetplanConsent"
-        style={{ background: "#061c43" }}
-        buttonStyle={{ color: "#ffffff", fontSize: "13px", background: "#4e9ef3" }}
-        expires={150}
-      >
-        Este sitio web utiliza cookies para mejorar la experiencia del usuario.{" "}
-        <a href="/privacy-policy" style={{ color: "#4e9ef3" }}>Política de Privacidad</a>
-      </CookieConsent> */}
-        <CustomCookieConsent />
-
-
+    <>
+      <CustomCookieConsent />
       <Suspense fallback={<div className="loading">Cargando página...</div>}>
         <Routes>
           <Route path="/" element={<Inicio />} />
@@ -81,6 +67,15 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+    </>
+  );
+}
+
+// ✅ Este es el verdadero componente <App> que envuelve con <BrowserRouter>
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
