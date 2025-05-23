@@ -4,6 +4,8 @@ import CookieConsent from 'react-cookie-consent';
 import './assets/styles/Fuentes.css';
 import CustomCookieConsent from './Cookies/CustomCookieConsent';
 import PlanificadorViajeSoloVuelos from './components/pages/AddOferta/PlanificadorViajeSOloVuelos';
+import { initGA, logPageView } from './utils/analytics'; // 👈 importa esto
+
 
 // Lazy load de páginas
 const Inicio = lazy(() => import('./components/pages/Inicio'));
@@ -28,6 +30,17 @@ const OfertasList = lazy(() => import('./components/pages/Ofertas/OfertasList'))
 const NotFound = lazy(() => import('./components/pages/Errors/404'));
 
 function App() {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    initGA(); // Se ejecuta una vez
+  }, []);
+
+  useEffect(() => {
+    logPageView(location.pathname + location.search); // Se ejecuta cada vez que cambia la ruta
+  }, [location]);
+  
   return (
     <BrowserRouter>
       {/* <CookieConsent

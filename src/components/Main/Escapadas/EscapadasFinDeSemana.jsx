@@ -128,6 +128,7 @@ function EscapadasFinDeSemana() {
                         <option value="Madrid">Madrid</option>
                         <option value="Málaga">Málaga</option>
                         <option value="Barcelona">Barcelona</option>
+                        <option value="Sevilla">Sevilla</option>
                     </select>
                     <FiltrosSeleccionados filtros={filtros} eliminarFiltro={eliminarFiltro} />
                     <div onClick={abrirFiltros} className="containerIconoFiltros">
