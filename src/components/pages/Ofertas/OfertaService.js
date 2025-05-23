@@ -194,11 +194,12 @@ async findOrigenesByDestino(destino, origen) {
     async findByOrigenAndTipo(origen, tipo) {
         try {
             if (this.ofertas == null) {
-                const response = await fetch(`${server}/findByOrigenAndTipo?origen=${encodeURIComponent(origen)}&tipo=${encodeURIComponent(tipo)}`, {
+                //const response = await fetch(`${server}/findByOrigenAndTipo?origen=${encodeURIComponent(origen)}&tipo=${encodeURIComponent(tipo)}`); // sin headers
+                const response = await fetch(`${server}/findByOrigenAndTipo/${origen}/${tipo}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
                 });
                 const offers = await response.json();
                 this.ofertas = await adaptadorOfertasV2(offers);
