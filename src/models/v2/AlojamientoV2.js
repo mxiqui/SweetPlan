@@ -1,5 +1,5 @@
 export class AlojamientoV2 {
-    constructor(id, nombre, estrellas, puntuacion, direccion, precio, url, fecha, galeria, company, idCompany) {
+    constructor(id, nombre, estrellas, puntuacion, direccion, precio, url, fecha, galeria, company, idCompany, regimen = null) {
         this._id = id;
         this._nombre = nombre;
         this._estrellas = estrellas;
@@ -11,93 +11,42 @@ export class AlojamientoV2 {
         this._galeria = galeria;
         this._company = company;
         this._idCompany = idCompany;
+        this._regimen = regimen; // Si regimen no se pasa, será null
     }
 
-    get id() {
-        return this._id;
-    }
+    get id() { return this._id; }
+    set id(value) { this._id = value; }
 
-    set id(value) {
-        this._id = value;
-    }
+    get nombre() { return this._nombre; }
+    set nombre(value) { this._nombre = value; }
 
-    get nombre() {
-        return this._nombre;
-    }
+    get estrellas() { return this._estrellas; }
+    set estrellas(value) { this._estrellas = value; }
 
-    set nombre(value) {
-        this._nombre = value;
-    }
+    get puntuacion() { return this._puntuacion; }
+    set puntuacion(value) { this._puntuacion = value; }
 
-    get estrellas() {
-        return this._estrellas;
-    }
+    get direccion() { return this._direccion; }
+    set direccion(value) { this._direccion = value; }
 
-    set estrellas(value) {
-        this._estrellas = value;
-    }
+    get precio() { return this._precio; }
+    set precio(value) { this._precio = value; }
 
-    get puntuacion() {
-        return this._puntuacion;
-    }
+    get url() { return this._url; }
+    set url(value) { this._url = value; }
 
-    set puntuacion(value) {
-        this._puntuacion = value;
-    }
+    get fecha() { return this._fecha; }
+    set fecha(value) { this._fecha = value; }
 
-    get direccion() {
-        return this._direccion;
-    }
+    get galeria() { return this._galeria; }
+    set galeria(value) { this._galeria = value; }
 
-    set direccion(value) {
-        this._direccion = value;
-    }
+    get company() { return this._company; }
+    set company(value) { this._company = value; }
 
-    get precio() {
-        return this._precio;
-    }
+    get idCompany() { return this._idCompany; }
+    set idCompany(value) { this._idCompany = value; }
 
-    set precio(value) {
-        this._precio = value;
-    }
-
-    get url() {
-        return this._url;
-    }
-
-    set url(value) {
-        this._url = value;
-    }
-
-    get fecha() {
-        return this._fecha;
-    }
-
-    set fecha(value) {
-        this._fecha = value;
-    }
-
-    get galeria() {
-        return this._galeria;
-    }
-
-    set galeria(value) {
-        this._galeria = value;
-    }
-
-    get company() {
-        return this._company;
-    }
-
-    set company(value) {
-        this._company = value;
-    }
-
-    get idCompany() {
-        return this._idCompany;
-    }
-
-    set idCompany(value) {
-        this._idCompany = value;
-    }
+    get regimen() { return this._regimen; }
+    set regimen(value) { this._regimen = value; }
 }

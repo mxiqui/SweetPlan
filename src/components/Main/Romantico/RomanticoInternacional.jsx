@@ -65,6 +65,8 @@ if (inicio.getMonth() === fin.getMonth()) {
     const dias = Math.round(diffMs / msPorDia);
     const noches = dias > 0 ? dias - 1 : 0;
 
+        console.log(oferta.getAlojamiento())
+
 
     return (
         <div className='containerEscapada' onClick={handleClick}>
@@ -77,6 +79,7 @@ if (inicio.getMonth() === fin.getMonth()) {
                     <div className="containerDestinoEscapadaV2">
                         <p className='destinoEscapadaV2'>{oferta.getDestino()}</p>
                         <p className='precioEscapadaV2'>desde <span>{oferta.getPrecioPersona().toFixed(2)} € </span></p>
+                        <RegimenEscapada oferta={oferta} />
                     </div>
                     <div className="containerFechaEscapadaV2">
                         <p className='fechaEscapada'>{textoFecha}</p>
@@ -85,6 +88,18 @@ if (inicio.getMonth() === fin.getMonth()) {
                 </div>
         </div>
     )
+}
+
+function RegimenEscapada({ oferta }) {
+  const regimen = oferta?.getAlojamiento()?.regimen;
+
+  if (!regimen || regimen === 'soloAlojamiento') {
+    // No renderiza nada
+    return <></>;
+  }
+
+  // Renderiza el régimen si tiene valor válido
+  return <p className="regimenEscapadaV2">{regimen}</p>;
 }
 
 

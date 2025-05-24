@@ -51,7 +51,7 @@ export const adaptadorOfertasEspeciales=async (data)=>{
             oferta.Alojamiento.precio,
             oferta.Alojamiento.noches,
             oferta.Alojamiento.fecha,
-            oferta.Alojamiento.url
+            oferta.Alojamiento.url,
         )
 
         var oferta= new OfertaEspecial(
@@ -302,6 +302,7 @@ export const adaptadorOfertasV2 = async (data)=>{
    try {
     var of=[]
     data.forEach(oferta=>{
+        
         var vueloIda= new VueloV2(oferta.vueloIda.id, 
             oferta.vueloIda.aerolinea,
             oferta.vueloIda.aeropuertoIda,
@@ -337,7 +338,8 @@ export const adaptadorOfertasV2 = async (data)=>{
             `${extraerFecha(oferta.fechaIda)} - ${extraerFecha(oferta.fechaVuelta)}`,
             oferta.alojamiento.galeria,
             oferta.alojamiento.company,
-            oferta.alojamiento.idCompany
+            oferta.alojamiento.idCompany,
+            oferta.alojamiento.regimen
         )
 
         var offert= new OfertaV2(
@@ -354,7 +356,7 @@ export const adaptadorOfertasV2 = async (data)=>{
             oferta.personas,
             oferta.precioTotal,
             oferta.noche,
-            oferta.regimen,
+            oferta.alojamiento.regimen,
             `${extraerFecha(oferta.fechaIda)} - ${extraerFecha(oferta.fechaVuelta)}`,
             vueloIda,
             vueloVuelta,
